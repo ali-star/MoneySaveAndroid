@@ -9,8 +9,7 @@ import ir.siriusapps.moneysave.di.scope.ActivityScope
 abstract class ActivityBindingModule {
 
     @ActivityScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [GsonModule::class])
     abstract fun mainActivity(): MainActivity
-
 
 }
