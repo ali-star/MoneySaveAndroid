@@ -44,7 +44,6 @@ class AppService: DaggerService() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (firstCommand) {
-            // register receiver
             if (Build.VERSION.SDK_INT >= 19) {
                 smsReceiverIntentFilter.addAction(SMS_RECEIVED_ACTION)
 
@@ -52,6 +51,7 @@ class AppService: DaggerService() {
                     override fun onReceive(context: Context, intent: Intent) {
                         var from: String? = null
                         var body = ""
+                        /* Sms messages has limited characters, we need to merge them. */
                         for (smsMessage in getMessagesFromIntent(intent)) {
                             from = smsMessage.originatingAddress
                             body += smsMessage.messageBody
@@ -68,6 +68,8 @@ class AppService: DaggerService() {
             }
 
             firstCommand = false
+        } else {
+            // TODO implement for api < 19
         }
         return START_STICKY
     }
