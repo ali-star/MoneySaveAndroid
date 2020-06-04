@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.framework.db
+package ir.siriusapps.moneysave.framework.db.roomDataSource
 
 import android.content.Context
 import com.example.core.data.datasource.BankAccountDataSource

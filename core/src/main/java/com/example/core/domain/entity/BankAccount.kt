@@ -1,8 +1,15 @@
 package com.example.core.domain.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "BankAccount")
 data class BankAccount(
-    val id: Long, val uuid: UUID, val userId: User, val bankId: Long)
+    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
+    val id: Long,
+    val uuid: String,
+    val userId: Long,
+    val bankId: Long
+)
