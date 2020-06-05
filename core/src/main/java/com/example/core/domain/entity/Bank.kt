@@ -9,7 +9,7 @@ import java.util.*
 @Entity(tableName = "Bank")
 open  class Bank(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    var id: Long=0,
+    var id: Long? = null,
     val uuid:String,
     val name: String,
     val persianName: String,
