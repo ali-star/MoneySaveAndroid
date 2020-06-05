@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "BankAccount")
-data class BankAccount(
+open class BankAccount(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
     val id: Long,
     val uuid: String,

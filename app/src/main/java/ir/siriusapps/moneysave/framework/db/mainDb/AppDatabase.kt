@@ -18,7 +18,9 @@ import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoCard
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun roomDaoCard(): RoomDaoCard
+
     abstract fun roomDaoBank(): RoomDaoBank
+
     abstract fun roomDaoBankAccount(): RoomDaoBankAccount
 
 }

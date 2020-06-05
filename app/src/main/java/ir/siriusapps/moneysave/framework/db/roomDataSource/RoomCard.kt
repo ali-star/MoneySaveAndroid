@@ -1,36 +1,34 @@
 package ir.siriusapps.moneysave.framework.db.roomDataSource
 
-import android.content.Context
 import com.example.core.data.datasource.CardDataSource
-import com.example.core.domain.entity.Bank
 import com.example.core.domain.entity.Card
 import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoCard
 import javax.inject.Inject
 
-class RoomCard @Inject constructor(private val daoCard: RoomDaoCard) : CardDataSource {
+open class RoomCard @Inject constructor(private val daoCard: RoomDaoCard) : CardDataSource {
     private lateinit var list: ArrayList<Card>
     override fun add(card: Card) {
         list = ArrayList<Card>()
         list.add(card)
-        daoCard.insertCard(list)
+        daoCard.insertCards(list)
     }
 
     override fun add(cards: List<Card>) {
-        daoCard.insertCard(cards)
+        daoCard.insertCards(cards)
     }
 
     override fun remove(card: Card) {
         list = ArrayList<Card>()
         list.add(card)
-        daoCard.deleteCard(list)
+        daoCard.deleteCards(list)
     }
 
     override fun remove(cards: List<Card>) {
-        daoCard.deleteCard(cards)
+        daoCard.deleteCards(cards)
     }
 
     override fun read(): List<Card> {
-        return daoCard.selectCard()
+        return daoCard.getCards()
     }
 
 }

@@ -7,7 +7,7 @@ import jdk.nashorn.internal.objects.annotations.Property
 import java.util.*
 
 @Entity(tableName = "Bank")
-data class Bank(
+open  class Bank(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
     var id: Long=0,
     val uuid:String,
