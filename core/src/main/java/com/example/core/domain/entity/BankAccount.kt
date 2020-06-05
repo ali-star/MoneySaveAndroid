@@ -8,7 +8,7 @@ import java.util.*
 @Entity(tableName = "BankAccount")
 open class BankAccount(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long?=null,
     val uuid: String,
     val userId: Long,
     val bankId: Long
