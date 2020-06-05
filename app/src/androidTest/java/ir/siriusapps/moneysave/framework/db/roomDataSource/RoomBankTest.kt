@@ -9,6 +9,7 @@ import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoBank
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert.*
 
 @RunWith(AndroidJUnit4::class)
 class RoomBankTest {
@@ -43,7 +44,7 @@ class RoomBankTest {
     @Test
     fun insertTest() {
         insertBanksIntoDatabase()
-        assert(bankDao.getBanks().isNotEmpty())
+        assertTrue(bankDao.getBanks().isNotEmpty())
     }
 
     @Test
@@ -55,6 +56,11 @@ class RoomBankTest {
         removedBanks.add(savedBanks[0])
         removedBanks.add(savedBanks[1])
 
-        assert(savedBanks.isNotEmpty())
+        bankDao.deleteBanks(removedBanks)
+
+        val banksAfterRemove = bankDao.getBanks()
+
+        assertTrue(banksAfterRemove.size == 1)
     }
+
 }
