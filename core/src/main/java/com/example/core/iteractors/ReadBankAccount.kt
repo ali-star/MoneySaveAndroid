@@ -4,6 +4,6 @@ import com.example.core.data.repository.BankAccountRepo
 import com.example.core.domain.entity.BankAccount
 
 class ReadBankAccount(private val bankAccountRpo: BankAccountRepo) {
-    suspend fun readBankAccount(bankAccount: BankAccount) =
-        bankAccountRpo.readBankAccount(bankAccount)
+
+    suspend fun readBankAccount():List<BankAccount> = bankAccountRpo.readBankAccount()
 }

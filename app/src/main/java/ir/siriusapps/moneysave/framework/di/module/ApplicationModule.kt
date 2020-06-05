@@ -7,17 +7,10 @@ import ir.siriusapps.moneysave.App
 import javax.inject.Singleton
 
 @Module
-class ApplicationModule(app: App) {
-
-    lateinit var app: App
-
-    init {
-        this.app = app
-    }
+class ApplicationModule() {
 
     @Provides
     @Singleton
-    fun provideAppContext(): Context = app
-
+    fun provideAppContext(app:App): Context = app
 
 }

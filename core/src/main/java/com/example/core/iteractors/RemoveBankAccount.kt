@@ -4,6 +4,10 @@ import com.example.core.data.repository.BankAccountRepo
 import com.example.core.domain.entity.BankAccount
 
 class RemoveBankAccount(private val bankAccountRpo: BankAccountRepo) {
+
     suspend fun removeBankAccount(bankAccount: BankAccount) =
         bankAccountRpo.removeBankAccount(bankAccount)
+
+    suspend fun removeBankAccount(bankAccounts: List<BankAccount>) =
+        bankAccountRpo.removeBankAccount(bankAccounts)
 }

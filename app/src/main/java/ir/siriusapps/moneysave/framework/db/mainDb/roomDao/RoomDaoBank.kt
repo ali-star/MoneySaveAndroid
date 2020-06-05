@@ -8,6 +8,7 @@ import com.example.core.domain.entity.Bank
 
 @Dao
 interface RoomDaoBank {
+
     @Insert
     fun insertBank(bank: List<Bank>)
 
