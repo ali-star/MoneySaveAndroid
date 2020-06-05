@@ -1,11 +1,13 @@
 package ir.siriusapps.moneysave
 
-import android.app.Application
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
+import ir.siriusapps.moneysave.framework.di.component.DaggerAppComponent
 
-class App: Application() {
+class App: DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
+    override fun applicationInjector(): AndroidInjector<out App> {
+        return DaggerAppComponent.factory().create(this)
     }
 
 }

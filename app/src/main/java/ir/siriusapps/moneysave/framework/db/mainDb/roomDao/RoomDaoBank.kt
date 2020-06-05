@@ -15,6 +15,6 @@ interface RoomDaoBank {
     @Delete
     fun deleteBank(bank: List<Bank>)
 
-    @Query("SELECT * FROM Bank ")
+    @Query("SELECT * FROM Bank")
     fun selectBank(): List<Bank>
 }

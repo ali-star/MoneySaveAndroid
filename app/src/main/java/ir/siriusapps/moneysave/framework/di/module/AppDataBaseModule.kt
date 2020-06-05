@@ -39,4 +39,5 @@ class AppDataBaseModule {
     @Provides
     @Singleton
     fun provideCardDataBase(appDatabase: AppDatabase): RoomDaoCard = appDatabase.roomDaoCard()
+
 }
