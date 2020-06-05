@@ -6,6 +6,7 @@ import androidx.test.runner.AndroidJUnit4
 import com.example.core.domain.entity.Bank
 import ir.siriusapps.moneysave.framework.db.mainDb.AppDatabase
 import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoBank
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -14,12 +15,13 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class RoomBankTest {
 
+    private lateinit var database: AppDatabase
     private lateinit var bankDao: RoomDaoBank
 
     @Before
     fun setUp() {
         val appContext = InstrumentationRegistry.getTargetContext()
-        val database = Room.inMemoryDatabaseBuilder(appContext, AppDatabase::class.java).allowMainThreadQueries().build()
+        database = Room.inMemoryDatabaseBuilder(appContext, AppDatabase::class.java).allowMainThreadQueries().build()
         bankDao = database.roomDaoBank()
     }
 
@@ -61,6 +63,11 @@ class RoomBankTest {
         val banksAfterRemove = bankDao.getBanks()
 
         assertTrue(banksAfterRemove.size == 1)
+    }
+
+    @After
+    fun after() {
+        database.close()
     }
 
 }
