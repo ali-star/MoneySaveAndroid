@@ -12,7 +12,7 @@ import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoCard
 
 
 @Database(
-    entities = [(Bank::class), (BankAccount::class), (Card::class), (User::class)],
+    entities = [Bank::class, BankAccount::class, Card::class, User::class],
     version = 1
 )
 abstract class AppDatabase : RoomDatabase() {

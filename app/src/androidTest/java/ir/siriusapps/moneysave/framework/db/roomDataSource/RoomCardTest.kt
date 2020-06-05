@@ -1,6 +1,7 @@
 package ir.siriusapps.moneysave.framework.db.roomDataSource
 
 import androidx.room.Room
+import androidx.test.runner.AndroidJUnit4
 import com.example.core.domain.entity.Card
 import ir.siriusapps.moneysave.framework.db.mainDb.AppDatabase
 import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoCard
@@ -8,7 +9,9 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.Assert.*
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class RoomCardTest {
 
     private lateinit var cardDao: RoomDaoCard
@@ -23,7 +26,6 @@ class RoomCardTest {
     }
 
     private fun generateFakeCardList(): List<Card> {
-
         val card1 = Card(null, "abc1", 111)
         val card2 = Card(null, "abc1", 111)
         val card3 = Card(null, "abc1", 111)
@@ -41,11 +43,6 @@ class RoomCardTest {
         cardDao.insertCards(generateFakeCardList())
     }
 
-    @After
-    fun tearDown() {
-        database.close()
-    }
-
     @Test
     fun add() {
         insertCartIntoDatabase()
@@ -55,16 +52,20 @@ class RoomCardTest {
     @Test
     fun remove() {
         insertCartIntoDatabase()
-        val savedBanks = ArrayList(cardDao.getCards())
+        val savedCards = ArrayList(cardDao.getCards())
 
-        val removeCard = ArrayList(cardDao.getCards())
+        val removedCards = ArrayList<Card>()
+        removedCards.add(savedCards[0])
+        removedCards.add(savedCards[1])
 
-        removeCard.add(savedBanks.get(0))
-        removeCard.add(savedBanks.get(0))
-
-        cardDao.deleteCards(savedBanks)
+        cardDao.deleteCards(removedCards)
 
         assertTrue(cardDao.getCards().size == 1)
+    }
+
+    @After
+    fun after() {
+        database.close()
     }
 
 }
