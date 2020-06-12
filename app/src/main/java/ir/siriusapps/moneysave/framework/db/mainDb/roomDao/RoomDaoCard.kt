@@ -4,19 +4,19 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.core.domain.entity.Bank
-import com.example.core.domain.entity.BankAccount
-import com.example.core.domain.entity.Card
+import ir.irsiusapps.domain.entity.Bank
+import ir.irsiusapps.domain.entity.BankAccount
+import ir.irsiusapps.domain.entity.Card
 @Dao
 open interface RoomDaoCard {
 
     @Insert
-    fun insertCards(cards: List<Card>)
+    fun insertCards(cards: List<ir.irsiusapps.domain.entity.Card>)
 
     @Delete
-    fun deleteCards(cards: List<Card>)
+    fun deleteCards(cards: List<ir.irsiusapps.domain.entity.Card>)
 
     @Query("SELECT * FROM Card ")
-    fun getCards(): List<Card>
+    fun getCards(): List<ir.irsiusapps.domain.entity.Card>
 
 }

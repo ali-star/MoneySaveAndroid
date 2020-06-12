@@ -3,7 +3,7 @@ package ir.siriusapps.moneysave.framework.db.roomDataSource
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-import com.example.core.domain.entity.Bank
+import ir.irsiusapps.domain.entity.Bank
 import ir.siriusapps.moneysave.framework.db.mainDb.AppDatabase
 import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoBank
 import org.junit.After
@@ -25,12 +25,25 @@ class RoomBankTest {
         bankDao = database.roomDaoBank()
     }
 
-    private fun generateFakeBankList(): List<Bank> {
-        val bank1 = Bank(null, "123", "bank1", "بانک 1", 123)
-        val bank2 = Bank(null, "1234", "bank2", "بانک 2", 1234)
-        val bank3 = Bank(null, "12345", "bank3", "بانک 3", 1235)
+    private fun generateFakeBankList(): List<ir.irsiusapps.domain.entity.Bank> {
+        val bank1 =
+            ir.irsiusapps.domain.entity.Bank(null, "123", "bank1", "بانک 1", 123)
+        val bank2 = ir.irsiusapps.domain.entity.Bank(
+            null,
+            "1234",
+            "bank2",
+            "بانک 2",
+            1234
+        )
+        val bank3 = ir.irsiusapps.domain.entity.Bank(
+            null,
+            "12345",
+            "bank3",
+            "بانک 3",
+            1235
+        )
 
-        val list = ArrayList<Bank>()
+        val list = ArrayList<ir.irsiusapps.domain.entity.Bank>()
 
         list.add(bank1)
         list.add(bank2)
@@ -54,7 +67,7 @@ class RoomBankTest {
         insertBanksIntoDatabase()
         val savedBanks = ArrayList(bankDao.getBanks())
 
-        val removedBanks = ArrayList<Bank>()
+        val removedBanks = ArrayList<ir.irsiusapps.domain.entity.Bank>()
         removedBanks.add(savedBanks[0])
         removedBanks.add(savedBanks[1])
 

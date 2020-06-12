@@ -58,7 +58,10 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_component_version"
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation project(':core')
+
+    implementation project(":data")
+    implementation project(":domain")
+
 
     // Test
     testImplementation 'androidx.test:core:1.2.0'

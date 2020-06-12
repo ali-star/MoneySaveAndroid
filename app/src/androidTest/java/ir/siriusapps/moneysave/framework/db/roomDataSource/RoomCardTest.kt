@@ -2,7 +2,7 @@ package ir.siriusapps.moneysave.framework.db.roomDataSource
 
 import androidx.room.Room
 import androidx.test.runner.AndroidJUnit4
-import com.example.core.domain.entity.Card
+import ir.irsiusapps.domain.entity.Card
 import ir.siriusapps.moneysave.framework.db.mainDb.AppDatabase
 import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoCard
 import org.junit.After
@@ -25,12 +25,12 @@ class RoomCardTest {
         cardDao = database.roomDaoCard()
     }
 
-    private fun generateFakeCardList(): List<Card> {
-        val card1 = Card(null, "abc1", 111)
-        val card2 = Card(null, "abc1", 111)
-        val card3 = Card(null, "abc1", 111)
+    private fun generateFakeCardList(): List<ir.irsiusapps.domain.entity.Card> {
+        val card1 = ir.irsiusapps.domain.entity.Card(null, "abc1", 111)
+        val card2 = ir.irsiusapps.domain.entity.Card(null, "abc1", 111)
+        val card3 = ir.irsiusapps.domain.entity.Card(null, "abc1", 111)
 
-        val list = ArrayList<Card>()
+        val list = ArrayList<ir.irsiusapps.domain.entity.Card>()
 
         list.add(card1)
         list.add(card2)
@@ -54,7 +54,7 @@ class RoomCardTest {
         insertCartIntoDatabase()
         val savedCards = ArrayList(cardDao.getCards())
 
-        val removedCards = ArrayList<Card>()
+        val removedCards = ArrayList<ir.irsiusapps.domain.entity.Card>()
         removedCards.add(savedCards[0])
         removedCards.add(savedCards[1])
 
