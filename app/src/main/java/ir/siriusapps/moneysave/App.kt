@@ -2,7 +2,7 @@ package ir.siriusapps.moneysave
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
-import ir.siriusapps.moneysave.framework.di.component.DaggerAppComponent
+import ir.siriusapps.moneysave.internal.di.component.DaggerAppComponent
 
 class App: DaggerApplication() {
 

@@ -1,8 +1,7 @@
 package ir.irsiusapps.data.repository
 
-import ir.irsiusapps.data.datasource.CardDataSource
+import ir.irsiusapps.domain.datasource.CardDataSource
 import ir.irsiusapps.domain.entity.Card
-
 
 class CardRepo(private val cardDataSource: CardDataSource) {
 

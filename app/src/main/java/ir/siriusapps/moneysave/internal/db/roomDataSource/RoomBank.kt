@@ -1,12 +1,11 @@
-package ir.siriusapps.moneysave.framework.db.roomDataSource
+package ir.siriusapps.moneysave.internal.db.roomDataSource
 
-import ir.irsiusapps.data.datasource.BankDataSource
-import ir.irsiusapps.domain.entity.Bank
-import ir.siriusapps.moneysave.framework.db.mainDb.roomDao.RoomDaoBank
+import ir.irsiusapps.domain.datasource.BankDataSource
+import ir.siriusapps.moneysave.internal.db.mainDb.roomDao.RoomDaoBank
 import javax.inject.Inject
 
 open class RoomBank @Inject constructor(private val daoBank: RoomDaoBank) :
-    ir.irsiusapps.data.datasource.BankDataSource {
+    BankDataSource {
     private lateinit var list: ArrayList<ir.irsiusapps.domain.entity.Bank>
     override fun add(bank: ir.irsiusapps.domain.entity.Bank) {
         list = ArrayList<ir.irsiusapps.domain.entity.Bank>()

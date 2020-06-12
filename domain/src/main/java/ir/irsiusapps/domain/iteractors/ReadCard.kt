@@ -1,11 +1,10 @@
 package ir.irsiusapps.domain.iteractors
 
-import com.example.core.data.repository.CardRepo
-import com.example.core.domain.entity.Card
-import javax.smartcardio.Card
+import ir.irsiusapps.domain.datasource.CardDataSource
+import ir.irsiusapps.domain.entity.Card
 
-class ReadCard(private val cardRepo: CardRepo) {
+class ReadCard(private val cardDataSource: CardDataSource) {
 
-    suspend fun readCard():List<Card> = cardRepo.readCard()
+    suspend fun readCard():List<Card> = cardDataSource.read()
 
 }

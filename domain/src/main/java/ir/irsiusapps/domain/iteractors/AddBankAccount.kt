@@ -1,13 +1,13 @@
 package ir.irsiusapps.domain.iteractors
 
+import ir.irsiusapps.domain.datasource.BankAccountDataSource
 import ir.irsiusapps.domain.entity.BankAccount
 
-
-class AddBankAccount(private val bankAccountRpo: BankAccountRepo) {
+class AddBankAccount(private val accountDataSource: BankAccountDataSource) {
 
     suspend fun addBankAccount(bankAccount: BankAccount) =
-        bankAccountRpo.addBankAccount(bankAccount)
+        accountDataSource.add(bankAccount)
 
     suspend fun addBankAccount(bankAccounts: List<BankAccount>) =
-        bankAccountRpo.addBankAccount(bankAccounts)
+        accountDataSource.add(bankAccounts)
 }

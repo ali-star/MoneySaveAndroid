@@ -1,4 +1,4 @@
-package ir.irsiusapps.data.datasource
+package ir.irsiusapps.domain.datasource
 
 import ir.irsiusapps.domain.entity.BankAccount
 

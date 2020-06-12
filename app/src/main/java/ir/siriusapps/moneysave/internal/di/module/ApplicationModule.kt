@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.framework.di.module
+package ir.siriusapps.moneysave.internal.di.module
 
 import android.content.Context
 import dagger.Module

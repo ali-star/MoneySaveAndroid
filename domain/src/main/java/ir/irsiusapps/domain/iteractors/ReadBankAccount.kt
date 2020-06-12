@@ -1,10 +1,9 @@
 package ir.irsiusapps.domain.iteractors
 
-import com.example.core.data.repository.BankAccountRepo
-import com.example.core.domain.entity.BankAccount
+import ir.irsiusapps.domain.datasource.BankAccountDataSource
 import ir.irsiusapps.domain.entity.BankAccount
 
-class ReadBankAccount(private val bankAccountRpo: BankAccountRepo) {
+class ReadBankAccount(private val bankAccountDataSource: BankAccountDataSource) {
 
-    suspend fun readBankAccount():List<BankAccount> = bankAccountRpo.readBankAccount()
+    suspend fun readBankAccount():List<BankAccount> = bankAccountDataSource.read()
 }

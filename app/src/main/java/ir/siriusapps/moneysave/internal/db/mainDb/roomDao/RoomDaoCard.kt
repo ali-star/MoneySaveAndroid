@@ -1,12 +1,10 @@
-package ir.siriusapps.moneysave.framework.db.mainDb.roomDao
+package ir.siriusapps.moneysave.internal.db.mainDb.roomDao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import ir.irsiusapps.domain.entity.Bank
-import ir.irsiusapps.domain.entity.BankAccount
-import ir.irsiusapps.domain.entity.Card
+
 @Dao
 open interface RoomDaoCard {
 

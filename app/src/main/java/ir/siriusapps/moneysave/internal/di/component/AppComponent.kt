@@ -1,12 +1,12 @@
-package ir.siriusapps.moneysave.framework.di.component
+package ir.siriusapps.moneysave.internal.di.component
 
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import ir.siriusapps.moneysave.App
-import ir.siriusapps.moneysave.framework.di.module.AppDataBaseModule
-import ir.siriusapps.moneysave.framework.di.module.ApplicationModule
+import ir.siriusapps.moneysave.internal.di.module.AppDataBaseModule
+import ir.siriusapps.moneysave.internal.di.module.ApplicationModule
 import javax.inject.Singleton
 
 @Singleton

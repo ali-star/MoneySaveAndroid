@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.framework.di.scope
+package ir.siriusapps.moneysave.internal.di.scope
 
 import javax.inject.Scope
 

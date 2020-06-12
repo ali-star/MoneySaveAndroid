@@ -1,6 +1,6 @@
 package ir.irsiusapps.data.repository
 
-import ir.irsiusapps.data.datasource.BankDataSource
+import ir.irsiusapps.domain.datasource.BankDataSource
 import ir.irsiusapps.domain.entity.Bank
 
 class BankRepo(private val bankDataSource: BankDataSource) {
@@ -14,4 +14,5 @@ class BankRepo(private val bankDataSource: BankDataSource) {
     suspend fun removeBank(banks: List<Bank>)=bankDataSource.remove(banks)
 
     suspend fun readBank(): List<Bank> = bankDataSource.read()
+
 }
