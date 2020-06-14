@@ -3,13 +3,30 @@ package ir.irsiusapps.domain.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "BankAccount")
-open class BankAccount(
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    val id: Long?=null,
-    val uuid: String,
+data class BankAccount(
+    @ColumnInfo(name = "localId")
+    @PrimaryKey(autoGenerate = true)
+    val localId: Long? = null,
+    @ColumnInfo(name = "id")
+    val id: String,
+    @ColumnInfo(name = "userId")
     val userId: Long,
-    val bankId: Long
-)
+    @ColumnInfo(name = "bankId")
+    val bankId: Long,
+    @ColumnInfo(name = "name")
+    val name: String,
+    @ColumnInfo(name = "balance")
+    val balance: Double,
+    @ColumnInfo(name = "currency")
+    val currency: Currency
+
+){
+    constructor() : this(null, "", 0L, 0L, "", 0.0, Currency.IRR)
+}
+
+
+
+
+

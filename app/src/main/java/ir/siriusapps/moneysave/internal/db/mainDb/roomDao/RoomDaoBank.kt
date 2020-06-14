@@ -1,9 +1,6 @@
 package ir.siriusapps.moneysave.internal.db.mainDb.roomDao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 open interface RoomDaoBank {

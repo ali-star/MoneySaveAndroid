@@ -7,8 +7,11 @@ import java.util.*
 
 @Entity(tableName = "User")
 open class User(
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
+
+    @ColumnInfo(name = "localId") @PrimaryKey(autoGenerate = true)
     val localId: Long,
-    val uuid: String,
+    @ColumnInfo(name = "id")
+    val id: String,
+    @ColumnInfo(name = "name")
     val name: String
 )

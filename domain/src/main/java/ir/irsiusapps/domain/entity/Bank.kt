@@ -6,10 +6,16 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Bank")
 open  class Bank(
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    var id: Long? = null,
-    val uuid:String,
+
+    @ColumnInfo(name = "localId") @PrimaryKey(autoGenerate = true)
+    var localId: Long? = null,
+    @ColumnInfo(name = "id")
+    val id:String,
+    @ColumnInfo(name = "name")
     val name: String,
+    @ColumnInfo(name = "persianName")
     val persianName: String,
+    @ColumnInfo(name = "bankAccountId")
     val bankAccountId: Long
+
 )
