@@ -2,8 +2,9 @@ package ir.irsiusapps.domain.iteractors
 
 import ir.irsiusapps.domain.datasource.CardDataSource
 import ir.irsiusapps.domain.entity.Card
+import javax.inject.Inject
 
-class AddCard(private val cardDataSource: CardDataSource) {
+class AddCard @Inject constructor(private val cardDataSource: CardDataSource) {
 
     suspend fun addCard(card: Card) = cardDataSource.add(card)
 

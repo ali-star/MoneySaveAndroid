@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.persenter.ui
+package ir.siriusapps.moneysave.presenter.ui
 
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity

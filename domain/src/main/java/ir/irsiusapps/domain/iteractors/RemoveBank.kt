@@ -2,8 +2,9 @@ package ir.irsiusapps.domain.iteractors
 
 import ir.irsiusapps.domain.datasource.BankDataSource
 import ir.irsiusapps.domain.entity.Bank
+import javax.inject.Inject
 
-class RemoveBank(private val bankDataSource: BankDataSource) {
+class RemoveBank @Inject constructor(private val bankDataSource: BankDataSource) {
 
     suspend fun removeBank(bank: Bank) = bankDataSource.remove(bank)
 

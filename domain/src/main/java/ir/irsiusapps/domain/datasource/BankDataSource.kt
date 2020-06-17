@@ -2,7 +2,6 @@ package ir.irsiusapps.domain.datasource
 
 import ir.irsiusapps.domain.entity.Bank
 
-
 interface BankDataSource {
 
     fun add(bank: Bank)
@@ -14,4 +13,5 @@ interface BankDataSource {
     fun remove(banks: List<Bank>)
 
     fun read():List<Bank>
+
 }

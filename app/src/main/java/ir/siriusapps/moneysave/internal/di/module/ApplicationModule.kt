@@ -7,7 +7,7 @@ import ir.siriusapps.moneysave.App
 import javax.inject.Singleton
 
 @Module
-class ApplicationModule() {
+class ApplicationModule {
 
     @Provides
     @Singleton

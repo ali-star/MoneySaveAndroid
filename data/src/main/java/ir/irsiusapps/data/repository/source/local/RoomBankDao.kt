@@ -1,9 +1,9 @@
-package ir.siriusapps.moneysave.internal.db.mainDb.roomDao
+package ir.irsiusapps.data.repository.source.local
 
 import androidx.room.*
 
 @Dao
-open interface RoomDaoBank {
+interface RoomBankDao {
 
     @Insert
     fun insertBanks(bank: List<ir.irsiusapps.domain.entity.Bank>)

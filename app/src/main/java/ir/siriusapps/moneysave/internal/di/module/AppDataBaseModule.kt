@@ -5,10 +5,7 @@ import androidx.room.Room
 
 import dagger.Module
 import dagger.Provides
-import ir.siriusapps.moneysave.internal.db.mainDb.AppDatabase
-import ir.siriusapps.moneysave.internal.db.mainDb.roomDao.RoomDaoBank
-import ir.siriusapps.moneysave.internal.db.mainDb.roomDao.RoomDaoBankAccount
-import ir.siriusapps.moneysave.internal.db.mainDb.roomDao.RoomDaoCard
+import ir.irsiusapps.data.repository.source.local.*
 import javax.inject.Singleton
 
 @Module
@@ -24,15 +21,6 @@ class AppDataBaseModule {
 
     @Provides
     @Singleton
-    fun provideBankDatabase(appDatabase: AppDatabase): RoomDaoBank = appDatabase.roomDaoBank()
-
-    @Provides
-    @Singleton
-    fun provideBankAccountDatabase(appDatabase: AppDatabase): RoomDaoBankAccount =
-        appDatabase.roomDaoBankAccount()
-
-    @Provides
-    @Singleton
-    fun provideCardDataBase(appDatabase: AppDatabase): RoomDaoCard = appDatabase.roomDaoCard()
+    fun provideBankDatabase(appDatabase: AppDatabase): MoneySaveDao = appDatabase.moneySaveDao()
 
 }

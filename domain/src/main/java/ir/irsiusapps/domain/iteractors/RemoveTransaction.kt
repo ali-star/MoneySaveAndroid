@@ -1,10 +1,10 @@
 package ir.irsiusapps.domain.iteractors
 
-
 import ir.irsiusapps.domain.datasource.TransactionDataSource
 import ir.irsiusapps.domain.entity.Transaction
+import javax.inject.Inject
 
-class RemoveTransaction(private val transactionDataSource: TransactionDataSource) {
+class RemoveTransaction @Inject constructor(private val transactionDataSource: TransactionDataSource) {
 
     suspend fun removeTransaction(transaction: Transaction) =
         transactionDataSource.remove(transaction)

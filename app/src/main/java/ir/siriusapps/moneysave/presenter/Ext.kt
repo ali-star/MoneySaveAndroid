@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.persenter
+package ir.siriusapps.moneysave.presenter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels

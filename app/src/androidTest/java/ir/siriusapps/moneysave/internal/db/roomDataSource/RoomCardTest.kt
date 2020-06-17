@@ -2,8 +2,8 @@ package ir.siriusapps.moneysave.internal.db.roomDataSource
 
 import androidx.room.Room
 import androidx.test.runner.AndroidJUnit4
-import ir.siriusapps.moneysave.internal.db.mainDb.AppDatabase
-import ir.siriusapps.moneysave.internal.db.mainDb.roomDao.RoomDaoCard
+import ir.irsiusapps.data.repository.source.local.AppDatabase
+import ir.irsiusapps.data.repository.source.local.RoomCardDao
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class RoomCardTest {
 
-    private lateinit var cardDao: RoomDaoCard
+    private lateinit var cardDao: RoomCardDao
     private lateinit var database: AppDatabase
 
     @Before

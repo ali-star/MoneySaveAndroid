@@ -1,10 +1,10 @@
-package ir.siriusapps.moneysave.internal.db.mainDb.roomDao
+package ir.irsiusapps.data.repository.source.local
 
 import androidx.room.*
 import ir.irsiusapps.domain.entity.BankAccount
 
 @Dao
-open interface RoomDaoBankAccount {
+interface RoomBankAccountDao {
 
     @Insert
     fun insetBankAccounts(bankAccount: List<BankAccount>)

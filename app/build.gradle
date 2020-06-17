@@ -1,9 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -24,6 +21,10 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -37,12 +38,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    // room
-    def roomVersion = "2.2.5"
-    kapt "androidx.room:room-compiler:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    testImplementation "androidx.room:room-testing:$roomVersion"
-
     // dagger
     def daggerVersion = "2.28"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
@@ -50,9 +45,11 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    compileOnly("com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2")
+    kapt("com.squareup.inject:assisted-inject-processor-dagger2:0.5.2")
 
     // Navigation component dependencies
-    def navigation_component_version = "2.3.0-beta01"
+    def navigation_component_version = "2.3.0-rc01"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_component_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_component_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_component_version"
@@ -61,7 +58,6 @@ dependencies {
 
     implementation project(":data")
     implementation project(":domain")
-
 
     // Test
     testImplementation 'androidx.test:core:1.2.0'

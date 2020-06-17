@@ -3,8 +3,8 @@ package ir.siriusapps.moneysave.internal.db.roomDataSource
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-import ir.siriusapps.moneysave.internal.db.mainDb.AppDatabase
-import ir.siriusapps.moneysave.internal.db.mainDb.roomDao.RoomDaoBank
+import ir.irsiusapps.data.repository.source.local.AppDatabase
+import ir.irsiusapps.data.repository.source.local.RoomBankDao
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -15,7 +15,7 @@ import org.junit.Assert.*
 class RoomBankTest {
 
     private lateinit var database: AppDatabase
-    private lateinit var bankDao: RoomDaoBank
+    private lateinit var bankDao: RoomBankDao
 
     @Before
     fun setUp() {
