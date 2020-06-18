@@ -4,6 +4,8 @@
 		package="ir.siriusapps.moneysave">
 	
 	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.READ_SMS" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 	
 	<application
 			android:name=".App"
@@ -23,10 +25,8 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<service
-				android:name=".service.AppService"
-				android:enabled="false"
-				android:exported="false" />
+		
+		<service android:name=".service.AppService" />
 	</application>
 
 </manifest>
