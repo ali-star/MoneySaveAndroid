@@ -15,10 +15,6 @@
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme"
 			tools:ignore="GoogleAppIndexingWarning">
-		<service
-				android:name=".service.AppService"
-				android:enabled="false"
-				android:exported="false"></service>
 		
 		<activity android:name=".presenter.ui.MainActivity">
 			<intent-filter>
@@ -27,8 +23,10 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		
-		<service android:name=".AppService" />
+		<service
+				android:name=".service.AppService"
+				android:enabled="false"
+				android:exported="false" />
 	</application>
 
 </manifest>
