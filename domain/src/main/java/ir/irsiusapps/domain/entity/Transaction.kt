@@ -20,7 +20,7 @@ open class Transaction(
     val createDate: Date,
 
     @ColumnInfo(name = "type")
-    val type: Transaction.Type,
+    val type: Type,
 
     @ColumnInfo(name = "bankAccountLocalId")
     val bankAccountLocalId: Long,

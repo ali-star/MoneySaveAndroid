@@ -4,18 +4,22 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Bank")
-open  class Bank(
+@Entity(tableName = "Banks")
+open class Bank(
 
     @ColumnInfo(name = "localId") @PrimaryKey(autoGenerate = true)
     var localId: Long? = null,
+
     @ColumnInfo(name = "id")
-    val id:String,
+    val id:String?,
+
     @ColumnInfo(name = "name")
     val name: String,
+
     @ColumnInfo(name = "persianName")
     val persianName: String,
-    @ColumnInfo(name = "bankAccountId")
-    val bankAccountId: Long
+
+    @ColumnInfo(name = "smsRegex")
+    val smsRegex: String
 
 )

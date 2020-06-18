@@ -7,12 +7,13 @@ import ir.irsiusapps.domain.entity.*
 import ir.irsiusapps.domain.entity.converter.CurrencyRoomTypeConverter
 
 @Database(
-    entities = [Bank::class, BankAccount::class, Card::class, User::class],
+    entities = [Bank::class, BankAccount::class, Card::class, User::class, Transaction::class],
     version = 1
 )
 @TypeConverters(
     CurrencyRoomTypeConverter::class,
-    Transaction.TransactionTypeRoomTypeConverter::class
+    Transaction.TransactionTypeRoomTypeConverter::class,
+    RoomDateTypeConverter::class
 )
 abstract class AppDatabase : RoomDatabase() {
 
