@@ -18,6 +18,7 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
+        System.out.println("This is androidTest")
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("ir.siriusapps.moneysave", appContext.packageName)
     }
