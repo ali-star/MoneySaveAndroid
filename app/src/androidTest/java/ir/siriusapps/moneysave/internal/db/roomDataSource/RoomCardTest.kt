@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class RoomCardTest {
 
-    private lateinit var cardDao: RoomCardDao
+    private lateinit var dao: RoomCardDao
     private lateinit var database: AppDatabase
 
     @Before
@@ -21,13 +21,13 @@ class RoomCardTest {
         val appContext = androidx.test.InstrumentationRegistry.getTargetContext()
         database = Room.inMemoryDatabaseBuilder(appContext, AppDatabase::class.java)
             .allowMainThreadQueries().build()
-        cardDao = database.roomDaoCard()
+        dao = database.moneySaveDao()
     }
 
     private fun generateFakeCardList(): List<ir.irsiusapps.domain.entity.Card> {
-        val card1 = ir.irsiusapps.domain.entity.Card(null, "abc1", 111)
-        val card2 = ir.irsiusapps.domain.entity.Card(null, "abc1", 111)
-        val card3 = ir.irsiusapps.domain.entity.Card(null, "abc1", 111)
+        val card1 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "")
+        val card2 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "")
+        val card3 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "")
 
         val list = ArrayList<ir.irsiusapps.domain.entity.Card>()
 
@@ -39,27 +39,27 @@ class RoomCardTest {
     }
 
     private fun insertCartIntoDatabase() {
-        cardDao.insertCards(generateFakeCardList())
+        dao.insertCards(generateFakeCardList())
     }
 
     @Test
     fun add() {
         insertCartIntoDatabase()
-        assertTrue(cardDao.getCards().isNotEmpty())
+        assertTrue(dao.getCards().isNotEmpty())
     }
 
     @Test
     fun remove() {
         insertCartIntoDatabase()
-        val savedCards = ArrayList(cardDao.getCards())
+        val savedCards = ArrayList(dao.getCards())
 
         val removedCards = ArrayList<ir.irsiusapps.domain.entity.Card>()
         removedCards.add(savedCards[0])
         removedCards.add(savedCards[1])
 
-        cardDao.deleteCards(removedCards)
+        dao.deleteCards(removedCards)
 
-        assertTrue(cardDao.getCards().size == 1)
+        assertTrue(dao.getCards().size == 1)
     }
 
     @After

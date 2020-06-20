@@ -2,9 +2,10 @@ package ir.siriusapps.moneysave.internal.db.roomDataSource
 
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
-import com.example.core.domain.entity.BankAccount
 import ir.irsiusapps.data.repository.source.local.AppDatabase
 import ir.irsiusapps.data.repository.source.local.RoomBankAccountDao
+import ir.irsiusapps.domain.entity.BankAccount
+import ir.irsiusapps.domain.entity.Currency
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -14,20 +15,20 @@ import org.junit.Assert.*
 class RoomBankAccountTest {
 
     private lateinit var database: AppDatabase
-    private lateinit var bankAccountDao: RoomBankAccountDao
+    private lateinit var dao: RoomBankAccountDao
 
     @Before
     fun setUp() {
         val appContext = InstrumentationRegistry.getTargetContext()
         database = Room.inMemoryDatabaseBuilder(appContext, AppDatabase::class.java)
             .allowMainThreadQueries().build()
-        bankAccountDao = database.roomDaoBankAccount()
+        dao = database.moneySaveDao()
     }
 
     private fun generateFakeBankAccountList(): List<BankAccount> {
-        val bankAccount1 = BankAccount(null, "123", 12, 1234)
-        val bankAccount2 = BankAccount(null, "1234", 11, 1234)
-        val bankAccount3 = BankAccount(null, "12345", 3, 1235)
+        val bankAccount1 = BankAccount(null, "123", 11, 123, "", 0.0, Currency.IRR)
+        val bankAccount2 = BankAccount(null, "124", 12, 124, "", 0.0, Currency.IRR)
+        val bankAccount3 = BankAccount(null, "125", 13, 125, "", 0.0, Currency.IRR)
 
         val list = ArrayList<BankAccount>()
 
@@ -39,28 +40,28 @@ class RoomBankAccountTest {
     }
 
     private fun insertBankAccountIntoDatabase() {
-        bankAccountDao.insetBankAccounts(generateFakeBankAccountList())
+        dao.insetBankAccounts(generateFakeBankAccountList())
     }
 
     @Test
     fun add() {
         insertBankAccountIntoDatabase()
-        assertTrue(bankAccountDao.getBankAccounts().isNotEmpty())
+        assertTrue(dao.getBankAccounts().isNotEmpty())
     }
 
     @Test
     fun remove() {
         insertBankAccountIntoDatabase()
 
-        val savedBankAccount = ArrayList(bankAccountDao.getBankAccounts())
+        val savedBankAccount = ArrayList(dao.getBankAccounts())
 
         val removedBanks = ArrayList<BankAccount>()
         removedBanks.add(savedBankAccount[0])
         removedBanks.add(savedBankAccount[1])
 
-        bankAccountDao.deleteBankAccounts(removedBanks)
+        dao.deleteBankAccounts(removedBanks)
 
-        val banksAfterRemove = bankAccountDao.getBankAccounts()
+        val banksAfterRemove = dao.getBankAccounts()
 
         assertTrue(banksAfterRemove.size == 1)
     }
