@@ -1,6 +1,11 @@
 package ir.siriusapps.moneysave.presenter.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import dagger.android.support.DaggerAppCompatActivity
 import ir.siriusapps.moneysave.R
 
@@ -53,15 +58,3 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
