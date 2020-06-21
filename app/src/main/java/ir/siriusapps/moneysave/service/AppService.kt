@@ -8,6 +8,7 @@ import android.content.IntentFilter
 import android.os.Build
 import android.os.IBinder
 import android.provider.Settings
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import ir.siriusapps.moneysave.presenter.ui.MainActivity
 import ir.siriusapps.moneysave.reciver.SmsListenerBroadcast
@@ -27,7 +28,6 @@ class AppService : Service() {
     }
 
     override fun onCreate() {
-
         super.onCreate()
         manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         createNotificationChannel()
@@ -55,6 +55,8 @@ class AppService : Service() {
         smsListenerIntentFilter.addAction("android.provider.Telephony.SMS_RECEIVED")
         smsListenerBroadcast = SmsListenerBroadcast()
         registerReceiver(smsListenerBroadcast, smsListenerIntentFilter)
+
+        Toast.makeText(applicationContext, "Service Started", Toast.LENGTH_LONG).show()
     }
 
     private fun createNotificationChannel() {

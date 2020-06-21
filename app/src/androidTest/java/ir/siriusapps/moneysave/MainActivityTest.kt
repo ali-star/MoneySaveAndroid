@@ -4,6 +4,8 @@ import android.widget.Button
 import androidx.test.core.app.ActivityScenario
 import androidx.test.runner.AndroidJUnit4
 import ir.siriusapps.moneysave.presenter.ui.MainActivity
+import org.junit.Assert
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -16,7 +18,7 @@ class MainActivityTest {
         activityScenario.onActivity {
             val button = it.findViewById<Button>(R.id.button)
             button.performClick()
-            assert(button.text == "Work")
+            assertTrue(button.text == "Work")
         }
     }
 

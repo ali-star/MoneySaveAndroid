@@ -7,6 +7,7 @@ import android.os.Build
 import android.provider.Telephony
 import android.telephony.SmsMessage
 import android.widget.Toast
+import com.google.gson.Gson
 
 class SmsListenerBroadcast:BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -15,6 +16,7 @@ class SmsListenerBroadcast:BroadcastReceiver() {
             if (bundle != null) {
                 try {
                     val pdus = bundle["pdus"] as Array<*>?
+                    val str= Gson().toJson(bundle)
                     val smsMessage = ArrayList<SmsMessage>(pdus!!.size)
                     val messageBody = StringBuilder()
                     for (i in 0 until smsMessage.size) {
@@ -28,6 +30,7 @@ class SmsListenerBroadcast:BroadcastReceiver() {
                         }
                         messageBody.append(smsMessage[i].messageBody)
                     }
+                    Toast.makeText(context, messageBody, Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
