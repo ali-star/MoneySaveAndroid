@@ -5,6 +5,7 @@ import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import ir.irsiusapps.data.repository.source.local.AppDatabase
 import ir.irsiusapps.data.repository.source.local.RoomBankDao
+import ir.irsiusapps.domain.entity.Bank
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -15,34 +16,21 @@ import org.junit.Assert.*
 class RoomBankTest {
 
     private lateinit var database: AppDatabase
-    private lateinit var bankDao: RoomBankDao
+    private lateinit var dao: RoomBankDao
 
     @Before
     fun setUp() {
         val appContext = InstrumentationRegistry.getTargetContext()
         database = Room.inMemoryDatabaseBuilder(appContext, AppDatabase::class.java).allowMainThreadQueries().build()
-        bankDao = database.roomDaoBank()
+        dao = database.moneySaveDao()
     }
 
-    private fun generateFakeBankList(): List<ir.irsiusapps.domain.entity.Bank> {
-        val bank1 =
-            ir.irsiusapps.domain.entity.Bank(null, "123", "bank1", "بانک 1", 123)
-        val bank2 = ir.irsiusapps.domain.entity.Bank(
-            null,
-            "1234",
-            "bank2",
-            "بانک 2",
-            1234
-        )
-        val bank3 = ir.irsiusapps.domain.entity.Bank(
-            null,
-            "12345",
-            "bank3",
-            "بانک 3",
-            1235
-        )
+    private fun generateFakeBankList(): List<Bank> {
+        val bank1 = Bank(null, "123", "bank1", "بانک 1", "")
+        val bank2 = Bank(null, "1234", "bank2", "بانک 2", "")
+        val bank3 = Bank(null, "12345", "bank3", "بانک 3", "")
 
-        val list = ArrayList<ir.irsiusapps.domain.entity.Bank>()
+        val list = ArrayList<Bank>()
 
         list.add(bank1)
         list.add(bank2)
@@ -52,27 +40,27 @@ class RoomBankTest {
     }
 
     private fun insertBanksIntoDatabase() {
-        bankDao.insertBanks(generateFakeBankList())
+        dao.insertBanks(generateFakeBankList())
     }
 
     @Test
     fun insertTest() {
         insertBanksIntoDatabase()
-        assertTrue(bankDao.getBanks().isNotEmpty())
+        assertTrue(dao.getBanks().isNotEmpty())
     }
 
     @Test
     fun deleteTest() {
         insertBanksIntoDatabase()
-        val savedBanks = ArrayList(bankDao.getBanks())
+        val savedBanks = ArrayList(dao.getBanks())
 
-        val removedBanks = ArrayList<ir.irsiusapps.domain.entity.Bank>()
+        val removedBanks = ArrayList<Bank>()
         removedBanks.add(savedBanks[0])
         removedBanks.add(savedBanks[1])
 
-        bankDao.deleteBanks(removedBanks)
+        dao.deleteBanks(removedBanks)
 
-        val banksAfterRemove = bankDao.getBanks()
+        val banksAfterRemove = dao.getBanks()
 
         assertTrue(banksAfterRemove.size == 1)
     }

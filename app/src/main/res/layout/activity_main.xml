@@ -7,12 +7,20 @@
 		android:layout_height="match_parent"
 		tools:context=".presenter.ui.MainActivity">
 	
+	<Button
+			android:id="@+id/button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Button" />
+	
 	<androidx.fragment.app.FragmentContainerView
 			android:id="@+id/mainGraphContainer"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:name="androidx.navigation.fragment.NavHostFragment"
 			app:navGraph="@navigation/main_graph"
-			app:defaultNavHost="true"/>
+			app:defaultNavHost="true">
+	
+	</androidx.fragment.app.FragmentContainerView>
 
 </FrameLayout>
