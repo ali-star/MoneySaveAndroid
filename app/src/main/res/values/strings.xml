@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MoneySave</string>
+    <string name="requestPermission">درخواست مجوز</string>
+    <string name="messagePermission">برای دسترسی به پیام ها باید مجوز را تایید کنید </string>
+    <string name="acceptRequest">موافقم</string>
+    <string name="ignoreRequest">لغو</string>
+    
 </resources>
