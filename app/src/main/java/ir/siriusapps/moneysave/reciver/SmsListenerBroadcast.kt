@@ -3,11 +3,9 @@ package ir.siriusapps.moneysave.reciver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.provider.Telephony
-import android.telephony.SmsMessage
 import android.widget.Toast
-import com.google.gson.Gson
+import java.lang.StringBuilder
 
 class SmsListenerBroadcast:BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -15,22 +13,12 @@ class SmsListenerBroadcast:BroadcastReceiver() {
             val bundle = intent.extras
             if (bundle != null) {
                 try {
-                    val pdus = bundle["pdus"] as Array<*>?
-                    val str= Gson().toJson(bundle)
-                    val smsMessage = ArrayList<SmsMessage>(pdus!!.size)
+                    val smsMessages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
                     val messageBody = StringBuilder()
-                    for (i in 0 until smsMessage.size) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            smsMessage[i] = SmsMessage.createFromPdu(
-                                pdus[i] as ByteArray,
-                                bundle.getString("format")
-                            )
-                        } else {
-                            smsMessage[i] = SmsMessage.createFromPdu(pdus[i] as ByteArray)
-                        }
-                        messageBody.append(smsMessage[i].messageBody)
+                    for (message in smsMessages) {
+                        messageBody.append(message.messageBody)
                     }
-                    Toast.makeText(context, messageBody, Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, messageBody.toString(), Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

@@ -9,7 +9,7 @@ android {
     compileSdkVersion(29)
     defaultConfig {
         applicationId = "ir.siriusapps.moneysave"
-        minSdkVersion(14)
+        minSdkVersion(21)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
