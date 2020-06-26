@@ -13,6 +13,15 @@ open class Card(
     @ColumnInfo(name = "id")
     val id: String,
 
+    @ColumnInfo(name = "expireYear")
+    val expireYear: String,
+
+    @ColumnInfo(name = "expireMonth")
+    val expireMonth: String,
+
+    @ColumnInfo(name = "cvv2")
+    val cvv2: String,
+
     @ColumnInfo(name = "bankAccountId")
     val bankAccountId: String,
 
@@ -24,7 +33,7 @@ open class Card(
 
 ) {
 
-    constructor() : this(null, "", "", "", "")
+    constructor() : this(null, "", "", "", "", "", "", "")
 
 }
 

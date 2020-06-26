@@ -25,9 +25,9 @@ class RoomCardTest {
     }
 
     private fun generateFakeCardList(): List<ir.irsiusapps.domain.entity.Card> {
-        val card1 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "")
-        val card2 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "")
-        val card3 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "")
+        val card1 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "", "", "", "")
+        val card2 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "", "", "", "")
+        val card3 = ir.irsiusapps.domain.entity.Card(null, "abc1", "", "", "", "", "", "")
 
         val list = ArrayList<ir.irsiusapps.domain.entity.Card>()
 
