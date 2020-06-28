@@ -3,6 +3,8 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -20,13 +22,13 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
     }
 
-    dataBinding .isEnabled = true
+    dataBinding.isEnabled = true
 
 
     compileOptions {
@@ -48,6 +50,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
 
     // dagger
+    implementation("com.google.firebase:firebase-core:16.0.4")
+
     val daggerVersion = "2.28"
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
     implementation("com.google.dagger:dagger:$daggerVersion")
@@ -65,8 +69,10 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.1.0")
 
-    implementation( project (":data"))
-    implementation( project (":domain"))
+    implementation("com.google.firebase:firebase-crashlytics:17.1.0")
+
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     // Test
     testImplementation("junit:junit:4.13")
@@ -79,5 +85,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("org.powermock:powermock:1.6.5")
+
 
 }

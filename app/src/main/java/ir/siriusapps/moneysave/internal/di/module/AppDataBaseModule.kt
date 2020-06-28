@@ -5,7 +5,8 @@ import androidx.room.Room
 
 import dagger.Module
 import dagger.Provides
-import ir.irsiusapps.data.repository.source.local.*
+import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
+import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import javax.inject.Singleton
 
 @Module

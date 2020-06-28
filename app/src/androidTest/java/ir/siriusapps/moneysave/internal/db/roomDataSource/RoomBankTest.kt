@@ -3,9 +3,9 @@ package ir.siriusapps.moneysave.internal.db.roomDataSource
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
-import ir.irsiusapps.data.repository.source.local.AppDatabase
-import ir.irsiusapps.data.repository.source.local.RoomBankDao
-import ir.irsiusapps.domain.entity.Bank
+import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
+import ir.siriusapps.moneysave.data.repository.source.local.RoomBankDao
+import ir.siriusapps.domain.entity.Bank
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
