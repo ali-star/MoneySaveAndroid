@@ -34,6 +34,8 @@ class MainActivity : DaggerAppCompatActivity() {
             } else {
                 requestPermission()
             }
+        } else {
+            ContextCompat.startForegroundService(applicationContext, Intent(applicationContext, AppService::class.java))
         }
     }
 

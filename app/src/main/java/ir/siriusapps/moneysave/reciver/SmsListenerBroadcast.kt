@@ -18,10 +18,13 @@ class SmsListenerBroadcast:BroadcastReceiver() {
                 try {
                     val smsMessages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
                     val messageBody = StringBuilder()
+                    var from: String? = null
                     for (message in smsMessages) {
+                        if (from == null)
+                            from = message.originatingAddress
                         messageBody.append(message.messageBody)
                     }
-                    Toast.makeText(context, messageBody.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, from + "\n" + messageBody.toString(), Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

@@ -1,4 +1,4 @@
-package ir.siriusapps.domain.iteractors
+package ir.siriusapps.domain.iteractors.transaction
 
 import ir.siriusapps.domain.datasource.TransactionDataSource
 import ir.siriusapps.domain.entity.Transaction
