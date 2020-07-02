@@ -4,13 +4,13 @@ import ir.siriusapps.domain.entity.Transaction
 
 interface TransactionDataSource {
 
-    fun add(transaction: Transaction)
+    suspend fun add(transaction: Transaction)
 
-    fun add(transactions: List<Transaction>)
+    suspend fun add(transactions: List<Transaction>)
 
-    fun remove(Transaction: Transaction)
+    suspend fun remove(transaction: Transaction)
 
-    fun remove(transactions: List<Transaction>)
+    suspend fun remove(transactions: List<Transaction>)
 
-    fun read(): List<Transaction>
+    suspend fun read(): List<Transaction>
 }

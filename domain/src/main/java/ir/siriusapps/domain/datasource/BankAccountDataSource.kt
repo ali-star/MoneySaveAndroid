@@ -4,13 +4,15 @@ import ir.siriusapps.domain.entity.BankAccount
 
 interface BankAccountDataSource {
 
-    fun add(bankAccount: BankAccount)
+    suspend fun add(bankAccount: BankAccount)
 
-    fun add(bankAccounts: List<BankAccount>)
+    suspend fun add(bankAccounts: List<BankAccount>)
 
-    fun remove(bankAccount: BankAccount)
+    suspend fun remove(bankAccount: BankAccount)
 
-    fun remove(bankAccounts: List<BankAccount>)
+    suspend fun remove(bankAccounts: List<BankAccount>)
 
-    fun read(): List<BankAccount>
+    suspend fun read(): List<BankAccount>
+
+    suspend fun searchByAccountNumber(accountNumber: String): BankAccount?
 }

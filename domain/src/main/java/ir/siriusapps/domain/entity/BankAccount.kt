@@ -17,13 +17,16 @@ data class BankAccount(
     val bankId: Long,
     @ColumnInfo(name = "name")
     val name: String,
+    @ColumnInfo(name = "accountNumber")
+    val accountNumber: String,
     @ColumnInfo(name = "balance")
     val balance: Double,
     @ColumnInfo(name = "currency")
     val currency: Currency
 
+
 ){
-    constructor() : this(null, "", 0L, 0L, "", 0.0, Currency.IRR)
+    constructor() : this(null, "", 0L, 0L, "", "",0.0, Currency.IRR)
 }
 
 

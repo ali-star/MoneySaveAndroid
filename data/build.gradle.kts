@@ -50,7 +50,9 @@ dependencies {
     api("androidx.room:room-runtime:$room_version")
     api("androidx.room:room-ktx:$room_version")
 
-    implementation("com.github.tony19:named-regexp:0.2.5")
+    api("com.github.tony19:named-regexp:0.2.5")
+
+    api ("com.github.samanzamani.persiandate:PersianDate:0.8")
 
     implementation(project(":domain"))
 

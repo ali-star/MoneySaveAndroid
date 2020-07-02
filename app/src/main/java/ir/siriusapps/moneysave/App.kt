@@ -8,8 +8,12 @@ import ir.siriusapps.moneysave.internal.di.component.DaggerAppComponent
 class App : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out App> {
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         return DaggerAppComponent.factory().create(this)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
     }
 
 }

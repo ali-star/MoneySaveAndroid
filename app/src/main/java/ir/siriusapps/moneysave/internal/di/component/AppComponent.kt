@@ -5,16 +5,14 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import ir.siriusapps.moneysave.App
-import ir.siriusapps.moneysave.internal.di.module.AppDataBaseModule
-import ir.siriusapps.moneysave.internal.di.module.ApplicationModule
-import ir.siriusapps.moneysave.internal.di.module.BindingModule
-import ir.siriusapps.moneysave.internal.di.module.ViewModelModule
+import ir.siriusapps.moneysave.internal.di.module.*
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
     AndroidInjectionModule::class, ApplicationModule::class,
-    AppDataBaseModule::class, BindingModule::class, ViewModelModule::class
+    AppDataBaseModule::class, BindingModule::class, ViewModelModule::class,
+    RepositoryModule::class
 ])
 interface AppComponent :AndroidInjector<App>{
 

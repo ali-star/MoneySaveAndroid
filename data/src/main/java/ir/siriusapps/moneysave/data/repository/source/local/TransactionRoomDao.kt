@@ -7,12 +7,18 @@ import ir.siriusapps.domain.entity.Transaction
 open interface TransactionRoomDao {
 
     @Insert
-    fun insertTransactions(transactions: List<Transaction>)
+    suspend fun insertTransactions(transactions: List<Transaction>)
+
+    @Insert
+    suspend fun insertTransaction(transactions: Transaction)
 
     @Delete
-    fun deleteTransactions(transactions: List<Transaction>)
+    suspend fun deleteTransactions(transactions: List<Transaction>)
+
+    @Delete
+    suspend fun deleteTransaction(transactions: Transaction)
 
     @Query("SELECT * FROM Transactions")
-    fun getTransactions(): List<Transaction>
+    suspend fun getTransactions(): List<Transaction>
 
 }

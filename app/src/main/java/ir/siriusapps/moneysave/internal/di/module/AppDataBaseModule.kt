@@ -22,6 +22,6 @@ class AppDataBaseModule {
 
     @Provides
     @Singleton
-    fun provideBankDatabase(appDatabase: AppDatabase): MoneySaveDao = appDatabase.moneySaveDao()
+    fun provideMoneySaveDao(appDatabase: AppDatabase): MoneySaveDao = appDatabase.moneySaveDao()
 
 }

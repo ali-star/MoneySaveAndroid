@@ -11,10 +11,10 @@ import java.util.*
 open class Transaction(
 
     @ColumnInfo(name = "localId") @PrimaryKey(autoGenerate = true)
-    val localId: Long,
+    var localId: Long? = null,
 
     @ColumnInfo(name = "id")
-    val id: String,
+    var id: String? = null,
 
     @ColumnInfo(name = "createDate")
     val createDate: Date,

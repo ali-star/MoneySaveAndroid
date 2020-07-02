@@ -40,7 +40,7 @@ class RoomBankAccountTest {
     }
 
     private fun insertBankAccountIntoDatabase() {
-        dao.insetBankAccounts(generateFakeBankAccountList())
+        dao.insertBankAccounts(generateFakeBankAccountList())
     }
 
     @Test
