@@ -1,7 +1,7 @@
 package ir.siriusapps.moneysave.data.repository.source.local
 
 import androidx.room.*
-import ir.siriusapps.domain.entity.Bank
+import ir.siriusapps.moneysave.domain.entity.Bank
 
 @Dao
 interface RoomBankDao {

@@ -30,7 +30,6 @@ android {
 
     dataBinding.isEnabled = true
 
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -38,6 +37,10 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    kapt {
+        correctErrorTypes = true
     }
 }
 
@@ -50,8 +53,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
 
     // dagger
-    implementation("com.google.firebase:firebase-core:16.0.4")
-
     val daggerVersion = "2.28"
     implementation("com.google.dagger:dagger-android:$daggerVersion")
     implementation("com.google.dagger:dagger-android-support:$daggerVersion")
@@ -68,6 +69,7 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.1.0")
 
+    implementation("com.google.firebase:firebase-analytics:17.4.3")
     implementation("com.google.firebase:firebase-crashlytics:17.1.0")
 
     implementation(project(":data"))

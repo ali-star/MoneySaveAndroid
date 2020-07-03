@@ -6,4 +6,4 @@ import androidx.room.Dao
 interface MoneySaveDao : RoomBankDao,
     RoomBankAccountDao,
     RoomCardDao,
-    TransactionRoomDao
+    RoomTransactionDao

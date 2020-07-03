@@ -1,14 +1,14 @@
 package ir.siriusapps.moneysave.data.repository
 
-import ir.siriusapps.domain.datasource.TransactionDataSource
-import ir.siriusapps.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.datasource.TransactionDataSource
+import ir.siriusapps.moneysave.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 class TransactionRepository @Inject constructor (
     private val moneySaveDao: MoneySaveDao
 ): TransactionDataSource {

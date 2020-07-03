@@ -5,23 +5,20 @@ import androidx.room.Room
 
 import dagger.Module
 import dagger.Provides
+import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
-import javax.inject.Singleton
 
 @Module
 class AppDataBaseModule {
 
     @Provides
-    @Singleton
-    fun provideAppDatabase(context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "money_save.db")
+    @ApplicationScope
+    fun provideAppDatabase(context: Context): MoneySaveDao {
+        val database = Room.databaseBuilder(context, AppDatabase::class.java, "money_save.db")
             .fallbackToDestructiveMigration()
             .build()
+        return database.moneySaveDao()
     }
-
-    @Provides
-    @Singleton
-    fun provideMoneySaveDao(appDatabase: AppDatabase): MoneySaveDao = appDatabase.moneySaveDao()
 
 }

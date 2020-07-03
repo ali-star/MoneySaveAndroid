@@ -5,7 +5,7 @@ import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.RoomBankDao
-import ir.siriusapps.domain.entity.Bank
+import ir.siriusapps.moneysave.domain.entity.Bank
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -26,9 +26,27 @@ class RoomBankTest {
     }
 
     private fun generateFakeBankList(): List<Bank> {
-        val bank1 = Bank(null, "123", "bank1", "بانک 1", "")
-        val bank2 = Bank(null, "1234", "bank2", "بانک 2", "")
-        val bank3 = Bank(null, "12345", "bank3", "بانک 3", "")
+        val bank1 = Bank(
+            null,
+            "123",
+            "bank1",
+            "بانک 1",
+            ""
+        )
+        val bank2 = Bank(
+            null,
+            "1234",
+            "bank2",
+            "بانک 2",
+            ""
+        )
+        val bank3 = Bank(
+            null,
+            "12345",
+            "bank3",
+            "بانک 3",
+            ""
+        )
 
         val list = ArrayList<Bank>()
 

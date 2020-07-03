@@ -2,9 +2,9 @@ package ir.siriusapps.moneysave.internal.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import ir.siriusapps.moneysave.internal.di.scope.ActivityScope
-import ir.siriusapps.moneysave.internal.di.scope.BroadcastReceiverScope
-import ir.siriusapps.moneysave.internal.di.scope.FragmentScope
+import ir.siriusapps.moneysave.domain.scope.ActivityScope
+import ir.siriusapps.moneysave.domain.scope.BroadcastReceiverScope
+import ir.siriusapps.moneysave.domain.scope.FragmentScope
 import ir.siriusapps.moneysave.presenter.ui.MainActivity
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
 import ir.siriusapps.moneysave.reciver.SmsListenerBroadcast

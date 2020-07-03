@@ -3,7 +3,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -28,15 +27,24 @@ android {
             )
         }
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kapt {
+        correctErrorTypes = true
     }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.72")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
     implementation("androidx.core:core-ktx:1.3.0")
     implementation("androidx.appcompat:appcompat:1.1.0")
 
@@ -47,8 +55,11 @@ dependencies {
     // room
     val room_version = "2.2.5"
     kapt("androidx.room:room-compiler:$room_version")
-    api("androidx.room:room-runtime:$room_version")
     api("androidx.room:room-ktx:$room_version")
+    api ("androidx.room:room-runtime:$room_version")
+
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
 
     api("com.github.tony19:named-regexp:0.2.5")
 

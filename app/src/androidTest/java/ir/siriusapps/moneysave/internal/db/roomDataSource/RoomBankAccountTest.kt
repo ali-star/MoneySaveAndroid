@@ -4,8 +4,9 @@ import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.RoomBankAccountDao
-import ir.siriusapps.domain.entity.BankAccount
-import ir.siriusapps.domain.entity.Currency
+import ir.siriusapps.moneysave.domain.entity.BankAccount
+import ir.siriusapps.moneysave.domain.entity.Currency
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -26,9 +27,36 @@ class RoomBankAccountTest {
     }
 
     private fun generateFakeBankAccountList(): List<BankAccount> {
-        val bankAccount1 = BankAccount(null, "123", 11, 123, "", 0.0, Currency.IRR)
-        val bankAccount2 = BankAccount(null, "124", 12, 124, "", 0.0, Currency.IRR)
-        val bankAccount3 = BankAccount(null, "125", 13, 125, "", 0.0, Currency.IRR)
+        val bankAccount1 = BankAccount(
+            null,
+            "123",
+            11,
+            123,
+            "",
+            "",
+            0.0,
+            Currency.IRR
+        )
+        val bankAccount2 = BankAccount(
+            null,
+            "124",
+            12,
+            124,
+            "",
+            "",
+            0.0,
+            Currency.IRR
+        )
+        val bankAccount3 = BankAccount(
+            null,
+            "125",
+            13,
+            125,
+            "",
+            "",
+            0.0,
+            Currency.IRR
+        )
 
         val list = ArrayList<BankAccount>()
 
@@ -39,18 +67,18 @@ class RoomBankAccountTest {
         return list
     }
 
-    private fun insertBankAccountIntoDatabase() {
+    private fun insertBankAccountIntoDatabase() = runBlocking {
         dao.insertBankAccounts(generateFakeBankAccountList())
     }
 
     @Test
-    fun add() {
+    fun add() = runBlocking {
         insertBankAccountIntoDatabase()
         assertTrue(dao.getBankAccounts().isNotEmpty())
     }
 
     @Test
-    fun remove() {
+    fun remove() = runBlocking {
         insertBankAccountIntoDatabase()
 
         val savedBankAccount = ArrayList(dao.getBankAccounts())

@@ -3,12 +3,13 @@ package ir.siriusapps.moneysave.data.repository.source.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ir.siriusapps.domain.entity.*
-import ir.siriusapps.domain.entity.converter.CurrencyRoomTypeConverter
+import ir.siriusapps.moneysave.domain.entity.*
+import ir.siriusapps.moneysave.domain.entity.converter.CurrencyRoomTypeConverter
 
 @Database(
-    entities = [Bank::class, BankAccount::class, Card::class, User::class, Transaction::class],
-    version = 1
+    entities = [Bank::class, BankAccount::class, Card::class, Transaction::class],
+    version = 1,
+    exportSchema = false
 )
 @TypeConverters(
     CurrencyRoomTypeConverter::class,

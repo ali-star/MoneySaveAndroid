@@ -1,7 +1,7 @@
 package ir.siriusapps.moneysave.data.repository
 
-import ir.siriusapps.domain.datasource.BankDataSource
-import ir.siriusapps.domain.entity.Bank
+import ir.siriusapps.moneysave.domain.datasource.BankDataSource
+import ir.siriusapps.moneysave.domain.entity.Bank
 
 class BankRepo(private val bankDataSource: BankDataSource) {
 
