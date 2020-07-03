@@ -13,12 +13,12 @@ import javax.inject.Singleton
 @Module
 class RepositoryModule {
 
-    /*@Provides
+    @Provides
     @ApplicationScope
     fun provideTransactionsRepository(transactionRepository: TransactionRepository): TransactionDataSource = transactionRepository
 
     @Provides
     @ApplicationScope
-    fun provideBankAccountRepository(bankAccountRepository: BankAccountRepository): BankAccountDataSource = bankAccountRepository*/
+    fun provideBankAccountRepository(bankAccountRepository: BankAccountRepository): BankAccountDataSource = bankAccountRepository
 
 }
