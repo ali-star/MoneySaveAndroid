@@ -11,6 +11,10 @@ import dagger.android.DaggerBroadcastReceiver
 import ir.siriusapps.moneysave.domain.entity.BankAccount
 import ir.siriusapps.moneysave.domain.entity.Transaction
 import ir.siriusapps.moneysave.domain.iteractors.bankaccount.SearchBankAccountByNumber
+import ir.siriusapps.moneysave.domain.iteractors.transaction.AddTransaction
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import saman.zamani.persiandate.PersianDate
 import java.lang.StringBuilder
@@ -21,6 +25,8 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
 
     @Inject
     lateinit var searchBankAccountByNumber: SearchBankAccountByNumber
+    @Inject
+    lateinit var saveTransaction: AddTransaction
 
     val phoneNumberBanks = arrayListOf("9107324708", "9907473597")
 
@@ -41,6 +47,9 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
                                 messageBody.append(message.messageBody)
 
                             val transaction = convertSmsMessageToTransaction(messageBody.toString())
+
+                            if (transaction != null)
+                                CoroutineScope(Dispatchers.IO).launch { saveTransaction.add(transaction) }
 
                             Toast.makeText(
                                 context,

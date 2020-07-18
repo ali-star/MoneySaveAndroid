@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    kotlin("android")
     id("kotlin-android-extensions")
-    id("kotlin-kapt")
+    kotlin("kapt")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
@@ -61,6 +61,7 @@ dependencies {
     kapt("com.google.dagger:dagger-android-processor:$daggerVersion")
     kapt("com.squareup.inject:assisted-inject-processor-dagger2:0.5.2")
 
+
     // Navigation component dependencies
     val navigation_component_version = "2.3.0-rc01"
     implementation("androidx.navigation:navigation-fragment-ktx:$navigation_component_version")
@@ -68,7 +69,6 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:$navigation_component_version")
 
     implementation("androidx.recyclerview:recyclerview:1.1.0")
-
     implementation("com.google.firebase:firebase-analytics:17.4.3")
     implementation("com.google.firebase:firebase-crashlytics:17.1.0")
 

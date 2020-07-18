@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    kotlin("android")
     id("kotlin-android-extensions")
-    id("kotlin-kapt")
+    kotlin("kapt")
 }
 
 android {
@@ -53,6 +53,7 @@ dependencies {
     testImplementation("junit:junit:4.13")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+
 
     // room
     val room_version = "2.2.5"
