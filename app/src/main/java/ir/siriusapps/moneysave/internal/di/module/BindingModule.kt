@@ -7,7 +7,7 @@ import ir.siriusapps.moneysave.domain.scope.BroadcastReceiverScope
 import ir.siriusapps.moneysave.domain.scope.FragmentScope
 import ir.siriusapps.moneysave.presenter.ui.MainActivity
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
-import ir.siriusapps.moneysave.reciver.BoatReceiver
+import ir.siriusapps.moneysave.reciver.BootReceiver
 import ir.siriusapps.moneysave.reciver.SmsListenerBroadcast
 
 @Module
@@ -27,6 +27,6 @@ abstract class BindingModule {
 
     @BroadcastReceiverScope
     @ContributesAndroidInjector
-    abstract fun boatReceiver():BoatReceiver
+    abstract fun boatReceiver():BootReceiver
 
 }

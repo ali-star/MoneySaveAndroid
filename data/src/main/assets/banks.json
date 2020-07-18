@@ -1,0 +1,14 @@
+[
+	{
+		"bankId": "46bf12d9-a382-492b-a065-6a7ef2d3da57",
+		"name": "Melli",
+		"persianName": "ملی",
+		"smsRegex": "\\W+\\n\\W+:(?<Amount>\\d.+)\\n\\W+:(?<AccountNumber>\\d+)\\n\\W+:(?<Inventory>\\d.+)\\n((?<Month>\\d{2})(?<Day>\\d{2})-(?<Hour>\\d{2}):(?<Minute>\\d{2}))"
+	},
+	{
+		"bankId": "4bbea967-374b-4a7b-b37f-13c53388dca2",
+		"name": "Pasargad",
+		"persianName": "پاسارگاد",
+		"smsRegex": "\\*\\W+\\*\\n\\W+\\n\\W+(?<AccountNumber>\\d.+)\\n\\W+(?<Amount>\\d.+)\\s+\\W+\\n((?<Year>\\d{2})\\/(?<Month>\\d{2})\\/(?<Day>\\d{2}))\\w((?<Hour>\\d{2})\\W(?<Minute>\\d{2}))\\n\\W+(?<Inventory>\\d.+) \\W+"
+	}
+]

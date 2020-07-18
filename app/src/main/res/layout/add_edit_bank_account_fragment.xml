@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		
+		<variable
+				name="viewModel"
+				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountViewModel" />
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+		
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+			
+			<EditText
+					android:id="@+id/accountNameEditText"
+					android:layout_width="match_parent"
+					android:layout_height="48dp"
+					android:hint="AccountName"
+					android:inputType="text"
+					android:maxLines="1" />
+			
+			<EditText
+					android:id="@+id/accountNumberEditText"
+					android:layout_width="match_parent"
+					android:layout_height="48dp"
+					android:hint="AccountNumber"
+					android:inputType="text"
+					android:maxLines="1" />
+			
+			<EditText
+					android:id="@+id/cardNumberEditText"
+					android:layout_width="match_parent"
+					android:layout_height="48dp"
+					android:hint="CardNumber"
+					android:inputType="text"
+					android:maxLines="1" />
+			
+			<Button
+					android:id="@+id/nextButton"
+					android:layout_width="match_parent"
+					android:layout_height="48dp"
+					android:text="Next"
+					android:onClick="@{()->viewModel.saveBankAccount()}"/>
+		
+		
+		</LinearLayout>
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
