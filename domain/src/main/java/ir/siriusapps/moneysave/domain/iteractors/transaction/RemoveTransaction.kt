@@ -1,18 +1,18 @@
 package ir.siriusapps.moneysave.domain.iteractors.transaction
 
-import ir.siriusapps.moneysave.domain.datasource.TransactionDataSource
+import ir.siriusapps.moneysave.domain.datasource.TransactionRepository
 import ir.siriusapps.moneysave.domain.entity.Transaction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class RemoveTransaction @Inject constructor(private val transactionDataSource: TransactionDataSource) {
+class RemoveTransaction @Inject constructor(private val transactionRepository: TransactionRepository) {
 
     suspend fun removeTransaction(transaction: Transaction) = withContext(Dispatchers.IO) {
-        return@withContext transactionDataSource.remove(transaction)
+        return@withContext transactionRepository.remove(transaction)
     }
 
     suspend fun removeTransaction(transactions: List<Transaction>) = withContext(Dispatchers.IO) {
-        return@withContext transactionDataSource.remove(transactions)
+        return@withContext transactionRepository.remove(transactions)
     }
 }

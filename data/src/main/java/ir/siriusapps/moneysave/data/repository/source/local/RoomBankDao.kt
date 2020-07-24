@@ -1,18 +1,24 @@
 package ir.siriusapps.moneysave.data.repository.source.local
 
 import androidx.room.*
-import ir.siriusapps.moneysave.domain.entity.Bank
+import ir.siriusapps.moneysave.domain.entity.BankEntity
 
 @Dao
 interface RoomBankDao {
 
     @Insert
-    fun insertBanks(bank: List<Bank>)
+    fun insertBanks(bankEntities: List<BankEntity>)
+
+    @Insert
+    fun insertBank(bankEntity: BankEntity)
 
     @Delete
-    fun deleteBanks(bank: List<Bank>)
+    fun deleteBanks(bankEntities: List<BankEntity>)
+
+    @Delete
+    fun deleteBank(bankEntity: BankEntity)
 
     @Query("SELECT * FROM Banks")
-    fun getBanks(): List<Bank>
+    fun getBanks(): List<BankEntity>
 
 }

@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
-import ir.siriusapps.moneysave.domain.entity.BankAccount
 import ir.siriusapps.moneysave.domain.iteractors.bankaccount.AddBankAccount
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import kotlinx.coroutines.launch
@@ -12,7 +11,7 @@ import javax.inject.Inject
 
 class AddEditBankAccountViewModel @AssistedInject constructor(
     @Assisted savedStateHandle: SavedStateHandle,
-    @Inject private val addBankAccount: AddBankAccount
+    private val addBankAccount: AddBankAccount
 ) : BaseViewModel() {
     @AssistedInject.Factory
     interface Factory {

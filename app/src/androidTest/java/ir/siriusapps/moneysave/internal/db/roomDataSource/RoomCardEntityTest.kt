@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.runner.AndroidJUnit4
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.RoomCardDao
-import ir.siriusapps.moneysave.domain.entity.Card
+import ir.siriusapps.moneysave.domain.entity.CardEntity
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -12,7 +12,7 @@ import org.junit.Assert.*
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class RoomCardTest {
+class RoomCardEntityTest {
 
     private lateinit var dao: RoomCardDao
     private lateinit var database: AppDatabase
@@ -25,15 +25,15 @@ class RoomCardTest {
         dao = database.moneySaveDao()
     }
 
-    private fun generateFakeCardList(): List<Card> {
+    private fun generateFakeCardList(): List<CardEntity> {
         val card1 =
-            Card(null, "abc1", "", "", "", "", "", "")
+            CardEntity(null, "abc1", "", "", "", "", "", "")
         val card2 =
-            Card(null, "abc1", "", "", "", "", "", "")
+            CardEntity(null, "abc1", "", "", "", "", "", "")
         val card3 =
-            Card(null, "abc1", "", "", "", "", "", "")
+            CardEntity(null, "abc1", "", "", "", "", "", "")
 
-        val list = ArrayList<Card>()
+        val list = ArrayList<CardEntity>()
 
         list.add(card1)
         list.add(card2)
@@ -57,7 +57,7 @@ class RoomCardTest {
         insertCartIntoDatabase()
         val savedCards = ArrayList(dao.getCards())
 
-        val removedCards = ArrayList<Card>()
+        val removedCards = ArrayList<CardEntity>()
         removedCards.add(savedCards[0])
         removedCards.add(savedCards[1])
 

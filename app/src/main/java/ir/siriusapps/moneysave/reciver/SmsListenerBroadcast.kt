@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.code.regexp.Pattern
 import dagger.android.DaggerBroadcastReceiver
-import ir.siriusapps.moneysave.domain.entity.BankAccount
-import ir.siriusapps.moneysave.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.entity.*
+import ir.siriusapps.moneysave.domain.entity.TypeEnum.TransactionType
 import ir.siriusapps.moneysave.domain.iteractors.bankaccount.SearchBankAccountByNumber
 import ir.siriusapps.moneysave.domain.iteractors.transaction.AddTransaction
+import ir.siriusapps.moneysave.entity.TransactionItem
+import ir.siriusapps.moneysave.entity.TransactionItemMapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,8 +27,12 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
 
     @Inject
     lateinit var searchBankAccountByNumber: SearchBankAccountByNumber
+
     @Inject
     lateinit var saveTransaction: AddTransaction
+
+    @Inject
+    lateinit var transactionItemMapper: TransactionItemMapper
 
     val phoneNumberBanks = arrayListOf("9107324708", "9907473597")
 
@@ -46,11 +52,16 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
                             for (message in smsMessages)
                                 messageBody.append(message.messageBody)
 
-                            val transaction = convertSmsMessageToTransaction(messageBody.toString())
+                            val transactionItem =
+                                convertSmsMessageToTransaction(messageBody.toString())
 
-                            if (transaction != null)
-                                CoroutineScope(Dispatchers.IO).launch { saveTransaction.add(transaction) }
-
+                            if (transactionItem != null) {
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    saveTransaction.add(
+                                        transactionItemMapper.mapToDomain(transactionItem)
+                                    )
+                                }
+                            }
                             Toast.makeText(
                                 context,
                                 senderNumber + "\n" + messageBody.toString(),
@@ -66,8 +77,9 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
         }
     }
 
-    private fun convertSmsMessageToTransaction(messageBody: String): Transaction? {
-        val pattern = Pattern.compile("\\*\\W+\\*\\n\\W+\\n\\W+(?<AccountNumber>\\d.+)\\n\\W+(?<Amount>\\d.+)\\s+\\W+\\n((?<Year>\\d{2})\\/(?<Month>\\d{2})\\/(?<Day>\\d{2}))\\w((?<Hour>\\d{2})\\W(?<Minute>\\d{2}))\\n\\W+(?<Inventory>\\d.+) \\W+")
+    private fun convertSmsMessageToTransaction(messageBody: String): TransactionItem? {
+        val pattern =
+            Pattern.compile("\\*\\W+\\*\\n\\W+\\n\\W+(?<AccountNumber>\\d.+)\\n\\W+(?<Amount>\\d.+)\\s+\\W+\\n((?<Year>\\d{2})\\/(?<Month>\\d{2})\\/(?<Day>\\d{2}))\\w((?<Hour>\\d{2})\\W(?<Minute>\\d{2}))\\n\\W+(?<Inventory>\\d.+) \\W+")
         val matcher = pattern.matcher(messageBody)
         if (matcher.find()) {
             val persianDate = PersianDate()
@@ -82,9 +94,9 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
             val minute = matcher.group("Minute").toInt()
 
             val transactionType = if (messageBody.contains("برداشت") || amount < 0)
-                Transaction.Type.WITHDRAWAL
+                TransactionType.WITHDRAWAL
             else
-                Transaction.Type.DEPOSIT
+                TransactionType.DEPOSIT
 
             persianDate.shYear = year
             persianDate.shMonth = month
@@ -101,17 +113,17 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
                 persianDate.minute, 0
             )
 
-            val bankAccount: BankAccount? = null
+            val bankAccountEntity: BankAccountEntity? = null
             runBlocking {
                 searchBankAccountByNumber.execute(accountNumber)
             }
 
-            return Transaction(
+            return TransactionItem(
                 null,
                 null,
                 Date(calendar.timeInMillis),
                 transactionType,
-                bankAccount?.localId ?: -1,
+                bankAccountEntity?.localId ?: -1,
                 amount,
                 inventory
             )

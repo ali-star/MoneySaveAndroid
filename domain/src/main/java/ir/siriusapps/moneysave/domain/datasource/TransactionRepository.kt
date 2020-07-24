@@ -2,7 +2,7 @@ package ir.siriusapps.moneysave.domain.datasource
 
 import ir.siriusapps.moneysave.domain.entity.Transaction
 
-interface TransactionDataSource {
+interface TransactionRepository {
 
     suspend fun add(transaction: Transaction)
 

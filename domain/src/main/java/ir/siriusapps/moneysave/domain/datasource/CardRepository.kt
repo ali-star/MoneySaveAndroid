@@ -2,7 +2,7 @@ package ir.siriusapps.moneysave.domain.datasource
 
 import ir.siriusapps.moneysave.domain.entity.Card
 
-interface CardDataSource {
+interface CardRepository {
 
     suspend fun add(card: Card)
 

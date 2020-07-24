@@ -7,13 +7,13 @@ import ir.siriusapps.moneysave.domain.entity.*
 import ir.siriusapps.moneysave.domain.entity.converter.CurrencyRoomTypeConverter
 
 @Database(
-    entities = [Bank::class, BankAccount::class, Card::class, Transaction::class],
+    entities = [BankEntity::class, BankAccountEntity::class, CardEntity::class, TransactionEntity::class],
     version = 1,
     exportSchema = false
 )
 @TypeConverters(
     CurrencyRoomTypeConverter::class,
-    Transaction.TransactionTypeRoomTypeConverter::class,
+    TransactionTypeRoomTypeConverter::class,
     RoomDateTypeConverter::class
 )
 abstract class AppDatabase : RoomDatabase() {

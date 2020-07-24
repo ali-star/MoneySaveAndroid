@@ -1,24 +1,24 @@
 package ir.siriusapps.moneysave.data.repository.source.local
 
 import androidx.room.*
-import ir.siriusapps.moneysave.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.entity.TransactionEntity
 
 @Dao
 interface RoomTransactionDao {
 
     @Insert
-    suspend fun insertTransactions(transactions: List<Transaction>)
+    suspend fun insertTransactions(transactionEntities: List<TransactionEntity>)
 
     @Insert
-    suspend fun insertTransaction(transactions: Transaction)
+    suspend fun insertTransaction(transactions: TransactionEntity)
 
     @Delete
-    suspend fun deleteTransactions(transactions: List<Transaction>)
+    suspend fun deleteTransactions(transactionEntities: List<TransactionEntity>)
 
     @Delete
-    suspend fun deleteTransaction(transactions: Transaction)
+    suspend fun deleteTransaction(transactions: TransactionEntity)
 
     @Query("SELECT * FROM Transactions")
-    suspend fun getTransactions(): List<Transaction>
+    suspend fun getTransactions(): List<TransactionEntity>
 
 }

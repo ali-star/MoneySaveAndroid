@@ -2,23 +2,21 @@ package ir.siriusapps.moneysave.internal.di.module
 
 import dagger.Module
 import dagger.Provides
-import ir.siriusapps.moneysave.domain.datasource.BankAccountDataSource
-import ir.siriusapps.moneysave.domain.datasource.TransactionDataSource
-import ir.siriusapps.moneysave.domain.entity.BankAccount
+import ir.siriusapps.moneysave.domain.datasource.BankAccountRepository
+import ir.siriusapps.moneysave.domain.datasource.TransactionRepository
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
-import ir.siriusapps.moneysave.data.repository.BankAccountRepository
-import ir.siriusapps.moneysave.data.repository.TransactionRepository
-import javax.inject.Singleton
+import ir.siriusapps.moneysave.data.repository.BankAccountRepositoryImp
+import ir.siriusapps.moneysave.data.repository.TransactionRepositoryImp
 
 @Module
 class RepositoryModule {
 
     @Provides
     @ApplicationScope
-    fun provideTransactionsRepository(transactionRepository: TransactionRepository): TransactionDataSource = transactionRepository
+    fun provideTransactionsRepository(transactionRepositoryImp: TransactionRepositoryImp): TransactionRepository = transactionRepositoryImp
 
     @Provides
     @ApplicationScope
-    fun provideBankAccountRepository(bankAccountRepository: BankAccountRepository): BankAccountDataSource = bankAccountRepository
+    fun provideBankAccountRepository(bankAccountRepositoryImp: BankAccountRepositoryImp): BankAccountRepository = bankAccountRepositoryImp
 
 }

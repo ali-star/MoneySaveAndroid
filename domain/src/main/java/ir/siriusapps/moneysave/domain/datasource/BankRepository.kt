@@ -2,7 +2,7 @@ package ir.siriusapps.moneysave.domain.datasource
 
 import ir.siriusapps.moneysave.domain.entity.Bank
 
-interface BankDataSource {
+interface BankRepository {
 
     fun add(bank: Bank)
 

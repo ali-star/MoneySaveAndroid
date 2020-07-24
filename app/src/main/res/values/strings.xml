@@ -4,5 +4,8 @@
     <string name="messagePermission">برای دسترسی به پیام ها باید مجوز را تایید کنید </string>
     <string name="acceptRequest">موافقم</string>
     <string name="ignoreRequest">لغو</string>
-    
+    <string name="AccountName">AccountName</string>
+    <string name="AccountNumber">AccountNumber</string>
+    <string name="CardNumber">CardNumber</string>
+    <string name="Next">Next</string>
 </resources>

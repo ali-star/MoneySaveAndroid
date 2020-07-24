@@ -4,8 +4,8 @@ import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.RoomBankAccountDao
-import ir.siriusapps.moneysave.domain.entity.BankAccount
-import ir.siriusapps.moneysave.domain.entity.Currency
+import ir.siriusapps.moneysave.domain.entity.BankAccountEntity
+import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -13,7 +13,7 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-class RoomBankAccountTest {
+class RoomBankEntityAccountTest {
 
     private lateinit var database: AppDatabase
     private lateinit var dao: RoomBankAccountDao
@@ -26,8 +26,8 @@ class RoomBankAccountTest {
         dao = database.moneySaveDao()
     }
 
-    private fun generateFakeBankAccountList(): List<BankAccount> {
-        val bankAccount1 = BankAccount(
+    private fun generateFakeBankAccountList(): List<BankAccountEntity> {
+        val bankAccount1 = BankAccountEntity(
             null,
             "123",
             11,
@@ -37,7 +37,7 @@ class RoomBankAccountTest {
             0.0,
             Currency.IRR
         )
-        val bankAccount2 = BankAccount(
+        val bankAccount2 = BankAccountEntity(
             null,
             "124",
             12,
@@ -47,7 +47,7 @@ class RoomBankAccountTest {
             0.0,
             Currency.IRR
         )
-        val bankAccount3 = BankAccount(
+        val bankAccount3 = BankAccountEntity(
             null,
             "125",
             13,
@@ -58,7 +58,7 @@ class RoomBankAccountTest {
             Currency.IRR
         )
 
-        val list = ArrayList<BankAccount>()
+        val list = ArrayList<BankAccountEntity>()
 
         list.add(bankAccount1)
         list.add(bankAccount2)
@@ -83,7 +83,7 @@ class RoomBankAccountTest {
 
         val savedBankAccount = ArrayList(dao.getBankAccounts())
 
-        val removedBanks = ArrayList<BankAccount>()
+        val removedBanks = ArrayList<BankAccountEntity>()
         removedBanks.add(savedBankAccount[0])
         removedBanks.add(savedBankAccount[1])
 

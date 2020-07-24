@@ -1,14 +1,14 @@
 package ir.siriusapps.moneysave.domain.iteractors.bankaccount
 
-import ir.siriusapps.moneysave.domain.datasource.BankAccountDataSource
+import ir.siriusapps.moneysave.domain.datasource.BankAccountRepository
 import ir.siriusapps.moneysave.domain.entity.BankAccount
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class ReadBankAccount @Inject constructor(private val bankAccountDataSource: BankAccountDataSource) {
+class ReadBankAccount @Inject constructor(private val bankAccountRepository: BankAccountRepository) {
 
     suspend fun readBankAccount():List<BankAccount> = withContext(Dispatchers.IO) {
-        return@withContext bankAccountDataSource.read()
+        return@withContext bankAccountRepository.read()
     }
 }

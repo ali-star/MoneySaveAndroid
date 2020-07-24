@@ -5,7 +5,7 @@ import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.RoomBankDao
-import ir.siriusapps.moneysave.domain.entity.Bank
+import ir.siriusapps.moneysave.domain.entity.BankEntity
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
 import org.junit.Assert.*
 
 @RunWith(AndroidJUnit4::class)
-class RoomBankTest {
+class RoomBankEntityTest {
 
     private lateinit var database: AppDatabase
     private lateinit var dao: RoomBankDao
@@ -25,22 +25,22 @@ class RoomBankTest {
         dao = database.moneySaveDao()
     }
 
-    private fun generateFakeBankList(): List<Bank> {
-        val bank1 = Bank(
+    private fun generateFakeBankList(): List<BankEntity> {
+        val bank1 = BankEntity(
             null,
             "123",
             "bank1",
             "بانک 1",
             ""
         )
-        val bank2 = Bank(
+        val bank2 = BankEntity(
             null,
             "1234",
             "bank2",
             "بانک 2",
             ""
         )
-        val bank3 = Bank(
+        val bank3 = BankEntity(
             null,
             "12345",
             "bank3",
@@ -48,7 +48,7 @@ class RoomBankTest {
             ""
         )
 
-        val list = ArrayList<Bank>()
+        val list = ArrayList<BankEntity>()
 
         list.add(bank1)
         list.add(bank2)
@@ -72,7 +72,7 @@ class RoomBankTest {
         insertBanksIntoDatabase()
         val savedBanks = ArrayList(dao.getBanks())
 
-        val removedBanks = ArrayList<Bank>()
+        val removedBanks = ArrayList<BankEntity>()
         removedBanks.add(savedBanks[0])
         removedBanks.add(savedBanks[1])
 

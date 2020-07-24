@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.domain.entity.TypeEnum
 
 import java.lang.IllegalArgumentException
 

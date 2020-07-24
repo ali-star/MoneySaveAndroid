@@ -1,16 +1,16 @@
 package ir.siriusapps.moneysave.domain.iteractors.bankaccount
 
-import ir.siriusapps.moneysave.domain.datasource.BankAccountDataSource
+import ir.siriusapps.moneysave.domain.datasource.BankAccountRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SearchBankAccountByNumber @Inject constructor(
-    private val bankAccountDataSource: BankAccountDataSource
+    private val bankAccountRepository: BankAccountRepository
 ) {
 
     suspend fun execute(accountNumber: String) = withContext(Dispatchers.IO) {
-        return@withContext bankAccountDataSource.searchByAccountNumber(accountNumber)
+        return@withContext bankAccountRepository.searchByAccountNumber(accountNumber)
     }
 
 }
