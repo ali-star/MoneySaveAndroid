@@ -1,7 +1,7 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.entity
 
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
-import ir.siriusapps.moneysave.entity.Item
+import ir.siriusapps.moneysave.domain.entity.User
 import javax.inject.Inject
 
 

@@ -1,8 +1,8 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.entity
 
 import androidx.room.Entity
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
-import ir.siriusapps.moneysave.entity.Item
+import ir.siriusapps.moneysave.domain.entity.Card
 import javax.inject.Inject
 
 @Entity(tableName = "Card")
