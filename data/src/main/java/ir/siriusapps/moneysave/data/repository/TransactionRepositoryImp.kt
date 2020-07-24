@@ -14,37 +14,35 @@ class TransactionRepositoryImp @Inject constructor(
     private val moneySaveDao: MoneySaveDao,
     private val transactionEntityMapper: TransactionEntityMapper
 ) : TransactionRepository {
+    
+    private val ioDispatcher = Dispatchers.IO
 
-    override suspend fun add(transaction: Transaction) = withContext(Dispatchers.IO) {
+    override suspend fun add(transaction: Transaction) = withContext(ioDispatcher) {
         moneySaveDao.insertTransaction(transactionEntityMapper.mapToData(transaction))
     }
 
-    override suspend fun add(transactions: List<Transaction>) =
-        withContext(Dispatchers.IO) {
+    override suspend fun add(transactions: List<Transaction>) = withContext(ioDispatcher) {
             val transitionEntities = transactions.map {
                 transactionEntityMapper.mapToData(it)
             }
             moneySaveDao.insertTransactions(transitionEntities)
         }
 
-    override suspend fun remove(transaction: Transaction) =
-        withContext(Dispatchers.IO) {
+    override suspend fun remove(transaction: Transaction) = withContext(ioDispatcher) {
             moneySaveDao.deleteTransaction(transactionEntityMapper.mapToData(transaction))
         }
 
-    override suspend fun remove(transactions: List<Transaction>) =
-        withContext(Dispatchers.IO) {
+    override suspend fun remove(transactions: List<Transaction>) = withContext(ioDispatcher) {
             val transitionEntities = transactions.map {
                 transactionEntityMapper.mapToData(it)
             }
             moneySaveDao.deleteTransactions(transitionEntities)
         }
 
-    override suspend fun read(): List<Transaction> = withContext(Dispatchers.IO) {
-        val transitions = moneySaveDao.getTransactions().map {
+    override suspend fun read(): List<Transaction> = withContext(ioDispatcher) {
+        return@withContext moneySaveDao.getTransactions().map {
             transactionEntityMapper.mapToDomain(it)
         }
-        return@withContext transitions
     }
 
 }

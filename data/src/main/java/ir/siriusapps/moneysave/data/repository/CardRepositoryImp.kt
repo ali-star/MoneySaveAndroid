@@ -4,39 +4,47 @@ import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import ir.siriusapps.moneysave.domain.datasource.CardRepository
 import ir.siriusapps.moneysave.domain.entity.Card
 import ir.siriusapps.moneysave.domain.entity.CardEntityMapper
+import ir.siriusapps.moneysave.domain.scope.ApplicationScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class CardRepositoryImp(
+@ApplicationScope
+class CardRepositoryImp @Inject constructor(
     private val moneySaveDao: MoneySaveDao,
     private val cardEntityMapper: CardEntityMapper
 ) : CardRepository {
-    override suspend fun add(card: Card) {
-        cardEntityMapper.mapToData(card)
+
+    private val ioDispatcher = Dispatchers.IO
+
+    override suspend fun add(card: Card) = withContext(ioDispatcher) {
+        moneySaveDao.insertCard(cardEntityMapper.mapToData(card))
     }
 
-    override suspend fun add(cards: List<Card>) {
+    override suspend fun add(cards: List<Card>) = withContext(ioDispatcher) {
         val cardEntity = cards.map {
             cardEntityMapper.mapToData(it)
         }
         moneySaveDao.insertCards(cardEntity)
     }
 
-    override suspend fun remove(card: Card) {
+    override suspend fun remove(card: Card) = withContext(ioDispatcher) {
         moneySaveDao.deleteCard(cardEntityMapper.mapToData(card))
     }
 
-    override suspend fun remove(cards: List<Card>) {
+    override suspend fun remove(cards: List<Card>) = withContext(ioDispatcher) {
         val cardEntities = cards.map {
             cardEntityMapper.mapToData(it)
         }
         moneySaveDao.deleteCards(cardEntities)
     }
 
-    override suspend fun read(): List<Card> {
-        val cards = moneySaveDao.getCards().map {
+    override suspend fun read(): List<Card> = withContext(ioDispatcher) {
+        return@withContext moneySaveDao.getCards().map {
             cardEntityMapper.mapToDomain(it)
         }
-        return cards
     }
+
 }
 
 

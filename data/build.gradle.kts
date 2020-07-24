@@ -59,14 +59,14 @@ dependencies {
     val room_version = "2.2.5"
     kapt("androidx.room:room-compiler:$room_version")
     api("androidx.room:room-ktx:$room_version")
-    api ("androidx.room:room-runtime:$room_version")
+    api("androidx.room:room-runtime:$room_version")
 
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
 
     api("com.github.tony19:named-regexp:0.2.5")
 
-    api ("com.github.samanzamani.persiandate:PersianDate:0.8")
+    api("com.github.samanzamani.persiandate:PersianDate:0.8")
 
     implementation(project(":domain"))
 

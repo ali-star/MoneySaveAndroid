@@ -1,6 +1,9 @@
 package ir.siriusapps.moneysave.data.repository.source.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 import ir.siriusapps.moneysave.domain.entity.CardEntity
 
 @Dao
@@ -8,6 +11,9 @@ interface RoomCardDao {
 
     @Insert
     fun insertCards(cardEntities: List<CardEntity>)
+
+    @Insert
+    fun insertCard(cardEntity: CardEntity)
 
     @Delete
     fun deleteCards(cardEntities: List<CardEntity>)
