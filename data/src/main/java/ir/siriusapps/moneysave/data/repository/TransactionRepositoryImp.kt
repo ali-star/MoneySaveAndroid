@@ -1,6 +1,6 @@
 package ir.siriusapps.moneysave.data.repository
 
-import ir.siriusapps.moneysave.domain.datasource.TransactionRepository
+import ir.siriusapps.moneysave.domain.repository.TransactionRepository
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import ir.siriusapps.moneysave.domain.entity.Transaction

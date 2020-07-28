@@ -10,8 +10,8 @@ import com.google.code.regexp.Pattern
 import dagger.android.DaggerBroadcastReceiver
 import ir.siriusapps.moneysave.domain.entity.*
 import ir.siriusapps.moneysave.domain.entity.TypeEnum.TransactionType
-import ir.siriusapps.moneysave.domain.iteractors.bankaccount.SearchBankAccountByNumber
-import ir.siriusapps.moneysave.domain.iteractors.transaction.AddTransaction
+import ir.siriusapps.moneysave.domain.useCase.bankaccount.SearchBankAccountByNumber
+import ir.siriusapps.moneysave.domain.useCase.transaction.AddTransaction
 import ir.siriusapps.moneysave.entity.TransactionItem
 import ir.siriusapps.moneysave.entity.TransactionItemMapper
 import kotlinx.coroutines.CoroutineScope

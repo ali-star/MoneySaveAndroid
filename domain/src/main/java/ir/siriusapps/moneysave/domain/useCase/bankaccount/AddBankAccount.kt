@@ -1,6 +1,6 @@
-package ir.siriusapps.moneysave.domain.iteractors.bankaccount
+package ir.siriusapps.moneysave.domain.useCase.bankaccount
 
-import ir.siriusapps.moneysave.domain.datasource.BankAccountRepository
+import ir.siriusapps.moneysave.domain.repository.BankAccountRepository
 import ir.siriusapps.moneysave.domain.entity.BankAccount
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,5 +14,9 @@ class AddBankAccount @Inject constructor(private val accountRepository: BankAcco
 
     suspend fun execute(bankAccounts: List<BankAccount>) = withContext(Dispatchers.IO) {
         return@withContext accountRepository.add(bankAccounts)
+    }
+
+    suspend fun execute(accountName: String, accountNumber: String, cardNumber: String)= withContext(Dispatchers.IO){
+        return@withContext accountRepository.add(accountName,accountNumber,cardNumber)
     }
 }

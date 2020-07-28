@@ -1,7 +1,7 @@
 package ir.siriusapps.moneysave.data.repository
 
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
-import ir.siriusapps.moneysave.domain.datasource.CardRepository
+import ir.siriusapps.moneysave.domain.repository.CardRepository
 import ir.siriusapps.moneysave.domain.entity.Card
 import ir.siriusapps.moneysave.domain.entity.CardEntityMapper
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope

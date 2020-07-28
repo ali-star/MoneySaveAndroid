@@ -1,6 +1,6 @@
-package ir.siriusapps.moneysave.domain.iteractors
+package ir.siriusapps.moneysave.domain.useCase.card
 
-import ir.siriusapps.moneysave.domain.datasource.CardRepository
+import ir.siriusapps.moneysave.domain.repository.CardRepository
 import ir.siriusapps.moneysave.domain.entity.Card
 import javax.inject.Inject
 

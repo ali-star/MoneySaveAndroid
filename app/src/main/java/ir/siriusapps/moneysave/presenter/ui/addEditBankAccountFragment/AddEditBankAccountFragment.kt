@@ -22,8 +22,8 @@ class AddEditBankAccountFragment : Fragment() {
         val binding =
             AddEditBankAccountFragmentBinding.inflate(inflater, container, false).apply {
                 lifecycleOwner = this@AddEditBankAccountFragment.viewLifecycleOwner
-
             }
         return binding.root
     }
+
 }

@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.domain.datasource
+package ir.siriusapps.moneysave.domain.repository
 
 import ir.siriusapps.moneysave.domain.entity.BankAccount
 
@@ -7,6 +7,8 @@ interface BankAccountRepository {
     suspend fun add(bankAccount: BankAccount)
 
     suspend fun add(bankAccounts: List<BankAccount>)
+
+    suspend fun add(accountName: String, accountNumber: String, cardNumber: String)
 
     suspend fun remove(bankAccount: BankAccount)
 

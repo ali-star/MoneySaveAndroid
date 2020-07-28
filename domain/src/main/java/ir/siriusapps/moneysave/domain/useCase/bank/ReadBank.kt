@@ -1,6 +1,6 @@
-package ir.siriusapps.moneysave.domain.iteractors.bank
+package ir.siriusapps.moneysave.domain.useCase.bank
 
-import ir.siriusapps.moneysave.domain.datasource.BankRepository
+import ir.siriusapps.moneysave.domain.repository.BankRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -1,9 +1,8 @@
 package ir.siriusapps.moneysave.data.repository
 
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
-import ir.siriusapps.moneysave.domain.datasource.BankRepository
+import ir.siriusapps.moneysave.domain.repository.BankRepository
 import ir.siriusapps.moneysave.domain.entity.Bank
-import ir.siriusapps.moneysave.domain.entity.BankEntity
 import ir.siriusapps.moneysave.domain.entity.BankEntityMapper
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import kotlinx.coroutines.Dispatchers
