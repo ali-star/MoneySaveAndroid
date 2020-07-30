@@ -1,5 +1,6 @@
 package ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.squareup.inject.assisted.Assisted
@@ -16,14 +17,19 @@ class AddEditBankAccountViewModel @AssistedInject constructor(
     private val addBankAccount: AddBankAccount,
     private val bankAccountItemMapper: BankAccountItemMapper
 ) : BaseViewModel() {
+
+    val accountName = MutableLiveData<String>()
+    val accountNumber = MutableLiveData<String>()
+    val cardNumber = MutableLiveData<String>()
+
     @AssistedInject.Factory
     interface Factory {
         fun create(savedStateHandle: SavedStateHandle): AddEditBankAccountViewModel
     }
 
-    fun saveBankAccount(bankAccountItem: BankAccountItem) {
+    fun saveBankAccount() {
         viewModelScope.launch {
-            addBankAccount.execute(bankAccountItemMapper.mapToDomain(bankAccountItem))
+            addBankAccount.execute(accountName.value!!, accountNumber.value!!, cardNumber.value!!)
         }
     }
 }

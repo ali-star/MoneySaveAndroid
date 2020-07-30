@@ -4,8 +4,8 @@
 	
 	<data>
 		<variable
-				name="addEditBankAccountFragment"
-				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment" />
+				name="viewModel"
+				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountViewModel" />
 	</data>
 	
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +24,7 @@
 					android:layout_height="48dp"
 					android:hint="@string/AccountName"
 					android:inputType="text"
+					android:text="@={ viewModel.accountName }"
 					android:maxLines="1"
 					android:layout_marginTop="25dp"/>
 			
@@ -33,6 +34,7 @@
 					android:layout_height="48dp"
 					android:hint="@string/AccountNumber"
 					android:inputType="text"
+					android:text="@={ viewModel.accountNumber }"
 					android:maxLines="1"
 					tools:ignore="TextFields"
 					android:layout_marginTop="25dp"/>
@@ -43,6 +45,7 @@
 					android:layout_height="48dp"
 					android:hint="@string/CardNumber"
 					android:inputType="text"
+					android:text="@={ viewModel.cardNumber }"
 					android:maxLines="1"
 					tools:ignore="TextFields"
 					android:layout_marginTop="25dp" />
@@ -51,7 +54,7 @@
 					android:id="@+id/nextButton"
 					android:layout_width="match_parent"
 					android:layout_height="48dp"
-					android:onClick="@{()->addEditBankAccountFragment.saveBankAccount()}"
+					android:onClick="@{ ()-> viewModel.saveBankAccount() }"
 					android:text="@string/Next"
 					android:layout_marginTop="50dp"/>
 			
