@@ -8,14 +8,14 @@ import javax.inject.Inject
 
 data class BankAccountItem(
 
-    val localId: Long? = null,
-    val id: String,
-    val userId: Long,
-    val bankId: Long,
-    val name: String,
-    val accountNumber: String,
-    val balance: Double,
-    val currency: Currency
+    var localId: Long? = null,
+    var id: String,
+    var userId: Long,
+    var bankId: Long,
+    var name: String,
+    var accountNumber: String,
+    var balance: Double,
+    var currency: Currency
 
 ) : Item()
 

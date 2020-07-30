@@ -4,8 +4,8 @@
 	
 	<data>
 		<variable
-				name="viewModel"
-				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountViewModel" />
+				name="addEditBankAccountFragment"
+				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment" />
 	</data>
 	
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +51,7 @@
 					android:id="@+id/nextButton"
 					android:layout_width="match_parent"
 					android:layout_height="48dp"
-					android:onClick="@{()->viewModel.saveBankAccount()}"
+					android:onClick="@{()->addEditBankAccountFragment.saveBankAccount()}"
 					android:text="@string/Next"
 					android:layout_marginTop="50dp"/>
 			
