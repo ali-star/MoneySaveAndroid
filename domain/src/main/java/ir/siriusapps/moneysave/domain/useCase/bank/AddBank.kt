@@ -8,12 +8,7 @@ import javax.inject.Inject
 
 class AddBank @Inject constructor(private val bankRepository: BankRepository) {
 
-    suspend fun execute(bank: Bank) = withContext(Dispatchers.IO) {
-        return@withContext bankRepository.add(bank)
+    suspend fun execute() = withContext(Dispatchers.IO) {
+        return@withContext bankRepository.add()
     }
-
-    suspend fun execute(banks: List<Bank>) = withContext(Dispatchers.IO) {
-        return@withContext bankRepository.add(banks)
-    }
-
 }
