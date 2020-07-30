@@ -6,10 +6,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import ir.siriusapps.moneysave.data.utils.Utils
-import ir.siriusapps.moneysave.domain.repository.BankRepository
 import ir.siriusapps.moneysave.domain.entity.Bank
 import ir.siriusapps.moneysave.domain.entity.BankEntity
 import ir.siriusapps.moneysave.domain.entity.BankEntityMapper
+import ir.siriusapps.moneysave.domain.repository.BankRepository
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -28,33 +28,32 @@ class BankRepositoryImp @Inject constructor(
 ) : BankRepository {
 
     private val ioDispatcher = Dispatchers.IO
-    private val sharedPreferencesValue = "addBanks"
 
-    override suspend fun add() = withContext(ioDispatcher) {
+    companion object {
+        const val ARE_BANKS_INSERTED_IN_FIRST_TIME_KEY = "is_banks_added_in_first_time_key"
+    }
 
-        if (sharedPreferences.getInt(sharedPreferencesValue, 0) != 1) {
-            addSharedPreferences(sharedPreferences)
-            initBank()
+    override suspend fun initBanks() = withContext(ioDispatcher) {
+        if (!sharedPreferences.getBoolean(ARE_BANKS_INSERTED_IN_FIRST_TIME_KEY, false)) {
+            insertBanks()
+            sharedPreferences.edit().putBoolean(ARE_BANKS_INSERTED_IN_FIRST_TIME_KEY, true).apply()
         }
     }
 
-    override suspend fun read(): List<Bank> = withContext(ioDispatcher) {
+    override suspend fun getAllBanks(): List<Bank> = withContext(ioDispatcher) {
         return@withContext moneySaveDao.getBanks().map {
             bankEntityMapper.mapToDomain(it)
         }
     }
 
-    private fun addSharedPreferences(sharedPreferences: SharedPreferences) {
-        val editor = sharedPreferences.edit()
-        editor.putInt(sharedPreferencesValue, 1)
-        editor.apply()
-    }
-
-    private fun initBank() {
-        val bankGson = Utils.loadJsonFormAsset(context, "banks.json")
-        val banksEntity = gson.fromJson<List<BankEntity>>(bankGson, object : TypeToken<List<BankEntity>>() {}.type)
+    private fun insertBanks() {
+        val bankJsonString = Utils.loadJsonFormAsset(context, "banks.json")
+        val banksEntity = gson.fromJson<List<BankEntity>>(
+            bankJsonString,
+            object : TypeToken<List<BankEntity>>() {}.type
+        )
         GlobalScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 moneySaveDao.insertBanks((banksEntity))
             }
         }
