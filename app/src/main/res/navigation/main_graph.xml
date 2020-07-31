@@ -6,5 +6,13 @@
 	<fragment
 			android:id="@+id/mainFragment"
 			android:name="ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment"
-			android:label="MainFragment" />
+			android:label="MainFragment" >
+		<action
+				android:id="@+id/action_mainFragment_to_addEditBankAccountFragment2"
+				app:destination="@id/addEditBankAccountFragment2" />
+	</fragment>
+	<fragment
+			android:id="@+id/addEditBankAccountFragment2"
+			android:name="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment"
+			android:label="AddEditBankAccountFragment" />
 </navigation>

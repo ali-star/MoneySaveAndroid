@@ -51,7 +51,7 @@
 					android:layout_marginTop="25dp" />
 			
 			<Button
-					android:id="@+id/nextButton"
+					android:id="@+id/button"
 					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:onClick="@{ ()-> viewModel.saveBankAccount() }"

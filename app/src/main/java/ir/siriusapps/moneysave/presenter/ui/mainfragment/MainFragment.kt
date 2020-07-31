@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import dagger.android.support.DaggerFragment
+import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.MainFragmentBinding
 import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class MainFragment: DaggerFragment() {
+class MainFragment : DaggerFragment() {
 
     @Inject
     lateinit var factory: MainViewModel.Factory
@@ -23,6 +25,9 @@ class MainFragment: DaggerFragment() {
     ): View? {
         return MainFragmentBinding.inflate(layoutInflater, container, false).apply {
             lifecycleOwner = this@MainFragment.viewLifecycleOwner
+            button.setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_addEditBankAccountFragment2)
+            }
         }.root
     }
 
