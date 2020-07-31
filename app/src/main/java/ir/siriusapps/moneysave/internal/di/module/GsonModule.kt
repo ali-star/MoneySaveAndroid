@@ -6,6 +6,8 @@ import dagger.Provides
 
 @Module
 class GsonModule {
+
     @Provides
     fun gsonProvider(): Gson = Gson()
+
 }

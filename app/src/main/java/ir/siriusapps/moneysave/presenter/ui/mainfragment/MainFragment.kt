@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import dagger.android.support.DaggerFragment
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.MainFragmentBinding
 import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class MainFragment : DaggerFragment() {
-
-    @Inject
-    lateinit var factory: MainViewModel.Factory
+class MainFragment @Inject constructor(
+    val factory: MainFragmentViewModel.Factory
+) : Fragment() {
 
     private val viewModel by viewModel { factory.create(it) }
 

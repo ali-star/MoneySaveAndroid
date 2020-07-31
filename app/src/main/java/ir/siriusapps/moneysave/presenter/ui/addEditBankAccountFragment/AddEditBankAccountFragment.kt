@@ -4,19 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import ir.siriusapps.moneysave.R
+import dagger.android.support.DaggerFragment
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class AddEditBankAccountFragment : Fragment() {
-
-    @Inject
-    lateinit var factory: AddEditBankAccountViewModel.Factory
+class AddEditBankAccountFragment @Inject constructor(
+    val factory: AddEditBankAccountFragmentViewModel.Factory
+) : DaggerFragment() {
 
     private val viewModel by viewModel { factory.create(it) }
 
