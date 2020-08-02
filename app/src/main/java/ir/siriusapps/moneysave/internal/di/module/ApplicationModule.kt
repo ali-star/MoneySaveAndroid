@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.App
-import javax.inject.Singleton
 
 @Module
 class ApplicationModule {

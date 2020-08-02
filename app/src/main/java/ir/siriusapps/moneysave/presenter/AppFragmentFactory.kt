@@ -7,7 +7,6 @@ import ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBa
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragmentViewModel
 import javax.inject.Inject
-import javax.inject.Provider
 
 class AppFragmentFactory @Inject constructor(
     private val factoryMainFragment: MainFragmentViewModel.Factory,
