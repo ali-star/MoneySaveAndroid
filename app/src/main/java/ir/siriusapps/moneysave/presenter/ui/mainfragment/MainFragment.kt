@@ -11,7 +11,7 @@ import ir.siriusapps.moneysave.databinding.MainFragmentBinding
 import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class MainFragment @Inject constructor(
+class MainFragment constructor(
     val factory: MainFragmentViewModel.Factory
 ) : Fragment() {
 

@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import dagger.android.support.DaggerFragment
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class AddEditBankAccountFragment @Inject constructor(
+class AddEditBankAccountFragment constructor(
     val factory: AddEditBankAccountFragmentViewModel.Factory
-) : DaggerFragment() {
+) : Fragment() {
 
     private val viewModel by viewModel { factory.create(it) }
 
