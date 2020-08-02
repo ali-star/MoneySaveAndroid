@@ -87,6 +87,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("org.powermock:powermock:1.6.5")
-
+    androidTestImplementation("android.arch.core:core-testing:1.1.1")
+    debugImplementation("androidx.fragment:fragment-testing:1.2.5")
 
 }
