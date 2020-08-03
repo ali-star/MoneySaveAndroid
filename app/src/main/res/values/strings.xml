@@ -4,8 +4,13 @@
     <string name="messagePermission">برای دسترسی به پیام ها باید مجوز را تایید کنید </string>
     <string name="acceptRequest">موافقم</string>
     <string name="ignoreRequest">لغو</string>
-    <string name="AccountName">AccountName</string>
+    <string name="title_account_name">AccountName</string>
     <string name="AccountNumber">AccountNumber</string>
     <string name="CardNumber">CardNumber</string>
     <string name="Next">Next</string>
+	<string name="money_save">Money Save</string>
+    <string name="title_new_account">NEW ACCOUNT</string>
+    <string name="title_credit">Your account credit card number.</string>
+    <string name="title_name_card">Name of the card,for example saving account.</string>
+    <string name="title_bank_account_number">Your bank account number.</string>
 </resources>
