@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="GradientButton">
+		<attr name="gb_startColor" format="color" />
+		<attr name="gb_endColor" format="color" />
+		<attr name="gb_angle" format="integer" />
+		<attr name="gb_TypeFace" format="string" />
+	</declare-styleable>
+</resources>
