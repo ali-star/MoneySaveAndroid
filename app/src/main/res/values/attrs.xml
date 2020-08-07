@@ -5,5 +5,14 @@
 		<attr name="gb_endColor" format="color" />
 		<attr name="gb_angle" format="integer" />
 		<attr name="gb_TypeFace" format="string" />
+		<attr name="gb_radius" format="float" />
+	</declare-styleable>
+	
+	<declare-styleable name="GradientBlurLayout">
+		<attr name="gbl_startColor" format="color" />
+		<attr name="gbl_endColor" format="color" />
+		<attr name="gbl_angle" format="integer" />
+		<attr name="gbl_blurRadius" format="float" />
+		<attr name="gbl_radius" format="float" />
 	</declare-styleable>
 </resources>
