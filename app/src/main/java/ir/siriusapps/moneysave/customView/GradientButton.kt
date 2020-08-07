@@ -7,7 +7,6 @@ import androidx.appcompat.widget.AppCompatButton
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.utils.Utils
 
-
 class GradientButton : AppCompatButton {
 
     private val paint = Paint()
@@ -19,7 +18,6 @@ class GradientButton : AppCompatButton {
     private var endColor: Int = 0
     private var angel: Int = 0
     private val mMatrix = Matrix()
-    private val paintBlur = Paint()
     private var radius: Float = 0F
 
     constructor(context: Context) : super(context) {
@@ -41,18 +39,17 @@ class GradientButton : AppCompatButton {
     }
 
     private fun initAttrs(attrs: AttributeSet?) {
-        context.obtainStyledAttributes(attrs, R.styleable.GradientButton).apply {
-            try {
-                startColor = getColor(R.styleable.GradientButton_gb_startColor, Color.BLACK)
-                endColor = getColor(R.styleable.GradientButton_gb_endColor, Color.WHITE)
-                angel = getColor(R.styleable.GradientButton_gb_angle, 45)
-                radius = getDimensionPixelSize(
-                    R.styleable.GradientButton_gb_radius,
-                    Utils.dipToPix(16)
-                ).toFloat()
-            } finally {
-                recycle()
-            }
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GradientButton)
+        try {
+            startColor = typedArray.getColor(R.styleable.GradientButton_gb_startColor, Color.BLACK)
+            endColor = typedArray.getColor(R.styleable.GradientButton_gb_endColor, Color.WHITE)
+            angel = typedArray.getColor(R.styleable.GradientButton_gb_angle, 45)
+            radius = typedArray.getDimensionPixelSize(
+                R.styleable.GradientButton_gb_radius,
+                Utils.dipToPix(16)
+            ).toFloat()
+        } finally {
+            typedArray.recycle()
         }
     }
 
@@ -60,7 +57,6 @@ class GradientButton : AppCompatButton {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
         background = null
         mMatrix.reset()
-        background = null
         mMatrix.setRotate(angel.toFloat())
         backgroundRect = RectF()
     }
@@ -70,8 +66,8 @@ class GradientButton : AppCompatButton {
         path.reset()
         path.addRoundRect(
             backgroundRect,
-            Utils.dipToPix(radius),
-            Utils.dipToPix(radius),
+            if (radius < 0) mHeight / 2 else radius,
+            if (radius < 0) mHeight / 2 else radius,
             Path.Direction.CW
         )
         canvas!!.drawPath(path, paint)
@@ -95,7 +91,7 @@ class GradientButton : AppCompatButton {
                 Shader.TileMode.CLAMP
             )
         ).setLocalMatrix(mMatrix)
-        paint.setFlags(Paint.ANTI_ALIAS_FLAG)
+        paint.flags = Paint.ANTI_ALIAS_FLAG
     }
 
 }
