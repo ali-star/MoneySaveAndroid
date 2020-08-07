@@ -59,7 +59,7 @@ class GradientButton : AppCompatButton {
     private fun initView() {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
         mMatrix.reset()
-        background=null
+        background = null
         mMatrix.setRotate(angel.toFloat())
         backgroundRect = RectF()
     }
@@ -94,6 +94,7 @@ class GradientButton : AppCompatButton {
                 Shader.TileMode.CLAMP
             )
         ).setLocalMatrix(mMatrix)
+        paint.setFlags(Paint.ANTI_ALIAS_FLAG)
     }
 
 }

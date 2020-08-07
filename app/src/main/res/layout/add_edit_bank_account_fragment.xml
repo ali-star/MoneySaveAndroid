@@ -125,9 +125,9 @@
 				android:id="@+id/button"
 				android:layout_width="match_parent"
 				android:layout_height="48dp"
-				android:onClick="@{ ()-> viewModel.saveBankAccount() }"
 				android:layout_marginStart="30dp"
 				android:layout_marginEnd="30dp"
+				android:onClick="@{ ()-> viewModel.saveBankAccount() }"
 				android:text="@string/Next"
 				app:gb_angle="45"
 				app:gb_endColor="@color/darkGreen"
@@ -144,17 +144,16 @@
 				android:layout_width="match_parent"
 				android:layout_height="48dp"
 				android:layout_marginStart="30dp"
+				android:layout_marginTop="20dp"
 				android:layout_marginEnd="30dp"
 				app:gbl_angle="45"
 				app:gbl_blurRadius="25dp"
 				app:gbl_endColor="@color/lightGreen"
 				app:gbl_radius="15dp"
 				app:gbl_startColor="@color/darkGreen"
-				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/addAccountLayout"
-				app:layout_constraintTop_toTopOf="@+id/button"
-				app:layout_constraintVertical_bias="0.19" />
+				app:layout_constraintTop_toTopOf="@+id/button" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -78,6 +78,7 @@ class GradientBlurLayout : View {
             )
         ).setLocalMatrix(mMatrix)
         paint.maskFilter = BlurMaskFilter(blurRadius, BlurMaskFilter.Blur.NORMAL)
+        paint.setFlags(Paint.ANTI_ALIAS_FLAG)
     }
 
     override fun onDraw(canvas: Canvas?) {
