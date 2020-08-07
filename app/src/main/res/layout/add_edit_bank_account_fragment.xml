@@ -166,7 +166,7 @@
 				android:text="@string/Next"
 				app:gb_angle="45"
 				app:gb_endColor="@color/darkGreen"
-				app:gb_radius="24"
+				app:gb_radius="-1dp"
 				app:gb_startColor="@color/lightGreen"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"

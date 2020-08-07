@@ -86,8 +86,8 @@ class GradientBlurLayout : View {
         path.reset()
         path.addRoundRect(
             backgroundRectBlur,
-            radius,
-            radius,
+            if (radius < 0) mHeight / 2 else radius,
+            if (radius < 0) mHeight / 2 else radius,
             Path.Direction.CW
         )
         canvas!!.drawPath(path, paint)
