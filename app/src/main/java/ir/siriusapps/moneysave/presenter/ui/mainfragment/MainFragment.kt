@@ -24,7 +24,7 @@ class MainFragment constructor(
     ): View? {
         return MainFragmentBinding.inflate(layoutInflater, container, false).apply {
             lifecycleOwner = this@MainFragment.viewLifecycleOwner
-            button.setOnClickListener {
+            nextButton.setOnClickListener {
                 findNavController().navigate(R.id.action_mainFragment_to_addEditBankAccountFragment2)
             }
         }.root

@@ -11,4 +11,11 @@
 	<color name="lightGreen">#49E100</color>
 	<color name="darkGreen15">#2600B164</color>
 	<color name="lightGreen15">#2649E100</color>
+	<color name="color_cardBlack">#11161B</color>
+	<color name="color_yellow">#F8DD0F</color>
+	<color name="color_Green">#47E003</color>
+	<color name="color_blue">#00BDDF</color>
+	<color name="color_gray">#DADBDC</color>
+	<color name="color_purple">#6455A6</color>
+	<color name="color_pink">#EA4C89</color>
 </resources>

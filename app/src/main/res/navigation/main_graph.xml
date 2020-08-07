@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_graph"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/main_graph"
 		app:startDestination="@id/mainFragment">
 	
 	<fragment
@@ -14,5 +16,14 @@
 	<fragment
 			android:id="@+id/addEditBankAccountFragment2"
 			android:name="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment"
-			android:label="AddEditBankAccountFragment" />
+			android:label="AddEditBankAccountFragment" >
+		<action
+				android:id="@+id/action_addEditBankAccountFragment_to_addEditCardFragment"
+				app:destination="@id/addEditCardFragment" />
+	</fragment>
+	<fragment
+			android:id="@+id/addEditCardFragment"
+			android:name="ir.siriusapps.moneysave.presenter.ui.addEditCardFragment.AddEditCardFragment"
+			android:label="fragment_add_edit_card"
+			tools:layout="@layout/fragment_add_edit_card" />
 </navigation>
