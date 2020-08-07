@@ -47,7 +47,10 @@ class GradientButton : AppCompatButton {
                 startColor = getColor(R.styleable.GradientButton_gb_startColor, Color.BLACK)
                 endColor = getColor(R.styleable.GradientButton_gb_endColor, Color.WHITE)
                 angel = getColor(R.styleable.GradientButton_gb_angle, 45)
-                radius = getFloat(R.styleable.GradientButton_gb_radius, Utils.dipToPix(16F))
+                radius = getDimensionPixelSize(
+                    R.styleable.GradientButton_gb_radius,
+                    Utils.dipToPix(16)
+                ).toFloat()
             } finally {
                 recycle()
             }

@@ -29,7 +29,7 @@
 		<LinearLayout
 				android:id="@+id/addAccountLayout"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="w"
 				android:layout_marginTop="74dp"
 				android:background="@drawable/rounded_background"
 				android:gravity="center_horizontal"
@@ -38,7 +38,8 @@
 				android:paddingEnd="30dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent">
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
 			
 			<TextView
 					android:layout_width="wrap_content"
@@ -118,29 +119,36 @@
 					android:paddingStart="25dp"
 					android:text="@={ viewModel.cardNumber }"
 					tools:ignore="RtlSymmetry,TextFields" />
-			
-			<ir.siriusapps.moneysave.customView.GradientButton
-					android:id="@+id/button"
-					android:layout_width="match_parent"
-					android:layout_height="48dp"
-					android:layout_marginTop="50dp"
-					android:onClick="@{ ()-> viewModel.saveBankAccount() }"
-					android:text="@string/Next"
-					app:gb_angle="45"
-					app:gb_endColor="@color/darkGreen"
-					app:gb_startColor="@color/lightGreen"
-					app:gb_radius="16" />
-			
-			<ir.siriusapps.moneysave.customView.GradientBlurLayout
-					android:layout_width="match_parent"
-					android:layout_height="48dp"
-					android:layout_marginTop="50dp"
-					app:gbl_angle="45"
-					app:gbl_endColor="@color/lightGreen"
-					app:gbl_startColor="@color/darkGreen"
-					app:gbl_radius="16dp"
-					app:gbl_blurRadius="16dp"/>
-		
 		</LinearLayout>
+		
+		<ir.siriusapps.moneysave.customView.GradientButton
+				android:id="@+id/button"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:onClick="@{ ()-> viewModel.saveBankAccount() }"
+				android:text="@string/Next"
+				app:gb_angle="45"
+				app:gb_endColor="@color/darkGreen"
+				app:gb_radius="16dp"
+				app:gb_startColor="@color/lightGreen"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="parent" />
+				
+				<ir.siriusapps.moneysave.customView.GradientBlurLayout
+						android:id="@+id/GradientBlurLayout"
+						android:layout_width="match_parent"
+						android:layout_height="48dp"
+						app:gbl_angle="45"
+						app:gbl_blurRadius="25dp"
+						app:gbl_endColor="@color/lightGreen"
+						app:gbl_radius="15dp"
+						app:gbl_startColor="@color/darkGreen"
+						app:layout_constraintTop_toBottomOf="@+id/addAccountLayout"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="@+id/button"
+						app:layout_constraintVertical_bias="0.18" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

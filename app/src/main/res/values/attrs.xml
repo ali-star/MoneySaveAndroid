@@ -5,7 +5,7 @@
 		<attr name="gb_endColor" format="color" />
 		<attr name="gb_angle" format="integer" />
 		<attr name="gb_TypeFace" format="string" />
-		<attr name="gb_radius" format="float" />
+		<attr name="gb_radius" format="dimension" />
 	</declare-styleable>
 	
 	<declare-styleable name="GradientBlurLayout">
