@@ -14,7 +14,6 @@ class GradientButton : AppCompatButton {
     private var mWidth = 0f
     private var mHeight = 0f
     private lateinit var backgroundRect: RectF
-    private lateinit var backgroundRectBlur: RectF
     private val path = Path()
     private var startColor: Int = 0
     private var endColor: Int = 0
@@ -60,9 +59,9 @@ class GradientButton : AppCompatButton {
     private fun initView() {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
         mMatrix.reset()
+        background=null
         mMatrix.setRotate(angel.toFloat())
         backgroundRect = RectF()
-        backgroundRectBlur = RectF()
     }
 
 
