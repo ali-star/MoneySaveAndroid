@@ -12,7 +12,7 @@
 		<attr name="gbl_startColor" format="color" />
 		<attr name="gbl_endColor" format="color" />
 		<attr name="gbl_angle" format="integer" />
-		<attr name="gbl_blurRadius" format="float" />
-		<attr name="gbl_radius" format="float" />
+		<attr name="gbl_blurRadius" format="dimension" />
+		<attr name="gbl_radius" format="dimension" />
 	</declare-styleable>
 </resources>

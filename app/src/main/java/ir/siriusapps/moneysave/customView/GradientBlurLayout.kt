@@ -48,8 +48,8 @@ class GradientBlurLayout : View {
             startColor = typedArray.getColor(R.styleable.GradientBlurLayout_gbl_startColor, Color.BLACK)
             endColor = typedArray.getColor(R.styleable.GradientBlurLayout_gbl_endColor, Color.WHITE)
             angel = typedArray.getInt(R.styleable.GradientBlurLayout_gbl_angle, 45)
-            blurRadius = typedArray.getFloat(R.styleable.GradientBlurLayout_gbl_blurRadius, Utils.dipToPix(8F))
-            radius = typedArray.getFloat(R.styleable.GradientBlurLayout_gbl_radius, Utils.dipToPix(16F))
+            blurRadius = typedArray.getDimensionPixelSize(R.styleable.GradientBlurLayout_gbl_blurRadius, Utils.dipToPix(8)).toFloat()
+            radius = typedArray.getDimensionPixelSize(R.styleable.GradientBlurLayout_gbl_radius, Utils.dipToPix(16)).toFloat()
         } finally {
             typedArray.recycle()
         }
@@ -66,19 +66,18 @@ class GradientBlurLayout : View {
         super.onSizeChanged(w, h, oldw, oldh)
         mWidth = w.toFloat()
         mHeight = h.toFloat()
-        backgroundRectBlur.set(0F, 0F, mWidth, mHeight)
+        backgroundRectBlur.set(blurRadius, blurRadius, mWidth - blurRadius, mHeight - blurRadius)
         paint.setShader(
             LinearGradient(
-                0F,
-                0F,
-                mWidth,
-                mHeight,
+                blurRadius, blurRadius,
+                mWidth - blurRadius,
+                mHeight - blurRadius,
                 startColor,
                 endColor,
                 Shader.TileMode.CLAMP
             )
         ).setLocalMatrix(mMatrix)
-        paint.maskFilter = BlurMaskFilter(Utils.dipToPix(blurRadius), BlurMaskFilter.Blur.NORMAL)
+        paint.maskFilter = BlurMaskFilter(blurRadius, BlurMaskFilter.Blur.NORMAL)
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -86,8 +85,8 @@ class GradientBlurLayout : View {
         path.reset()
         path.addRoundRect(
             backgroundRectBlur,
-            Utils.dipToPix(radius),
-            Utils.dipToPix(radius),
+            radius,
+            radius,
             Path.Direction.CW
         )
         canvas!!.drawPath(path, paint)

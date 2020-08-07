@@ -138,8 +138,8 @@
 					app:gbl_angle="45"
 					app:gbl_endColor="@color/lightGreen"
 					app:gbl_startColor="@color/darkGreen"
-					app:gbl_radius="16"
-					app:gbl_blurRadius="200"/>
+					app:gbl_radius="16dp"
+					app:gbl_blurRadius="16dp"/>
 		
 		</LinearLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
