@@ -58,6 +58,7 @@ class GradientButton : AppCompatButton {
 
     private fun initView() {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
+        background = null
         mMatrix.reset()
         background = null
         mMatrix.setRotate(angel.toFloat())
