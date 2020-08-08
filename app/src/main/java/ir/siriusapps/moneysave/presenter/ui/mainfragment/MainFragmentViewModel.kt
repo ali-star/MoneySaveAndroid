@@ -1,19 +1,24 @@
 package ir.siriusapps.moneysave.presenter.ui.mainfragment
 
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
+import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
+import javax.inject.Inject
 
-class MainFragmentViewModel @AssistedInject constructor(
-    private val addBankAccount: AddBankAccount,
-    @Assisted private val savedStateHandle: SavedStateHandle
+class MainFragmentViewModel constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val addBankAccount: AddBankAccount
 ) : BaseViewModel() {
 
-    @AssistedInject.Factory
-    interface Factory {
-        fun create(savedStateHandle: SavedStateHandle): MainFragmentViewModel
-    }
 
+}
+
+class MainFragmentViewModelFactory @Inject constructor(private val addBankAccount: AddBankAccount) :
+    ViewModelAssistedFactory<MainFragmentViewModel> {
+    override fun create(savedStateHandle: SavedStateHandle): MainFragmentViewModel =
+        MainFragmentViewModel(savedStateHandle, addBankAccount)
 }

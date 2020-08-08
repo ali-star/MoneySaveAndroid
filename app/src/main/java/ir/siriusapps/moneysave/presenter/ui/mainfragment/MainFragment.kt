@@ -12,7 +12,7 @@ import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
 class MainFragment constructor(
-    val factory: MainFragmentViewModel.Factory
+    val factory: MainFragmentViewModelFactory
 ) : Fragment() {
 
     private val viewModel by viewModel { factory.create(it) }

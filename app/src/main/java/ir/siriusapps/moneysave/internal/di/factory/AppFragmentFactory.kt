@@ -1,16 +1,16 @@
-package ir.siriusapps.moneysave.presenter
+package ir.siriusapps.moneysave.internal.di.factory
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment
-import ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragmentViewModel
+import ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragmentViewModelFactory
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
-import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragmentViewModel
+import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragmentViewModelFactory
 import javax.inject.Inject
 
 class AppFragmentFactory @Inject constructor(
-    private val factoryMainFragment: MainFragmentViewModel.Factory,
-    private val factoryAddEditBankAccountFragment: AddEditBankAccountFragmentViewModel.Factory
+    private val factoryMainFragment: MainFragmentViewModelFactory,
+    private val factoryAddEditBankAccountFragment: AddEditBankAccountFragmentViewModelFactory
 ) : FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {

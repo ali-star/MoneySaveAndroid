@@ -12,7 +12,7 @@ import ir.siriusapps.moneysave.internal.di.module.*
 @Component(
     modules = [
         AndroidInjectionModule::class, ApplicationModule::class,
-        AppDataBaseModule::class, MainActivityModule::class, ViewModelModule::class,
+        AppDataBaseModule::class, MainActivityModule::class,
         RepositoryModule::class, SharedPreferencesModule::class, GsonModule::class,
         BindingModule::class, FragmentFactoryModule::class
     ]

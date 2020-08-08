@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import ir.siriusapps.moneysave.R
+import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class AddEditCardFragment @Inject constructor(addEditCardViewModel: AddEditCardViewModel) :
-    Fragment() {
+class AddEditCardFragment @Inject constructor(factory: AddEditCardViewModelFactory) : Fragment() {
+
+    private val viewModel by viewModel { factory.create(it) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
