@@ -1,6 +1,5 @@
 package ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope

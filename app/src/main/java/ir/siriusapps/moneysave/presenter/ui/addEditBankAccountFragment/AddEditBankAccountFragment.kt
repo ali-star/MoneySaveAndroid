@@ -12,7 +12,7 @@ import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.viewModel
 import javax.inject.Inject
 
-class AddEditBankAccountFragment constructor(
+class AddEditBankAccountFragment @Inject constructor(
     val factory: AddEditBankAccountFragmentViewModel.Factory
 ) : Fragment() {
 
