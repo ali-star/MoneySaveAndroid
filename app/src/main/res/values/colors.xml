@@ -18,4 +18,6 @@
 	<color name="color_gray">#DADBDC</color>
 	<color name="color_purple">#6455A6</color>
 	<color name="color_pink">#EA4C89</color>
+	<color name="color_orange">#EB782B</color>
+	<color name="color_yellow_button">#F8DD0F</color>
 </resources>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@drawable/header_color_background"
+		android:orientation="vertical"
 		tools:context=".presenter.ui.addEditCardFragment.AddEditCardFragment">
 	
 	<TextView
@@ -27,87 +28,115 @@
 			android:id="@+id/addAccountLayout"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_marginTop="64dp"
 			android:background="@drawable/rounded_background"
 			android:gravity="center_horizontal"
 			android:orientation="vertical"
 			android:paddingStart="30dp"
-			android:paddingEnd="30dp"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintHorizontal_bias="0.57"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="@+id/titleTextView">
+			android:paddingEnd="30dp">
 		
 		<TextView
 				android:id="@+id/textView"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
 				android:gravity="center"
-				android:text="@string/title_new_account"
+				android:text="@string/title_cardDesign"
 				android:textColor="@color/dark"
-				android:textSize="14sp"
+				android:textSize="17sp"
 				android:textStyle="bold"
-				app:layout_constraintBottom_toTopOf="@+id/cardView"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintVertical_bias="0.23000002" />
+				app:layout_constraintTop_toTopOf="parent" />
 		
 		<androidx.cardview.widget.CardView
 				android:id="@+id/cardView"
 				android:layout_width="320dp"
 				android:layout_height="166dp"
+				android:layout_marginTop="80dp"
 				app:cardBackgroundColor="@color/color_cardBlack"
 				app:cardCornerRadius="25dp"
-				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintLeft_toLeftOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintVertical_bias="0.18" />
+				app:layout_constraintTop_toTopOf="parent">
+			
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="180dp"
+					android:layout_marginTop="40dp"
+					android:src="@drawable/cb_wing" />
+			
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginTop="80dp"
+					android:text="@string/title_balance"
+					android:textColor="@color/grayText"
+					android:textSize="14sp"
+					android:textStyle="bold" />
+			
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginTop="100dp"
+					android:text="@string/title_price"
+					android:textColor="@color/color_white"
+					android:textSize="17sp"
+					android:textStyle="bold" />
+			
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginTop="120dp"
+					android:text="@string/title_cardNumber"
+					android:textColor="@color/color_white"
+					android:textSize="12sp"
+					android:textStyle="bold" />
+		</androidx.cardview.widget.CardView>
 		
 		<ir.siriusapps.moneysave.customView.GradientBlurLayout
 				android:id="@+id/gradientBlurLayout"
 				android:layout_width="320dp"
 				android:layout_height="166dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginEnd="20dp"
 				app:gbl_angle="45"
 				app:gbl_blurRadius="20dp"
 				app:gbl_endColor="@color/color_cardBlack"
 				app:gbl_radius="10dp"
 				app:gbl_startColor="@color/color_cardBlack"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.11"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="@+id/textView"
-				app:layout_constraintVertical_bias="0.19" />
+				app:layout_constraintEnd_toEndOf="@+id/cardView"
+				app:layout_constraintStart_toStartOf="@+id/cardView"
+				app:layout_constraintTop_toTopOf="@+id/cardView" />
 		
 		<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="260dp"
+				android:layout_marginEnd="280dp"
 				android:text="@string/title_color"
 				android:textColor="@color/grayText"
 				android:textSize="17sp"
 				android:textStyle="bold"
-				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.0"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintVertical_bias="0.43" />
+				app:layout_constraintTop_toTopOf="parent" />
 		
 		<LinearLayout
+				android:id="@+id/image_layout"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="45dp"
 				android:gravity="center"
 				android:orientation="horizontal"
-				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/gradientBlurLayout"
-				app:layout_constraintVertical_bias="0.16000003">
+				app:layout_constraintTop_toBottomOf="@+id/gradientBlurLayout">
 			
 			<ir.siriusapps.moneysave.customView.GradientButton
 					android:layout_width="28dp"
@@ -162,23 +191,84 @@
 		<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="350dp"
+				android:layout_marginEnd="280dp"
 				android:text="@string/title_design"
 				android:textColor="@color/grayText"
 				android:textSize="17sp"
 				android:textStyle="bold"
-				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.0"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintVertical_bias="0.6" />
+				app:layout_constraintTop_toTopOf="parent" />
+		
 		<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/gradientBlurLayout"
-				>
+				android:layout_marginTop="140dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/gradientBlurLayout">
 			
+			<ImageView
+					android:id="@+id/wingSmallImage"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="30dp"
+					android:src="@drawable/cb_wing_small" />
+			
+			<ImageView
+					android:id="@+id/birdSmallImage"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="30dp"
+					android:src="@drawable/cb_bird_small" />
+			
+			<ImageView
+					android:id="@+id/flowerSmallImage"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="30dp"
+					android:src="@drawable/cb_flower_small" />
+			
+			<ImageView
+					android:id="@+id/abstractSmallImage"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="30dp"
+					android:src="@drawable/cb_abstract_small" />
 		</LinearLayout>
+		
+		<ir.siriusapps.moneysave.customView.GradientButton
+				android:id="@+id/createButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="170dp"
+				android:gravity="center"
+				android:text="@string/action_create"
+				android:textColor="@color/color_white"
+				android:textSize="17sp"
+				android:textStyle="bold"
+				app:gb_angle="45"
+				app:gb_endColor="@color/color_orange"
+				app:gb_radius="-1dp"
+				app:gb_startColor="@color/color_yellow_button"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/image_layout"
+				/>
+		
+		<ir.siriusapps.moneysave.customView.GradientBlurLayout
+				android:layout_width="wrap_content"
+				android:layout_height="50dp"
+				android:layout_marginTop="30dp"
+				app:gbl_angle="45"
+				app:gbl_blurRadius="20dp"
+				app:gbl_endColor="@color/color_orange"
+				app:gbl_radius="-1dp"
+				app:gbl_startColor="@color/color_yellow_button"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/createButton" />
+	
 	</androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
