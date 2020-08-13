@@ -7,8 +7,10 @@ import ir.siriusapps.moneysave.domain.repository.TransactionRepository
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.data.repository.BankAccountRepositoryImp
 import ir.siriusapps.moneysave.data.repository.BankRepositoryImp
+import ir.siriusapps.moneysave.data.repository.CardRepositoryImp
 import ir.siriusapps.moneysave.data.repository.TransactionRepositoryImp
 import ir.siriusapps.moneysave.domain.repository.BankRepository
+import ir.siriusapps.moneysave.domain.repository.CardRepository
 
 @Module
 class RepositoryModule {
@@ -27,5 +29,10 @@ class RepositoryModule {
     @ApplicationScope
     fun provideBankRepository(bankRepositoryImp: BankRepositoryImp): BankRepository =
         bankRepositoryImp
+
+    @Provides
+    @ApplicationScope
+    fun provideCardRepository(cardRepositoryImp: CardRepositoryImp): CardRepository =
+        cardRepositoryImp
 
 }

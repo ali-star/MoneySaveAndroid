@@ -13,27 +13,28 @@ import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
 import kotlin.reflect.KClass
 
 @Module
-abstract class FragmentModule {
+interface FragmentModule {
 
     @Binds
-    abstract fun fragmentFactoryProvider(customFragmentFactory: CustomFragmentFactory): FragmentFactory
+    fun fragmentFactoryProvider(customFragmentFactory: CustomFragmentFactory): FragmentFactory
 
     @Binds
     @IntoMap
     @FragmentKey(AddEditCardFragment::class)
-    abstract fun addEditCardFragmentProvider(addEditCardFragment: AddEditCardFragment): AddEditCardFragment
+    fun addEditCardFragmentProvider(addEditCardFragment: AddEditCardFragment): Fragment
 
     @Binds
     @IntoMap
     @FragmentKey(AddEditBankAccountFragment::class)
-    abstract fun addEditCardFragmentProvider(addEditBankAccountFragment: AddEditBankAccountFragment): AddEditBankAccountFragment
+    fun addEditBankAccountFragmentProvider(addEditBankAccountFragment: AddEditBankAccountFragment): Fragment
 
     @Binds
     @IntoMap
     @FragmentKey(MainFragment::class)
-    abstract fun mainFragmentProvider(mainFragment: MainFragment): MainFragment
+    fun mainFragmentProvider(mainFragment: MainFragment): Fragment
 
 }
 
 @MapKey
-annotation class FragmentKey(val clazz: KClass<out Fragment>)
+annotation class FragmentKey(val clazz : KClass<out Fragment>)
+
