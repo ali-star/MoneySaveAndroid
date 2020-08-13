@@ -59,10 +59,8 @@ dependencies {
     val daggerVersion = "2.28"
     implementation("com.google.dagger:dagger-android:$daggerVersion")
     implementation("com.google.dagger:dagger-android-support:$daggerVersion")
-    compileOnly("com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2")
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
     kapt("com.google.dagger:dagger-android-processor:$daggerVersion")
-    kapt("com.squareup.inject:assisted-inject-processor-dagger2:0.5.2")
 
 
     // Navigation component dependencies
