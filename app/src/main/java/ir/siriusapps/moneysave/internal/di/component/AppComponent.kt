@@ -14,7 +14,7 @@ import ir.siriusapps.moneysave.internal.di.module.*
         AndroidInjectionModule::class, ApplicationModule::class,
         AppDataBaseModule::class, MainActivityModule::class,
         RepositoryModule::class, SharedPreferencesModule::class, GsonModule::class,
-        BindingModule::class, FragmentFactoryModule::class
+        BindingModule::class, FragmentModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {

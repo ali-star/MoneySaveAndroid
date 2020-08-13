@@ -2,8 +2,6 @@ package ir.siriusapps.moneysave.presenter.ui.mainfragment
 
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
-import com.squareup.inject.assisted.Assisted
-import com.squareup.inject.assisted.AssistedInject
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
