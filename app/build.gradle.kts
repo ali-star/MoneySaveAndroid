@@ -53,7 +53,8 @@ dependencies {
     implementation("androidx.core:core-ktx:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("com.google.code.gson:gson:2.8.6")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
+
 
     // dagger
     val daggerVersion = "2.28"

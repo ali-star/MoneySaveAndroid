@@ -17,4 +17,5 @@
 		<attr name="gbl_radius" format="dimension" />
 		<attr name="gbl_color" format="color" />
 	</declare-styleable>
+
 </resources>
