@@ -4,18 +4,19 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import ir.siriusapps.moneysave.R
 
 
 
-class CreditCardView : ConstraintLayout {
+class CreditCardView : FrameLayout {
 
     private var mWith: Float = 0F
     private var mHeight: Float = 0F
@@ -32,15 +33,15 @@ class CreditCardView : ConstraintLayout {
             field = value
             value?.let { cardView?.setBackgroundColor(it) }
         }
-    var backgroundImage: Int? = null
+    var backgroundImage: Drawable? = null
         set(value) {
             field = value
-            value?.let { backgroundImageView.setBackgroundColor(it) }
+            value?.let { backgroundImageView.setImageDrawable(it) }
         }
-    var iconImage: Int? = null
+    var iconImage: Drawable? = null
         set(value) {
             field = value
-            value?.let { iconImageView.setImageResource(it) }
+            value?.let { iconImageView.setImageDrawable(it) }
         }
     var cardNumber: String? = null
         set(value) {
@@ -90,13 +91,13 @@ class CreditCardView : ConstraintLayout {
         balanceTitleTextVew = findViewById(R.id.balanceTitleTextView)
         balanceTextView = findViewById(R.id.balanceTextView)
         cardNumberTextView = findViewById(R.id.cardNumberTextView)
-        cardView = findViewById(R.id.cardView)
+        cardView = findViewById(R.id.cerditCardView)
         //////////////////////////////////
         iconImage?.let {
-            iconImageView.setImageResource(iconImage!!)
+            iconImageView.setImageDrawable(iconImage!!)
         }
         backgroundImage?.let {
-            backgroundImageView.setImageResource(iconImage!!)
+            backgroundImageView.setImageDrawable(iconImage!!)
         }
         balanceTitle?.let {
             balanceTitleTextVew.setText(it)

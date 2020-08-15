@@ -6,8 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
+import ir.siriusapps.moneysave.presenter.ui.EventObserver
 import javax.inject.Inject
 
 class AddEditBankAccountFragment @Inject constructor(
@@ -28,10 +32,14 @@ class AddEditBankAccountFragment @Inject constructor(
         binding = AddEditBankAccountFragmentBinding.inflate(inflater, container, false).apply {
             viewModel = this@AddEditBankAccountFragment.viewModel
             lifecycleOwner = this@AddEditBankAccountFragment.viewLifecycleOwner
-            nextButton.setOnClickListener {
-
-            }
         }
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.navigationLiveData.observe(viewLifecycleOwner, EventObserver {
+            findNavController(requireView()).navigate(R.id.action_addEditBankAccountFragment_to_addEditCardFragment)
+        })
     }
 }

@@ -1,67 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		xmlns:app="http://schemas.android.com/apk/res-auto">
-	<androidx.cardview.widget.CardView
-			android:id="@+id/cardView"
-			android:layout_width="320dp"
-			android:layout_height="166dp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/cerditCardView"
+		android:layout_width="320dp"
+		android:layout_height="166dp"
+		app:cardBackgroundColor="@color/color_cardBlack"
+		app:cardCornerRadius="25dp">
+	
+	<ImageView
+			android:id="@+id/backgroundImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="180dp"
+			android:layout_marginTop="40dp"
+			android:src="@drawable/cb_wing" />
+	
+	<ImageView
+			android:id="@+id/iconImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="280dp"
+			android:layout_marginTop="140dp" />
+	
+	<TextView
+			android:id="@+id/balanceTitleTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
 			android:layout_marginTop="80dp"
-			app:cardBackgroundColor="@color/color_cardBlack"
-			app:cardCornerRadius="25dp"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintLeft_toLeftOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent">
-		
-		<ImageView
-				android:id="@+id/backgroundImageView"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="180dp"
-				android:layout_marginTop="40dp"
-				android:src="@drawable/cb_wing" />
-		<ImageView
-				android:id="@+id/iconImageView"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="280dp"
-				android:layout_marginTop="140dp"/>
-		
-		<TextView
-				android:id="@+id/balanceTitleTextView"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="20dp"
-				android:layout_marginTop="80dp"
-				android:text="@string/title_balance"
-				android:textColor="@color/white_30"
-				android:textSize="14sp"
-				android:textStyle="bold" />
-		
-		<TextView
-				android:id="@+id/balanceTextView"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="20dp"
-				android:layout_marginTop="100dp"
-				android:text="@string/title_price"
-				android:textColor="@color/white"
-				android:textSize="17sp"
-				android:textStyle="bold" />
-		
-		<TextView
-				android:id="@+id/cardNumberTextView"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="20dp"
-				android:layout_marginTop="120dp"
-				android:text="@string/title_cardNumber"
-				android:textColor="@color/white"
-				android:textSize="12sp"
-				android:textStyle="bold" />
-	</androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+			android:text="@string/title_balance"
+			android:textColor="@color/white_30"
+			android:textSize="14sp"
+			android:textStyle="bold" />
+	
+	<TextView
+			android:id="@+id/balanceTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="100dp"
+			android:text="@string/balance"
+			android:textColor="@color/white"
+			android:textSize="17sp"
+			android:textStyle="bold" />
+	
+	<TextView
+			android:id="@+id/cardNumberTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="120dp"
+			android:text="@string/title_cardNumber"
+			android:textColor="@color/white"
+			android:textSize="12sp"
+			android:textStyle="bold" />
+</androidx.cardview.widget.CardView>
