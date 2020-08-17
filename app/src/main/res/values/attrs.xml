@@ -17,5 +17,8 @@
 		<attr name="gbl_radius" format="dimension" />
 		<attr name="gbl_color" format="color" />
 	</declare-styleable>
-
+	<declare-styleable name="Circle">
+		<attr name="cr_storkColor" format="color" />
+		<attr name="cr_storkWidth" format="dimension" />
+	</declare-styleable>
 </resources>

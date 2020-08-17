@@ -7,6 +7,16 @@
 	<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
+		<ir.siriusapps.moneysave.customView.Circle
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				app:cr_storkColor="@color/lightGreen"
+				app:cr_storkWidth="5dp"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				android:layout_marginTop="80dp"
+				/>
 		
 		<Button
 				android:id="@+id/nextButton"
