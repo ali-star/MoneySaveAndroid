@@ -17,8 +17,17 @@
 		<attr name="gbl_radius" format="dimension" />
 		<attr name="gbl_color" format="color" />
 	</declare-styleable>
+	
 	<declare-styleable name="Circle">
 		<attr name="cr_storkColor" format="color" />
 		<attr name="cr_storkWidth" format="dimension" />
 	</declare-styleable>
+	
+	<declare-styleable name="CircleRec">
+		<attr name="rcr_strokColor" format="color" />
+		<attr name="rcr_strokWidth" format="dimension" />
+		<attr name="rcr_StartAngel" format="float" />
+		<attr name="rcr_endAngel" format="float" />
+	</declare-styleable>
+
 </resources>

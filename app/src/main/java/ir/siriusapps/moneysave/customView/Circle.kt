@@ -50,6 +50,7 @@ class Circle : View {
         paint.color = strokeColor
         paint.strokeWidth = strokeWidth.toFloat()
         paint.style = Paint.Style.STROKE
+        paint.isAntiAlias=true
         canvas!!.drawCircle(
             width / 2.toFloat(),
             height / 2.toFloat(), radius.toFloat(), paint
