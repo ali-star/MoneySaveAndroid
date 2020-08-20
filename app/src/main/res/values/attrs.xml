@@ -18,16 +18,12 @@
 		<attr name="gbl_color" format="color" />
 	</declare-styleable>
 	
-	<declare-styleable name="Circle">
+	<declare-styleable name="CircleProgress">
 		<attr name="cr_storkColor" format="color" />
 		<attr name="cr_storkWidth" format="dimension" />
-	</declare-styleable>
-	
-	<declare-styleable name="CircleRec">
-		<attr name="rcr_strokColor" format="color" />
-		<attr name="rcr_strokWidth" format="dimension" />
-		<attr name="rcr_StartAngel" format="float" />
-		<attr name="rcr_endAngel" format="float" />
+		<attr name="cr_progressStrokeColor" format="color" />
+		<attr name="cr_progressStrokeWidth" format="dimension" />
+		<attr name="cr_progress" format="integer"/>
 	</declare-styleable>
 
 </resources>

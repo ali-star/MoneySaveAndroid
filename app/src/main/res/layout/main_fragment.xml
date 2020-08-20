@@ -10,24 +10,14 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 		
-		<ir.siriusapps.moneysave.customView.Circle
+		<ir.siriusapps.moneysave.customView.CircleProgress
 				android:layout_width="100dp"
 				android:layout_height="100dp"
 				android:layout_marginTop="80dp"
 				app:cr_storkColor="@color/lightGreen"
 				app:cr_storkWidth="5dp"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-		
-		<ir.siriusapps.moneysave.customView.CircleRec
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:layout_marginTop="80dp"
-				app:rcr_endAngel="30"
-				app:rcr_StartAngel="-90"
-				app:rcr_strokColor="@color/color_yellow"
-				app:rcr_strokWidth="5dp"
+				app:cr_progressStrokeWidth="5dp"
+				app:cr_progress="40"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
