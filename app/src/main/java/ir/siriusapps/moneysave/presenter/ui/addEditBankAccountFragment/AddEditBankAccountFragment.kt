@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import ir.siriusapps.moneysave.R
@@ -38,8 +40,23 @@ class AddEditBankAccountFragment @Inject constructor(
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.navigationLiveData.observe(viewLifecycleOwner, EventObserver {
-            findNavController(requireView()).navigate(R.id.action_addEditBankAccountFragment_to_addEditCardFragment)
+        viewModel.navigationLiveData.observe(viewLifecycleOwner, Observer {
+            if (!viewModel.accountName.value.isNullOrEmpty() ||
+                !viewModel.accountNumber.value.isNullOrEmpty() ||
+                !viewModel.cardNumber.value.isNullOrEmpty()
+            ) {
+                val bundle = Bundle()
+                bundle.putString("cardNumber", viewModel.cardNumber.value)
+                bundle.putString("accountNumber", viewModel.accountNumber.value)
+                bundle.putString("accountName", viewModel.accountName.value)
+                findNavController(requireView()).navigate(
+                    R.id.action_addEditBankAccountFragment_to_addEditCardFragment,
+                    bundle
+                )
+            } else {
+                Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_LONG).show()
+            }
         })
+
     }
 }

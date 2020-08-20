@@ -25,5 +25,15 @@
 			android:id="@+id/addEditCardFragment"
 			android:name="ir.siriusapps.moneysave.presenter.ui.addEditCardFragment.AddEditCardFragment"
 			android:label="fragment_add_edit_card"
-			tools:layout="@layout/fragment_add_edit_card" />
+			tools:layout="@layout/fragment_add_edit_card" >
+		<argument
+				android:name="accountName"
+				app:argType="string" />
+		<argument
+				android:name="accountNumber"
+				app:argType="string" />
+		<argument
+				android:name="cardNumber"
+				app:argType="string" />
+	</fragment>
 </navigation>

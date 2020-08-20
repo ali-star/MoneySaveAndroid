@@ -34,6 +34,7 @@ class AddEditCardFragment @Inject constructor(factory: AddEditCardViewModelFacto
             cardView.balance = resources.getString(R.string.balance)
             cardView.backgroundImage =
                 ContextCompat.getDrawable(requireContext(), R.drawable.cb_wing)
+
         }
         return binding.root
     }

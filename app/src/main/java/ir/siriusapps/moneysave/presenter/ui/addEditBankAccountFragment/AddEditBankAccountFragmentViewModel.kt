@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
+import ir.siriusapps.moneysave.entity.Account
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import ir.siriusapps.moneysave.presenter.ui.Event
@@ -24,7 +25,6 @@ class AddEditBankAccountFragmentViewModel constructor(
     val navigationLiveData: LiveData<Event<Unit>> = _navigationLiveData
     fun saveBankAccount() {
         viewModelScope.launch {
-            addBankAccount.execute(accountName.value!!, accountNumber.value!!, cardNumber.value!!)
             _navigationLiveData.value = Event(Unit)
         }
     }
