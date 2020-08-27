@@ -1,14 +1,13 @@
-import java.net.URI
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
     repositories {
-        maven (url = "https://maven.google.com/")
+        google()
         jcenter()
+
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.0.1")
+        classpath("com.android.tools.build:gradle:4.0.0")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72")
         classpath("com.google.gms:google-services:4.3.3")
         classpath("com.google.firebase:firebase-crashlytics-gradle:2.2.0")
@@ -21,8 +20,9 @@ buildscript {
 
 allprojects {
     repositories {
-        maven (url = "https://maven.google.com/")
+        google()
         jcenter()
+
     }
 }
 
