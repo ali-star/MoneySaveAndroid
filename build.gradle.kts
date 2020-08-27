@@ -5,7 +5,6 @@ import java.net.URI
 buildscript {
     repositories {
         maven (url = "https://maven.google.com/")
-        // google()
         jcenter()
     }
     dependencies {
@@ -23,9 +22,7 @@ buildscript {
 allprojects {
     repositories {
         maven (url = "https://maven.google.com/")
-        // google()
         jcenter()
-
     }
 }
 
