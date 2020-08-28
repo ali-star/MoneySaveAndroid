@@ -45,15 +45,15 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
-    implementation("androidx.core:core-ktx:1.3.0")
-    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("javax.annotation:jsr250-api:1.0")
     implementation("javax.inject:javax.inject:1")
     implementation("com.google.code.gson:gson:2.8.6")
 
     testImplementation("junit:junit:4.13")
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
     // room
     val room_version = "2.2.5"
