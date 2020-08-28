@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import ir.siriusapps.moneysave.data.entity.EntityModel
 import ir.siriusapps.moneysave.data.entity.mapper.Mapper
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.TransactionType
 import java.util.*
 import javax.inject.Inject
 

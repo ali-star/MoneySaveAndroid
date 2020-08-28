@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ir.siriusapps.moneysave.domain.entity.*
-import ir.siriusapps.moneysave.domain.entity.converter.CurrencyRoomTypeConverter
+import ir.siriusapps.moneysave.data.entity.converter.CurrencyRoomTypeConverter
 
 @Database(
     entities = [BankEntity::class, BankAccountEntity::class, CardEntity::class, TransactionEntity::class],

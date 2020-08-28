@@ -3,7 +3,7 @@ package ir.siriusapps.moneysave.entity
 import androidx.room.Entity
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
 import ir.siriusapps.moneysave.domain.entity.Transaction
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.TransactionType
+import ir.siriusapps.moneysave.domain.entity.TransactionType
 import java.util.*
 import javax.inject.Inject
 

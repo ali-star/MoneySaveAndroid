@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import ir.siriusapps.moneysave.data.entity.EntityModel
 import ir.siriusapps.moneysave.data.entity.mapper.Mapper
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
 import javax.inject.Inject
 
 @Entity(tableName = "BankAccount")
@@ -26,13 +25,13 @@ data class BankAccountEntity(
     @ColumnInfo(name = "balance")
     val balance: Double,
     @ColumnInfo(name = "currency")
-    val currency: Currency
+    val currencyType: CurrencyType
 
 
 ) : EntityModel() {
     constructor() : this(
         null, "", 0L, 0L, "", "", 0.0,
-        Currency.IRR
+        CurrencyType.IRR
     )
 
 }
@@ -48,7 +47,7 @@ class BankAccountEntityMapper @Inject constructor() : Mapper<BankAccount, BankAc
             modelEntity.name,
             modelEntity.accountNumber,
             modelEntity.balance,
-            modelEntity.currency
+            modelEntity.currencyType
         )
 
 
@@ -61,7 +60,7 @@ class BankAccountEntityMapper @Inject constructor() : Mapper<BankAccount, BankAc
             model.name,
             model.accountNumber,
             model.balance,
-            model.currency
+            model.currencyType
         )
 }
 

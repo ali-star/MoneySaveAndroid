@@ -1,7 +1,5 @@
 package ir.siriusapps.moneysave.domain.entity
 
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
-
 
 data class BankAccount(
 
@@ -12,7 +10,7 @@ data class BankAccount(
     val name: String,
     val accountNumber: String,
     val balance: Double,
-    val currency: Currency
+    val currencyType: CurrencyType
 
 ) : Model()
 

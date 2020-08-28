@@ -5,7 +5,7 @@ import androidx.test.InstrumentationRegistry
 import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
 import ir.siriusapps.moneysave.data.repository.source.local.RoomBankAccountDao
 import ir.siriusapps.moneysave.domain.entity.BankAccountEntity
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
+import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -35,7 +35,7 @@ class RoomBankEntityAccountTest {
             "",
             "",
             0.0,
-            Currency.IRR
+            CurrencyType.IRR
         )
         val bankAccount2 = BankAccountEntity(
             null,
@@ -45,7 +45,7 @@ class RoomBankEntityAccountTest {
             "",
             "",
             0.0,
-            Currency.IRR
+            CurrencyType.IRR
         )
         val bankAccount3 = BankAccountEntity(
             null,
@@ -55,7 +55,7 @@ class RoomBankEntityAccountTest {
             "",
             "",
             0.0,
-            Currency.IRR
+            CurrencyType.IRR
         )
 
         val list = ArrayList<BankAccountEntity>()

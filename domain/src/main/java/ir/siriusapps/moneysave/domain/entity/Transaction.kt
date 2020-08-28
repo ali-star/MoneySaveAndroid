@@ -1,7 +1,6 @@
 package ir.siriusapps.moneysave.domain.entity
 
 import androidx.room.Entity
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.TransactionType
 import java.util.*
 
 @Entity(tableName = "Transactions")

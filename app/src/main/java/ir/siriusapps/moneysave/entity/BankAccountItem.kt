@@ -2,7 +2,7 @@ package ir.siriusapps.moneysave.entity
 
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
 import ir.siriusapps.moneysave.domain.entity.BankAccount
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
+import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import javax.inject.Inject
 
 
@@ -15,7 +15,7 @@ data class BankAccountItem(
     var name: String,
     var accountNumber: String,
     var balance: Double,
-    var currency: Currency
+    var currencyType: CurrencyType
 
 ) : Item()
 
@@ -30,7 +30,7 @@ class BankAccountItemMapper @Inject constructor(): ItemMapper<BankAccount, BankA
             itemModel.name,
             itemModel.accountNumber,
             itemModel.balance,
-            itemModel.currency
+            itemModel.currencyType
         )
 
 
@@ -42,7 +42,7 @@ class BankAccountItemMapper @Inject constructor(): ItemMapper<BankAccount, BankA
         model.name,
         model.accountNumber,
         model.balance,
-        model.currency
+        model.currencyType
     )
 
 }

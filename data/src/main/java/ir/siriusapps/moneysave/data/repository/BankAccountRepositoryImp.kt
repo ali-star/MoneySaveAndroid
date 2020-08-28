@@ -6,7 +6,7 @@ import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import ir.siriusapps.moneysave.domain.entity.BankAccount
 import ir.siriusapps.moneysave.domain.entity.BankAccountEntity
 import ir.siriusapps.moneysave.domain.entity.BankAccountEntityMapper
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
+import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -32,7 +32,8 @@ class BankAccountRepositoryImp @Inject constructor(
 
     override suspend fun add(accountName: String, accountNumber: String, cardNumber: String) =
         withContext(Dispatchers.IO) {
-            val bankAccountEntity=BankAccountEntity(null,"",0,0,accountName,accountNumber,0.0,Currency.IRT)
+            val bankAccountEntity=BankAccountEntity(null,"",0,0,accountName,accountNumber,0.0,
+                CurrencyType.IRT)
             moneySaveDao.insertBankAccount(bankAccountEntity)
         }
 

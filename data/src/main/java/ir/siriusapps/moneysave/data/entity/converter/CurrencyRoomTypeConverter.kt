@@ -1,13 +1,13 @@
-package ir.siriusapps.moneysave.domain.entity.converter
+package ir.siriusapps.moneysave.data.entity.converter
 
 import androidx.room.TypeConverter
-import ir.siriusapps.moneysave.domain.entity.TypeEnum.Currency
+import ir.siriusapps.moneysave.domain.entity.CurrencyType
 
 class CurrencyRoomTypeConverter {
 
     @TypeConverter
-    fun currencyToString(currency: Currency): String = currency.name
+    fun currencyToString(currencyType: CurrencyType): String = currencyType.name
 
     @TypeConverter
-    fun stringToCurrency(value: String): Currency = Currency.get(value)
+    fun stringToCurrency(value: String): CurrencyType = CurrencyType.get(value)
 }
