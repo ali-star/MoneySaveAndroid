@@ -35,5 +35,8 @@
 		<argument
 				android:name="cardNumber"
 				app:argType="string" />
+		<action
+				android:id="@+id/action_addEditCardFragment_to_mainFragment"
+				app:destination="@id/mainFragment" />
 	</fragment>
 </navigation>

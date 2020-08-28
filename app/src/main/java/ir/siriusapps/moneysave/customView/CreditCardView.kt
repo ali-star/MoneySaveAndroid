@@ -64,7 +64,6 @@ class CreditCardView : FrameLayout {
 
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         init()
-        initAttribute(attributeSet)
     }
 
     constructor(context: Context, attributeSet: AttributeSet, defStyle: Int) : super(
@@ -73,7 +72,6 @@ class CreditCardView : FrameLayout {
         defStyle
     ) {
         init()
-        initAttribute(attributeSet)
     }
 
     private fun init() {
@@ -107,7 +105,4 @@ class CreditCardView : FrameLayout {
         }
     }
 
-    fun initAttribute(attributeSet: AttributeSet) {
-
-    }
 }

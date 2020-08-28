@@ -142,7 +142,7 @@
 						app:gb_radius="-1dp" />
 				
 				<ir.siriusapps.moneysave.customView.GradientButton
-						android:id="@+id/orangeButton"
+						android:id="@+id/purpleButton"
 						android:layout_width="28dp"
 						android:layout_height="28dp"
 						android:layout_marginEnd="16dp"

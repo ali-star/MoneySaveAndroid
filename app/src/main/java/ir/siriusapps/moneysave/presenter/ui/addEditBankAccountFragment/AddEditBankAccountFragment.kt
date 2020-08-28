@@ -8,17 +8,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
-import ir.siriusapps.moneysave.presenter.ui.EventObserver
+import kotlinx.android.synthetic.main.fragment_add_edit_card.*
+import kotlinx.android.synthetic.main.fragment_add_edit_card.view.*
 import javax.inject.Inject
 
 class AddEditBankAccountFragment @Inject constructor(
     val factory: AddEditBankAccountFragmentViewModelFactory
-) : Fragment() {
+) : Fragment(){
 
     private val viewModel: AddEditBankAccountFragmentViewModel by viewModels {
         GenericSavedStateViewModelFactory(factory, this)
@@ -59,4 +59,6 @@ class AddEditBankAccountFragment @Inject constructor(
         })
 
     }
+
+
 }
