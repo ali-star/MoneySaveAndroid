@@ -12,6 +12,7 @@ import androidx.navigation.Navigation.findNavController
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
+import ir.siriusapps.moneysave.presenter.ui.EventObserver
 import kotlinx.android.synthetic.main.fragment_add_edit_card.*
 import kotlinx.android.synthetic.main.fragment_add_edit_card.view.*
 import javax.inject.Inject
@@ -40,7 +41,7 @@ class AddEditBankAccountFragment @Inject constructor(
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.navigationLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.navigationLiveData.observe(viewLifecycleOwner, EventObserver {
             if (!viewModel.accountName.value.isNullOrEmpty() ||
                 !viewModel.accountNumber.value.isNullOrEmpty() ||
                 !viewModel.cardNumber.value.isNullOrEmpty()
