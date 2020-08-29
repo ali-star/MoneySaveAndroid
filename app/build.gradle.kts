@@ -50,9 +50,9 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.core:core-ktx:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.core:core-ktx:1.3.0")
+    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("com.google.code.gson:gson:2.8.6")
 
 
@@ -72,8 +72,8 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:$navigation_component_version")
 
     implementation("androidx.recyclerview:recyclerview:1.1.0")
-    implementation("com.google.firebase:firebase-analytics:17.5.0")
-    implementation("com.google.firebase:firebase-crashlytics:17.2.1")
+    implementation("com.google.firebase:firebase-analytics:17.4.3")
+    implementation("com.google.firebase:firebase-crashlytics:17.1.0")
 
     implementation(project(":data"))
     implementation(project(":domain"))
@@ -83,10 +83,10 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-library:1.3")
 
     //AndroidTest
-    androidTestImplementation("androidx.test:core:1.3.0")
+    androidTestImplementation("androidx.test:core:1.2.0")
     androidTestImplementation("org.mockito:mockito-core:3.1.0")
-    androidTestImplementation("androidx.test:runner:1.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation("androidx.test:runner:1.2.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("org.powermock:powermock:1.6.5")
     androidTestImplementation("android.arch.core:core-testing:1.1.1")
