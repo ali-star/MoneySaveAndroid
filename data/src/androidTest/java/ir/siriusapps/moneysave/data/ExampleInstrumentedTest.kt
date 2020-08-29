@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ir.irsiusapps.data.test", appContext.packageName)
+        assertEquals("ir.siriusapps.moneysave.data.test", appContext.packageName)
     }
 }
