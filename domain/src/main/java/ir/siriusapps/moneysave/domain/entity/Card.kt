@@ -1,10 +1,6 @@
 package ir.siriusapps.moneysave.domain.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "Card")
 open class Card(
 
     val localId: Long? = null,

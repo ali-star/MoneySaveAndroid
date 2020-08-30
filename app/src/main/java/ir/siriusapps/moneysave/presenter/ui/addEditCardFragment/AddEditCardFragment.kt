@@ -32,12 +32,11 @@ class AddEditCardFragment @Inject constructor(factory: AddEditCardViewModelFacto
     ): View? {
         binding = FragmentAddEditCardBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@AddEditCardFragment.viewLifecycleOwner
-          //  cardView.cardColor = ContextCompat.getColor(requireContext(), R.color.color_cardBlack)
+          //cardView.cardColor = ContextCompat.getColor(requireContext(), R.color.color_cardBlack)
             cardView.balanceTitle = resources.getString(R.string.title_balance)
             cardView.cardNumber = resources.getString(R.string.title_cardNumber)
             cardView.balance = resources.getString(R.string.balance)
-            cardView.backgroundImage =
-                ContextCompat.getDrawable(requireContext(), R.drawable.cb_wing)
+            cardView.backgroundImage = ContextCompat.getDrawable(requireContext(), R.drawable.cb_wing)
 
             blackButton.setOnClickListener {cardView.cardColor = ContextCompat.getColor(requireContext(),R.color.color_black) }
             yellowButton.setOnClickListener{cardView.cardColor = ContextCompat.getColor(requireContext(),R.color.color_yellow)}

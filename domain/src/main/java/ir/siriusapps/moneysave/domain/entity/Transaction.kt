@@ -1,9 +1,8 @@
 package ir.siriusapps.moneysave.domain.entity
 
-import androidx.room.Entity
 import java.util.*
 
-@Entity(tableName = "Transactions")
+
 open class Transaction(
 
     var localId: Long? = null,
