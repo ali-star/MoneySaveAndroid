@@ -44,7 +44,7 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.0")
     implementation("androidx.core:core-ktx:1.3.1")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("javax.annotation:jsr250-api:1.0")
@@ -61,7 +61,7 @@ dependencies {
     api("androidx.room:room-ktx:$room_version")
     api("androidx.room:room-runtime:$room_version")
 
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
 
     api("com.github.tony19:named-regexp:0.2.5")
