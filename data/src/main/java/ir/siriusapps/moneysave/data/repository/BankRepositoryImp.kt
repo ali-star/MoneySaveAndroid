@@ -40,6 +40,11 @@ class BankRepositoryImp @Inject constructor(
         }
     }
 
+    override suspend fun getBank(preCardNumber: String): Bank? = withContext(ioDispatcher) {
+        val bank = moneySaveDao.getBank(preCardNumber) ?: return@withContext null
+        bankEntityMapper.mapToDomain(bank)
+    }
+
     override suspend fun getAllBanks(): List<Bank> = withContext(ioDispatcher) {
         return@withContext moneySaveDao.getBanks().map {
             bankEntityMapper.mapToDomain(it)

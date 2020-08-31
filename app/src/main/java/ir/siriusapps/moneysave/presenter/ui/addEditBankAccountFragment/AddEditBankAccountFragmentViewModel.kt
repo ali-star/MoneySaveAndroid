@@ -4,67 +4,61 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import ir.siriusapps.moneysave.data.repository.BankRepositoryImp
+import ir.siriusapps.moneysave.domain.entity.BankEntityMapper
+import ir.siriusapps.moneysave.domain.useCase.bank.GetBank
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
+import ir.siriusapps.moneysave.entity.BankItem
+import ir.siriusapps.moneysave.entity.BankItemMapper
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import ir.siriusapps.moneysave.presenter.ui.Event
 import ir.siriusapps.moneysave.presenter.ui.appEnum.BankName
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AddEditBankAccountFragmentViewModel constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val addBankAccount: AddBankAccount
-
+    private val addBankAccount: AddBankAccount,
+    private val getBank: GetBank,
+    private val bankItemMapper: BankItemMapper
 ) : BaseViewModel() {
 
     val accountName = MutableLiveData<String>()
     val accountNumber = MutableLiveData<String>()
     val cardNumber = MutableLiveData<String>()
-    private val _navigationLiveData = MutableLiveData<Event<BankName>>()
-    val navigationLiveData: LiveData<Event<BankName>> = _navigationLiveData
+    private val _navigationLiveData = MutableLiveData<Event<BankItem>>()
+    val navigationLiveData: LiveData<Event<BankItem>> = _navigationLiveData
+
     fun saveBankAccount() {
+        bankDetection(cardNumber.value?.subSequence(0, 6).toString())
+    }
+
+    private fun bankDetection(preCardNumber: String) {
         viewModelScope.launch {
-            if (checkField()) _navigationLiveData.value = Event(bankDetection())
+            if (getBank.getBank(preCardNumber) != null)
+                _navigationLiveData.value = Event(bankItemMapper.mapToApp(getBank.getBank(preCardNumber)!!))
+            else
+                _navigationLiveData.value = Event(BankItem(null,null,"","","",""))
         }
     }
 
-    private fun checkField(): Boolean =
-        !(accountName.value.isNullOrEmpty() || accountNumber.value.isNullOrEmpty() || cardNumber.value.isNullOrEmpty())
-
-    private fun bankDetection(): BankName =
-        when (cardNumber.value!!.subSequence(0, 6).toString()) {
-            "603799" -> BankName.MELLI
-            "589210" -> BankName.SEPAH
-            "627648" -> BankName.TOSEHSADERAT
-            "627961" -> BankName.SANATOMADAN
-            "603770" -> BankName.KESHAVARZY
-            "628023" -> BankName.MASKAN
-            "627760" -> BankName.POSTBANKIRAN
-            "502908" -> BankName.TOEHVATAVON
-            "627412" -> BankName.EGHTESADNOVIN
-            "622106" -> BankName.PARSIYAN
-            "502229" -> BankName.PASARGAD
-            "627488" -> BankName.KARAFARIN
-            "621986" -> BankName.SAMAN
-            "639346" -> BankName.SINA
-            "639607" -> BankName.SARMAYEH
-            "636214" -> BankName.TAT
-            "502806" -> BankName.SHAR
-            "502938" -> BankName.DEY
-            "603769" -> BankName.SADERRAT
-            "610433" -> BankName.MELLAT
-            "627353" -> BankName.TEJARAT
-            "589463" -> BankName.REFAH
-            "627381" -> BankName.ANSAR
-            "639370" -> BankName.MEHREEGHTESAD
-            else -> BankName.UNDEFINE
-        }
 }
 
 
-class AddEditBankAccountFragmentViewModelFactory @Inject constructor(private val addBankAccount: AddBankAccount) :
+class AddEditBankAccountFragmentViewModelFactory @Inject constructor(
+    private val addBankAccount: AddBankAccount, private val getBank: GetBank,
+    private val bankItemMapper: BankItemMapper
+) :
     ViewModelAssistedFactory<AddEditBankAccountFragmentViewModel> {
     override fun create(savedStateHandle: SavedStateHandle): AddEditBankAccountFragmentViewModel =
-        AddEditBankAccountFragmentViewModel(savedStateHandle, addBankAccount)
+        AddEditBankAccountFragmentViewModel(
+            savedStateHandle,
+            addBankAccount,
+            getBank,
+            bankItemMapper
+        )
 }

@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import ir.siriusapps.moneysave.domain.entity.Bank
 import ir.siriusapps.moneysave.domain.entity.BankEntity
 
 @Dao
@@ -24,4 +25,6 @@ interface RoomBankDao {
     @Query("SELECT * FROM Banks")
     fun getBanks(): List<BankEntity>
 
+    @Query("SELECT * FROM banks WHERE bankCardNumberPrefix = :preCardNumber")
+    fun getBank(preCardNumber: String): BankEntity?
 }

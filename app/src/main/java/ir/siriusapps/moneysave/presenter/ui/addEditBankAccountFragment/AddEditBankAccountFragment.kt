@@ -64,7 +64,7 @@ class AddEditBankAccountFragment @Inject constructor(
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigationLiveData.observe(viewLifecycleOwner, EventObserver {
-            if (it != BankName.UNDEFINE) {
+            if(it.id!=null) {
                 val bundle = Bundle()
                 bundle.putString("cardNumber", viewModel.cardNumber.value)
                 bundle.putString("accountNumber", viewModel.accountNumber.value)
@@ -74,10 +74,11 @@ class AddEditBankAccountFragment @Inject constructor(
                     R.id.action_addEditBankAccountFragment_to_addEditCardFragment,
                     bundle
                 )
-            } else {
-                Toast.makeText(context, "Card number not supported", Toast.LENGTH_LONG).show()
             }
-        })
+            else
+                Toast.makeText(requireContext(),"this bank is not supported",Toast.LENGTH_LONG).show()
+        }
+        )
 
     }
 

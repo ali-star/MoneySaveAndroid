@@ -10,6 +10,7 @@ open class BankItem(
     var localId: Long? = null,
     val id: String?,
     val name: String,
+    val bankCardNumberPrefix: String,
     val persianName: String,
     val smsRegex: String
 
@@ -20,11 +21,19 @@ class BankItemMapper @Inject constructor() : ItemMapper<Bank, BankItem> {
         itemModel.localId,
         itemModel.id,
         itemModel.name,
+        itemModel.bankCardNumberPrefix,
         itemModel.persianName,
         itemModel.smsRegex
     )
 
 
     override fun mapToApp(model: Bank): BankItem =
-        BankItem(model.localId, model.id, model.name, model.persianName, model.smsRegex)
+        BankItem(
+            model.localId,
+            model.id,
+            model.name,
+            model.bankCardNumberPrefix,
+            model.persianName,
+            model.smsRegex
+        )
 }

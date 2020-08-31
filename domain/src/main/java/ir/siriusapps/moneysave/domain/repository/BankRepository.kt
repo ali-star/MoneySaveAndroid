@@ -6,6 +6,8 @@ interface BankRepository {
 
     suspend fun initBanks()
 
+    suspend fun getBank(preCardNumber: String):Bank?
+
     suspend fun getAllBanks(): List<Bank>
 
 }

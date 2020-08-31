@@ -19,6 +19,9 @@ open class BankEntity(
     @ColumnInfo(name = "name")
     val name: String,
 
+    @ColumnInfo(name = "bankCardNumberPrefix")
+    val bankCardNumberPrefix: String,
+
     @ColumnInfo(name = "persianName")
     val persianName: String,
 
@@ -33,6 +36,7 @@ class BankEntityMapper @Inject constructor() : Mapper<Bank, BankEntity> {
             modelEntity.localId,
             modelEntity.id,
             modelEntity.name,
+            modelEntity.bankCardNumberPrefix,
             modelEntity.persianName,
             modelEntity.smsRegex
         )
@@ -42,7 +46,10 @@ class BankEntityMapper @Inject constructor() : Mapper<Bank, BankEntity> {
         model.localId,
         model.id,
         model.name,
+        model.bankCardNumberPrefix,
         model.persianName,
         model.smsRegex
     )
+
+
 }
