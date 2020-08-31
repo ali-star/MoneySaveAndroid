@@ -10,172 +10,273 @@
 				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragmentViewModel" />
 	</data>
 	
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<androidx.core.widget.NestedScrollView
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:background="@drawable/dark_background">
+			android:layout_height="match_parent">
 		
-		<TextView
-				android:id="@+id/titleTextView"
+		<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="match_parent"
-				android:layout_height="74dp"
-				android:text="@string/money_save"
-				android:textColor="@color/white"
-				android:textSize="17sp"
-				android:textStyle="bold"
-				android:gravity="center"
-				app:layout_constraintBottom_toTopOf="@+id/addAccountLayout"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-		
-		<View
-				android:id="@+id/view"
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				android:background="@drawable/rounded_background"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/titleTextView" />
-		
-		<LinearLayout
-				android:id="@+id/addAccountLayout"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center_horizontal"
-				android:orientation="vertical"
-				android:paddingStart="30dp"
-				android:paddingEnd="30dp"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/titleTextView">
+				android:layout_height="match_parent"
+				android:background="@drawable/dark_background">
 			
 			<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="14dp"
+					android:id="@+id/titleTextView"
+					android:layout_width="match_parent"
+					android:layout_height="74dp"
 					android:gravity="center"
-					android:text="@string/title_new_account"
-					android:textColor="@color/dark"
-					android:textSize="14sp"
-					android:textStyle="bold" />
+					android:text="@string/money_save"
+					android:textColor="@color/white"
+					android:textSize="17sp"
+					android:textStyle="bold"
+					app:layout_constraintBottom_toTopOf="@+id/addAccountLayout"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
 			
-			<TextView
+			<View
+					android:id="@+id/view"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:background="@drawable/rounded_background"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+			
+			<LinearLayout
+					android:id="@+id/addAccountLayout"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="64dp"
-					android:paddingStart="25dp"
-					android:text="@string/title_name_card"
-					android:textColor="@color/grayText"
-					android:textSize="14sp"
-					tools:ignore="RtlSymmetry" />
+					android:gravity="center_horizontal"
+					android:orientation="vertical"
+					android:paddingStart="30dp"
+					android:paddingEnd="30dp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/titleTextView">
+				
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="14dp"
+						android:gravity="center"
+						android:text="@string/title_new_account"
+						android:textColor="@color/dark"
+						android:textSize="14sp"
+						android:textStyle="bold" />
+				
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="64dp"
+						android:paddingStart="25dp"
+						android:text="@string/title_name_card"
+						android:textColor="@color/grayText"
+						android:textSize="14sp"
+						tools:ignore="RtlSymmetry" />
+				
+				<EditText
+						android:id="@+id/accountNameEditText"
+						android:layout_width="match_parent"
+						android:layout_height="55dp"
+						android:layout_marginTop="8dp"
+						android:background="@drawable/oval_background"
+						android:hint="@string/title_account_name"
+						android:inputType="text"
+						android:maxLines="1"
+						android:nextFocusUp="@id/accountNumberEditText"
+						android:paddingStart="25dp"
+						android:text="@={ viewmodel.accountName }"
+						android:textColorHint="@color/grayText"
+						android:textSize="@dimen/textSizeNormal"
+						android:textStyle="bold"
+						tools:ignore="RtlSymmetry" />
+				
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:focusable="true"
+						android:paddingStart="25dp"
+						android:text="@string/title_bank_account_number"
+						android:textColor="@color/grayText"
+						android:textSize="@dimen/textSizeNormal"
+						tools:ignore="RtlSymmetry" />
+				
+				<EditText
+						android:id="@+id/accountNumberEditText"
+						android:layout_width="match_parent"
+						android:layout_height="55dp"
+						android:layout_marginTop="8dp"
+						android:background="@drawable/oval_background"
+						android:focusable="true"
+						android:hint="@string/AccountNumber"
+						android:inputType="number"
+						android:maxLines="1"
+						android:nextFocusUp="@id/cardNumberEditText"
+						android:paddingStart="25dp"
+						android:text="@={ viewmodel.accountNumber }"
+						android:textColorHint="@color/grayText"
+						android:textSize="@dimen/textSizeNormal"
+						android:textStyle="bold"
+						tools:ignore="RtlSymmetry,TextFields" />
+				
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:paddingStart="25dp"
+						android:text="@string/title_credit"
+						android:textColor="@color/grayText"
+						android:textSize="14sp"
+						tools:ignore="RtlSymmetry" />
+				
+				<EditText
+						android:id="@+id/cardNumberEditText"
+						android:layout_width="match_parent"
+						android:layout_height="55dp"
+						android:layout_marginTop="8dp"
+						android:background="@drawable/oval_background"
+						android:focusable="true"
+						android:hint="@string/CardNumber"
+						android:inputType="number"
+						android:maxLines="1"
+						android:nextFocusUp="@id/expireYearEditText"
+						android:paddingStart="25dp"
+						android:text="@={ viewmodel.cardNumber }"
+						android:textColorHint="@color/grayText"
+						android:textSize="@dimen/textSizeNormal"
+						android:textStyle="bold"
+						tools:ignore="RtlSymmetry,TextFields" />
+				
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:paddingStart="25dp"
+						android:text="@string/expire_date"
+						android:textColor="@color/grayText"
+						android:textSize="14sp"
+						tools:ignore="RtlSymmetry" />
+				
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						android:orientation="horizontal"
+						android:weightSum="5">
+					
+					
+					<EditText
+							android:id="@+id/expireYearEditText"
+							android:layout_width="0dp"
+							android:layout_height="55dp"
+							android:layout_weight="2.25"
+							android:background="@drawable/oval_background"
+							android:hint="@string/year"
+							android:inputType="number"
+							android:maxLength="2"
+							android:maxLines="1"
+							android:nextFocusRight="@id/expireMonthEditText"
+							android:paddingStart="25dp"
+							android:text="@={ viewmodel.expireYear }"
+							android:textColorHint="@color/grayText"
+							android:textSize="@dimen/textSizeNormal"
+							android:textStyle="bold"
+							tools:ignore="RtlSymmetry,TextFields" />
+					
+					<TextView
+							android:layout_width="0dp"
+							android:layout_height="55dp"
+							android:layout_weight=".5"
+							android:gravity="center"
+							android:text="@string/slash"
+							android:textColor="@color/black_05"
+							android:textSize="14sp"
+							android:textStyle="bold"
+							tools:ignore="RtlSymmetry" />
+					
+					<EditText
+							android:id="@+id/expireMonthEditText"
+							android:layout_width="0dp"
+							android:layout_height="55dp"
+							android:layout_weight="2.25"
+							android:background="@drawable/oval_background"
+							android:focusable="true"
+							android:hint="@string/month"
+							android:inputType="number"
+							android:maxLength="2"
+							android:maxLines="1"
+							android:nextFocusDown="@id/cvv2EditText"
+							android:paddingStart="25dp"
+							android:text="@={ viewmodel.expireMonth }"
+							android:textColorHint="@color/grayText"
+							android:textSize="@dimen/textSizeNormal"
+							android:textStyle="bold"
+							tools:ignore="RtlSymmetry,TextFields" />
+				</LinearLayout>
+				
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:paddingStart="25dp"
+						android:text="@string/cvv2Title"
+						android:textColor="@color/grayText"
+						android:textSize="14sp"
+						tools:ignore="RtlSymmetry" />
+				
+				<EditText
+						android:id="@+id/cvv2EditText"
+						android:layout_width="match_parent"
+						android:layout_height="55dp"
+						android:layout_marginTop="8dp"
+						android:layout_weight="1"
+						android:background="@drawable/oval_background"
+						android:focusable="true"
+						android:hint="@string/ccv2"
+						android:inputType="number"
+						android:maxLength="4"
+						android:maxLines="1"
+						android:paddingStart="25dp"
+						android:text="@={viewmodel.cvv2}"
+						android:textColorHint="@color/grayText"
+						android:textSize="@dimen/textSizeNormal"
+						android:textStyle="bold"
+						tools:ignore="RtlSymmetry,TextFields" />
 			
-			<EditText
-					android:id="@+id/accountNameEditText"
-					android:layout_width="match_parent"
-					android:layout_height="55dp"
-					android:layout_marginTop="8dp"
-					android:background="@drawable/oval_background"
-					android:hint="@string/title_account_name"
-					android:textColorHint="@color/grayText"
-					android:textStyle="bold"
-					android:textSize="@dimen/textSizeNormal"
-					android:inputType="text"
-					android:maxLines="1"
-					android:paddingStart="25dp"
-					android:text="@={ viewmodel.accountName }"
-					android:nextFocusUp="@id/accountNumberEditText"
-					tools:ignore="RtlSymmetry" />
+			</LinearLayout>
 			
-			<TextView
+			<ir.siriusapps.moneysave.customView.GradientBlurLayout
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="20dp"
-					android:paddingStart="25dp"
-					android:text="@string/title_bank_account_number"
-					android:textColor="@color/grayText"
-					android:focusable="true"
-					android:textSize="@dimen/textSizeNormal"
-					tools:ignore="RtlSymmetry" />
+					android:layout_height="78dp"
+					android:layout_marginStart="14dp"
+					android:layout_marginEnd="14dp"
+					app:gbl_angle="45"
+					app:gbl_blurRadius="16dp"
+					app:gbl_endColor="@color/lightGreen30"
+					app:gbl_radius="24dp"
+					app:gbl_startColor="@color/darkGreen30"
+					app:layout_constraintEnd_toEndOf="@+id/nextButton"
+					app:layout_constraintStart_toStartOf="@+id/nextButton"
+					app:layout_constraintTop_toTopOf="@+id/nextButton" />
 			
-			<EditText
-					android:id="@+id/accountNumberEditText"
+			<ir.siriusapps.moneysave.customView.GradientButton
+					android:id="@+id/nextButton"
 					android:layout_width="match_parent"
-					android:layout_height="55dp"
-					android:layout_marginTop="8dp"
-					android:background="@drawable/oval_background"
-					android:textColorHint="@color/grayText"
-					android:textStyle="bold"
-					android:hint="@string/AccountNumber"
-					android:inputType="text"
-					android:textSize="@dimen/textSizeNormal"
-					android:maxLines="1"
-					android:paddingStart="25dp"
-					android:text="@={ viewmodel.accountNumber }"
-					android:focusable="true"
-					android:nextFocusUp="@id/cardNumberEditText"
-					tools:ignore="RtlSymmetry,TextFields" />
-			
-			<TextView
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="20dp"
-					android:paddingStart="25dp"
-					android:text="@string/title_credit"
-					android:textColor="@color/grayText"
-					android:textSize="14sp"
-					tools:ignore="RtlSymmetry" />
-			
-			<EditText
-					android:id="@+id/cardNumberEditText"
-					android:layout_width="match_parent"
-					android:layout_height="55dp"
-					android:layout_marginTop="8dp"
-					android:background="@drawable/oval_background"
-					android:textColorHint="@color/grayText"
-					android:textStyle="bold"
-					android:textSize="@dimen/textSizeNormal"
-					android:hint="@string/CardNumber"
-					android:inputType="text"
-					android:maxLines="1"
-					android:paddingStart="25dp"
-					android:text="@={ viewmodel.cardNumber }"
-					tools:ignore="RtlSymmetry,TextFields"
-					android:focusable="true"
-					android:nextFocusUp="@id/nextButton"/>
-		
-		</LinearLayout>
-		
-		<ir.siriusapps.moneysave.customView.GradientBlurLayout
-				android:layout_width="match_parent"
-				android:layout_height="78dp"
-				app:gbl_angle="45"
-				app:gbl_blurRadius="16dp"
-				app:gbl_endColor="@color/lightGreen30"
-				app:gbl_radius="24dp"
-				android:layout_marginStart="14dp"
-				android:layout_marginEnd="14dp"
-				app:gbl_startColor="@color/darkGreen30"
-				app:layout_constraintEnd_toEndOf="@+id/nextButton"
-				app:layout_constraintStart_toStartOf="@+id/nextButton"
-				app:layout_constraintTop_toTopOf="@+id/nextButton" />
-		
-		<ir.siriusapps.moneysave.customView.GradientButton
-				android:id="@+id/nextButton"
-				android:layout_width="match_parent"
-				android:layout_height="48dp"
-				android:layout_marginStart="30dp"
-				android:layout_marginTop="38dp"
-				android:layout_marginEnd="30dp"
-				android:textColor="@color/white"
-				android:text="@string/Next"
-				app:gb_angle="45"
-				app:gb_endColor="@color/darkGreen"
-				app:gb_radius="-1dp"
-				app:gb_startColor="@color/lightGreen"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/addAccountLayout" />
-	</androidx.constraintlayout.widget.ConstraintLayout>
+					android:layout_height="48dp"
+					android:layout_marginStart="30dp"
+					android:layout_marginTop="38dp"
+					android:layout_marginEnd="30dp"
+					android:text="@string/Next"
+					android:textColor="@color/white"
+					app:gb_angle="45"
+					app:gb_endColor="@color/darkGreen"
+					app:gb_radius="-1dp"
+					app:gb_startColor="@color/lightGreen"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/addAccountLayout" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.core.widget.NestedScrollView>
 </layout>

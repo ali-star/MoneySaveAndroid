@@ -19,8 +19,8 @@ class BankAccountRepositoryImp @Inject constructor(
 
     private val ioDispatcher = Dispatchers.IO
 
-    override suspend fun add(bankAccount: BankAccount) = withContext(ioDispatcher) {
-        moneySaveDao.insertBankAccount(bankAccountEntityMapper.mapToData(bankAccount))
+    override suspend fun add(bankAccount: BankAccount) :Long= withContext(ioDispatcher) {
+      return@withContext  moneySaveDao.insertBankAccount(bankAccountEntityMapper.mapToData(bankAccount))
     }
 
     override suspend fun add(bankAccounts: List<BankAccount>) = withContext(ioDispatcher) {
@@ -30,12 +30,12 @@ class BankAccountRepositoryImp @Inject constructor(
         moneySaveDao.insertBankAccounts(bankEntityAccounts)
     }
 
-    override suspend fun add(accountName: String, accountNumber: String, cardNumber: String) =
+  /*  override suspend fun add(accountName: String, accountNumber: String, cardNumber: String) =
         withContext(Dispatchers.IO) {
             val bankAccountEntity=BankAccountEntity(null,"",0,0,accountName,accountNumber,0.0,
                 CurrencyType.IRT)
             moneySaveDao.insertBankAccount(bankAccountEntity)
-        }
+        }*/
 
     override suspend fun remove(bankAccount: BankAccount) = withContext(ioDispatcher) {
         moneySaveDao.deleteBankAccount(bankAccountEntityMapper.mapToData(bankAccount))

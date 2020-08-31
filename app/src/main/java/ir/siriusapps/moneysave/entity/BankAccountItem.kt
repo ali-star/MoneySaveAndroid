@@ -12,7 +12,7 @@ data class BankAccountItem(
     var id: String,
     var userId: Long,
     var bankId: Long,
-    var name: String,
+    var accountName: String,
     var accountNumber: String,
     var balance: Double,
     var currencyType: CurrencyType
@@ -27,7 +27,7 @@ class BankAccountItemMapper @Inject constructor(): ItemMapper<BankAccount, BankA
             itemModel.id,
             itemModel.userId,
             itemModel.bankId,
-            itemModel.name,
+            itemModel.accountName,
             itemModel.accountNumber,
             itemModel.balance,
             itemModel.currencyType

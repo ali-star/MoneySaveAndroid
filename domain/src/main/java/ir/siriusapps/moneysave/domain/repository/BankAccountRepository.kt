@@ -4,11 +4,11 @@ import ir.siriusapps.moneysave.domain.entity.BankAccount
 
 interface BankAccountRepository {
 
-    suspend fun add(bankAccount: BankAccount)
+    suspend fun add(bankAccount: BankAccount):Long
 
     suspend fun add(bankAccounts: List<BankAccount>)
 
-    suspend fun add(accountName: String, accountNumber: String, cardNumber: String)
+    /*suspend fun add(accountName: String, accountNumber: String, cardNumber: String)*/
 
     suspend fun remove(bankAccount: BankAccount)
 

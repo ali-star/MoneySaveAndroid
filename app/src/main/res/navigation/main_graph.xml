@@ -28,18 +28,34 @@
 			tools:layout="@layout/fragment_add_edit_card" >
 		<argument
 				android:name="accountName"
-				app:argType="string" />
+				app:argType="string"
+				app:nullable="true" />
 		<argument
 				android:name="accountNumber"
-				app:argType="string" />
+				app:argType="string"
+				app:nullable="true" />
 		<argument
 				android:name="cardNumber"
-				app:argType="string" />
+				app:argType="string"
+				app:nullable="true" />
 		<action
 				android:id="@+id/action_addEditCardFragment_to_mainFragment"
 				app:destination="@id/mainFragment" />
 		<argument
-				android:name="bankName"
-				app:argType="string" />
+				android:name="bankId"
+				app:argType="string"
+				app:nullable="true" />
+		<argument
+				android:name="expireMonth"
+				app:argType="string"
+				app:nullable="true" />
+		<argument
+				android:name="expireYear"
+				app:argType="string"
+				app:nullable="true" />
+		<argument
+				android:name="cvv2"
+				app:argType="string"
+				app:nullable="true" />
 	</fragment>
 </navigation>

@@ -22,4 +22,11 @@
 	<string name="title_balance">Balance</string>
 	<string name="title_cardNumber">.... .... .... 1384</string>
 	<string name="balance">T 7,539,800</string>
+	<string name="cvv2Title">cvv2 your card.</string>
+	<string name="year">Year</string>
+	<string name="month">Month</string>
+	<string name="slash">/</string>
+	<string name="expire">Expire</string>
+	<string name="expire_date">Expire date of your card.</string>
+	<string name="ccv2">CVV2</string>
 </resources>

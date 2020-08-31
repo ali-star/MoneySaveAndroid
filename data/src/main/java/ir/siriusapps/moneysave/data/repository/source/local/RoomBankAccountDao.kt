@@ -13,7 +13,7 @@ interface RoomBankAccountDao {
     suspend fun insertBankAccounts(bankAccountEntities: List<BankAccountEntity>)
 
     @Insert
-    suspend fun insertBankAccount(bankAccountEntity: BankAccountEntity)
+    suspend fun insertBankAccount(bankAccountEntity: BankAccountEntity):Long
 
     @Delete
     suspend fun deleteBankAccounts(bankAccountEntities: List<BankAccountEntity>)

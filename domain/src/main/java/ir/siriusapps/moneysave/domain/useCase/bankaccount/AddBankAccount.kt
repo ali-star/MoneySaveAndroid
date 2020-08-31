@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class AddBankAccount @Inject constructor(private val accountRepository: BankAccountRepository) {
 
-    suspend fun execute(bankAccount: BankAccount) = withContext(Dispatchers.IO) {
+    suspend fun execute(bankAccount: BankAccount) :Long= withContext(Dispatchers.IO) {
         return@withContext accountRepository.add(bankAccount)
     }
 
@@ -16,7 +16,7 @@ class AddBankAccount @Inject constructor(private val accountRepository: BankAcco
         return@withContext accountRepository.add(bankAccounts)
     }
 
-    suspend fun execute(accountName: String, accountNumber: String, cardNumber: String)= withContext(Dispatchers.IO){
+    /*suspend fun execute(accountName: String, accountNumber: String, cardNumber: String)= withContext(Dispatchers.IO){
         return@withContext accountRepository.add(accountName,accountNumber,cardNumber)
-    }
+    }*/
 }

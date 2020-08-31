@@ -38,24 +38,45 @@ class AddEditBankAccountFragment @Inject constructor(
 
                 if (accountNameEditText.text.isNullOrEmpty()) {
                     accountNameEditText.requestFocus()
-                    Toast.makeText(context, "Please fill accountName fields", Toast.LENGTH_LONG)
+                    Toast.makeText(context, "Please fill accountName field", Toast.LENGTH_LONG)
                         .show()
                     return@setOnClickListener
                 }
                 if (accountNumberEditText.text.isNullOrEmpty()) {
                     accountNumberEditText.requestFocus()
-                    Toast.makeText(context, "Please fill accountNumber fields", Toast.LENGTH_LONG)
+                    Toast.makeText(context, "Please fill accountNumber field", Toast.LENGTH_LONG)
                         .show()
                     return@setOnClickListener
                 }
                 if (cardNumberEditText.text.isNullOrEmpty()) {
                     cardNumberEditText.requestFocus()
-                    Toast.makeText(context, "Please fill cardNumber fields", Toast.LENGTH_LONG)
+                    Toast.makeText(context, "Please fill cardNumber field", Toast.LENGTH_LONG)
                         .show()
                     return@setOnClickListener
                 }
 
-                viewModel.saveBankAccount()
+                if (expireYearEditText.text.isNullOrEmpty()) {
+                    expireYearEditText.requestFocus()
+                    Toast.makeText(context, "Please fill expireYear field", Toast.LENGTH_LONG)
+                        .show()
+                    return@setOnClickListener
+                }
+
+                if (expireMonthEditText.text.isNullOrEmpty()) {
+                    expireMonthEditText.requestFocus()
+                    Toast.makeText(context, "Please fill expireMonth field", Toast.LENGTH_LONG)
+                        .show()
+                    return@setOnClickListener
+                }
+
+                if (cvv2EditText.text.isNullOrEmpty()) {
+                    cvv2EditText.requestFocus()
+                    Toast.makeText(context, "Please fill CVV2 field", Toast.LENGTH_LONG)
+                        .show()
+                    return@setOnClickListener
+                }
+
+                viewModel.bankDetection(cardNumberEditText.text.subSequence(0, 6).toString())
             }
         }
         return binding.root
@@ -64,19 +85,24 @@ class AddEditBankAccountFragment @Inject constructor(
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigationLiveData.observe(viewLifecycleOwner, EventObserver {
-            if(it.id!=null) {
+            if (it.localId != null) {
+
                 val bundle = Bundle()
-                bundle.putString("cardNumber", viewModel.cardNumber.value)
-                bundle.putString("accountNumber", viewModel.accountNumber.value)
+
                 bundle.putString("accountName", viewModel.accountName.value)
-                bundle.putString("bankName", it.name)
+                bundle.putString("accountNumber", viewModel.accountNumber.value)
+                bundle.putString("cardNumber", viewModel.cardNumber.value)
+                bundle.putString("expireYear", viewModel.expireYear.value)
+                bundle.putString("expireMonth", viewModel.expireMonth.value)
+                bundle.putString("cvv2", viewModel.cvv2.value)
+                bundle.putString("bankId", it.localId.toString())
+
                 findNavController(requireView()).navigate(
-                    R.id.action_addEditBankAccountFragment_to_addEditCardFragment,
-                    bundle
-                )
-            }
-            else
-                Toast.makeText(requireContext(),"this bank is not supported",Toast.LENGTH_LONG).show()
+                    R.id.action_addEditBankAccountFragment_to_addEditCardFragment, bundle)
+
+            } else
+                Toast.makeText(requireContext(), "This bank is not supported", Toast.LENGTH_LONG)
+                    .show()
         }
         )
 

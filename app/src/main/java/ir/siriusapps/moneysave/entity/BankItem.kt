@@ -9,7 +9,7 @@ open class BankItem(
 
     var localId: Long? = null,
     val id: String?,
-    val name: String,
+    val bankName: String,
     val bankCardNumberPrefix: String,
     val persianName: String,
     val smsRegex: String
@@ -20,7 +20,7 @@ class BankItemMapper @Inject constructor() : ItemMapper<Bank, BankItem> {
     override fun mapToDomain(itemModel: BankItem): Bank = Bank(
         itemModel.localId,
         itemModel.id,
-        itemModel.name,
+        itemModel.bankName,
         itemModel.bankCardNumberPrefix,
         itemModel.persianName,
         itemModel.smsRegex
