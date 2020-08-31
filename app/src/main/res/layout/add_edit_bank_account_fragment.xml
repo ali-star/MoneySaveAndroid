@@ -6,7 +6,7 @@
 	<data>
 		
 		<variable
-				name="viewModel"
+				name="viewmodel"
 				type="ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragmentViewModel" />
 	</data>
 	
@@ -84,7 +84,8 @@
 					android:inputType="text"
 					android:maxLines="1"
 					android:paddingStart="25dp"
-					android:text="@={ viewModel.accountName }"
+					android:text="@={ viewmodel.accountName }"
+					android:nextFocusUp="@id/accountNumberEditText"
 					tools:ignore="RtlSymmetry" />
 			
 			<TextView
@@ -94,6 +95,7 @@
 					android:paddingStart="25dp"
 					android:text="@string/title_bank_account_number"
 					android:textColor="@color/grayText"
+					android:focusable="true"
 					android:textSize="@dimen/textSizeNormal"
 					tools:ignore="RtlSymmetry" />
 			
@@ -110,7 +112,9 @@
 					android:textSize="@dimen/textSizeNormal"
 					android:maxLines="1"
 					android:paddingStart="25dp"
-					android:text="@={ viewModel.accountNumber }"
+					android:text="@={ viewmodel.accountNumber }"
+					android:focusable="true"
+					android:nextFocusUp="@id/cardNumberEditText"
 					tools:ignore="RtlSymmetry,TextFields" />
 			
 			<TextView
@@ -136,8 +140,10 @@
 					android:inputType="text"
 					android:maxLines="1"
 					android:paddingStart="25dp"
-					android:text="@={ viewModel.cardNumber }"
-					tools:ignore="RtlSymmetry,TextFields" />
+					android:text="@={ viewmodel.cardNumber }"
+					tools:ignore="RtlSymmetry,TextFields"
+					android:focusable="true"
+					android:nextFocusUp="@id/nextButton"/>
 		
 		</LinearLayout>
 		
@@ -162,7 +168,6 @@
 				android:layout_marginStart="30dp"
 				android:layout_marginTop="38dp"
 				android:layout_marginEnd="30dp"
-				android:onClick="@{ ()-> viewModel.saveBankAccount() }"
 				android:textColor="@color/white"
 				android:text="@string/Next"
 				app:gb_angle="45"

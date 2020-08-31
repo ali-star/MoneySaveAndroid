@@ -7,19 +7,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
 import ir.siriusapps.moneysave.presenter.ui.EventObserver
-import kotlinx.android.synthetic.main.fragment_add_edit_card.*
-import kotlinx.android.synthetic.main.fragment_add_edit_card.view.*
+import ir.siriusapps.moneysave.presenter.ui.appEnum.BankName
 import javax.inject.Inject
 
 class AddEditBankAccountFragment @Inject constructor(
     val factory: AddEditBankAccountFragmentViewModelFactory
-) : Fragment(){
+) : Fragment() {
 
     private val viewModel: AddEditBankAccountFragmentViewModel by viewModels {
         GenericSavedStateViewModelFactory(factory, this)
@@ -33,8 +31,32 @@ class AddEditBankAccountFragment @Inject constructor(
         savedInstanceState: Bundle?
     ): View? {
         binding = AddEditBankAccountFragmentBinding.inflate(inflater, container, false).apply {
-            viewModel = this@AddEditBankAccountFragment.viewModel
+
+            viewmodel = this@AddEditBankAccountFragment.viewModel
             lifecycleOwner = this@AddEditBankAccountFragment.viewLifecycleOwner
+            nextButton.setOnClickListener {
+
+                if (accountNameEditText.text.isNullOrEmpty()) {
+                    accountNameEditText.requestFocus()
+                    Toast.makeText(context, "Please fill accountName fields", Toast.LENGTH_LONG)
+                        .show()
+                    return@setOnClickListener
+                }
+                if (accountNumberEditText.text.isNullOrEmpty()) {
+                    accountNumberEditText.requestFocus()
+                    Toast.makeText(context, "Please fill accountNumber fields", Toast.LENGTH_LONG)
+                        .show()
+                    return@setOnClickListener
+                }
+                if (cardNumberEditText.text.isNullOrEmpty()) {
+                    cardNumberEditText.requestFocus()
+                    Toast.makeText(context, "Please fill cardNumber fields", Toast.LENGTH_LONG)
+                        .show()
+                    return@setOnClickListener
+                }
+
+                viewModel.saveBankAccount()
+            }
         }
         return binding.root
     }
@@ -42,20 +64,18 @@ class AddEditBankAccountFragment @Inject constructor(
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.navigationLiveData.observe(viewLifecycleOwner, EventObserver {
-            if (!viewModel.accountName.value.isNullOrEmpty() ||
-                !viewModel.accountNumber.value.isNullOrEmpty() ||
-                !viewModel.cardNumber.value.isNullOrEmpty()
-            ) {
+            if (it != BankName.UNDEFINE) {
                 val bundle = Bundle()
                 bundle.putString("cardNumber", viewModel.cardNumber.value)
                 bundle.putString("accountNumber", viewModel.accountNumber.value)
                 bundle.putString("accountName", viewModel.accountName.value)
+                bundle.putString("bankName", it.name)
                 findNavController(requireView()).navigate(
                     R.id.action_addEditBankAccountFragment_to_addEditCardFragment,
                     bundle
                 )
             } else {
-                Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Card number not supported", Toast.LENGTH_LONG).show()
             }
         })
 
