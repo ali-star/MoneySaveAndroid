@@ -31,6 +31,7 @@ class RoomBankEntityTest {
             "123",
             "bank1",
             "بانک 1",
+            "",
             ""
         )
         val bank2 = BankEntity(
@@ -38,6 +39,7 @@ class RoomBankEntityTest {
             "1234",
             "bank2",
             "بانک 2",
+            "",
             ""
         )
         val bank3 = BankEntity(
@@ -45,6 +47,7 @@ class RoomBankEntityTest {
             "12345",
             "bank3",
             "بانک 3",
+            "",
             ""
         )
 
