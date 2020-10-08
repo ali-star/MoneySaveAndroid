@@ -6,33 +6,9 @@
 	
 	</data>
 	
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<androidx.compose.ui.platform.ComposeView
+			android:id="@+id/fragmentView"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:background="@drawable/dark_background">
-		
-		<ir.siriusapps.moneysave.customView.CircleProgress
-				android:layout_width="150dp"
-				android:layout_height="150dp"
-				android:layout_marginTop="80dp"
-				app:cr_storkColor="@color/white_20"
-				app:cr_progressStrokeColor="@color/red"
-				app:cr_storkWidth="8dp"
-				app:cr_progressStrokeWidth="8dp"
-				app:cr_progress="40"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-		
-		<Button
-				android:id="@+id/nextButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Button"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-	
-	</androidx.constraintlayout.widget.ConstraintLayout>
+			android:background="@drawable/dark_background"/>
 </layout>
