@@ -1,6 +1,6 @@
 package ir.siriusapps.moneysave.domain.repository
 
-import ir.siriusapps.moneysave.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.model.Transaction
 
 interface TransactionRepository {
 

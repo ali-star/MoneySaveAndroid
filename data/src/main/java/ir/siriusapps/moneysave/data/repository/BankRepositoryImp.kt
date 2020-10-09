@@ -4,25 +4,27 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.qualifiers.ApplicationContext
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
 import ir.siriusapps.moneysave.data.utils.Utils
-import ir.siriusapps.moneysave.domain.entity.Bank
-import ir.siriusapps.moneysave.domain.entity.BankEntity
-import ir.siriusapps.moneysave.domain.entity.BankEntityMapper
+import ir.siriusapps.moneysave.domain.model.Bank
+import ir.siriusapps.moneysave.domain.model.BankEntity
+import ir.siriusapps.moneysave.domain.model.BankEntityMapper
 import ir.siriusapps.moneysave.domain.repository.BankRepository
-import ir.siriusapps.moneysave.domain.scope.ApplicationScope
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ApplicationScope
+@Singleton
 class BankRepositoryImp @Inject constructor(
     private val moneySaveDao: MoneySaveDao,
     private val bankEntityMapper: BankEntityMapper,
     private val sharedPreferences: SharedPreferences,
-    private val context: Context,
+    @ApplicationContext val context: Context,
     private val gson: Gson
 
 ) : BankRepository {

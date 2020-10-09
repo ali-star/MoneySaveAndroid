@@ -1,5 +1,6 @@
 package ir.siriusapps.moneysave.reciver
 
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -7,15 +8,17 @@ import android.provider.Telephony
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.code.regexp.Pattern
-import dagger.android.DaggerBroadcastReceiver
-import ir.siriusapps.moneysave.domain.entity.*
-import ir.siriusapps.moneysave.domain.entity.TransactionType
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
+import ir.siriusapps.moneysave.domain.model.*
+import ir.siriusapps.moneysave.domain.model.TransactionType
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.SearchBankAccountByNumber
 import ir.siriusapps.moneysave.domain.useCase.transaction.AddTransaction
-import ir.siriusapps.moneysave.entity.TransactionItem
-import ir.siriusapps.moneysave.entity.TransactionItemMapper
+import ir.siriusapps.moneysave.item.TransactionItem
+import ir.siriusapps.moneysave.item.TransactionItemMapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import saman.zamani.persiandate.PersianDate
@@ -23,7 +26,8 @@ import java.lang.StringBuilder
 import java.util.*
 import javax.inject.Inject
 
-class SmsListenerBroadcast : DaggerBroadcastReceiver() {
+@AndroidEntryPoint
+class SmsListenerBroadcast @Inject constructor() : BroadcastReceiver() {
 
     @Inject
     lateinit var searchBankAccountByNumber: SearchBankAccountByNumber
@@ -38,8 +42,6 @@ class SmsListenerBroadcast : DaggerBroadcastReceiver() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onReceive(context: Context?, intent: Intent?) {
-        super.onReceive(context, intent)
-
         if (Telephony.Sms.Intents.SMS_RECEIVED_ACTION == intent?.action) {
             val bundle = intent.extras
             if (bundle != null) {

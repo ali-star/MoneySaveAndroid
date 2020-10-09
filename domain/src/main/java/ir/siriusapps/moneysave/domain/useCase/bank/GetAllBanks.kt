@@ -4,7 +4,9 @@ import ir.siriusapps.moneysave.domain.repository.BankRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class GetAllBanks @Inject constructor(private val bankRepository: BankRepository) {
 
     suspend fun execute() = withContext(Dispatchers.IO) {

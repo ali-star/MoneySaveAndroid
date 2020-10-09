@@ -1,6 +1,6 @@
 package ir.siriusapps.moneysave.domain.repository
 
-import ir.siriusapps.moneysave.domain.entity.Card
+import ir.siriusapps.moneysave.domain.model.Card
 
 interface  CardRepository {
 

@@ -4,7 +4,9 @@ import ir.siriusapps.moneysave.domain.repository.BankAccountRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class SearchBankAccountByNumber @Inject constructor(
     private val bankAccountRepository: BankAccountRepository
 ) {

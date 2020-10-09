@@ -1,7 +1,7 @@
 package ir.siriusapps.moneysave.domain.useCase.transaction
 
 import ir.siriusapps.moneysave.domain.repository.TransactionRepository
-import ir.siriusapps.moneysave.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.model.Transaction
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

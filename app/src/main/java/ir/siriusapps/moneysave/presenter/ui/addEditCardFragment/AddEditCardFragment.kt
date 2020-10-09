@@ -1,7 +1,6 @@
 package ir.siriusapps.moneysave.presenter.ui.addEditCardFragment
 
 import android.os.Bundle
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,22 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import ir.siriusapps.moneysave.R
-import ir.siriusapps.moneysave.customView.GradientBlurLayout
-import ir.siriusapps.moneysave.customView.GradientButton
 import ir.siriusapps.moneysave.databinding.FragmentAddEditCardBinding
-import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
-import ir.siriusapps.moneysave.presenter.viewModel
-import kotlinx.android.synthetic.main.fragment_add_edit_card.*
 import javax.inject.Inject
 
-class AddEditCardFragment @Inject constructor(factory: AddEditCardViewModelFactory) : Fragment() {
+class AddEditCardFragment  constructor() : Fragment() {
 
     private lateinit var binding: FragmentAddEditCardBinding
     private  val args:AddEditCardFragmentArgs by navArgs()
 
-    private val viewModel: AddEditCardViewModel by viewModels {
-        GenericSavedStateViewModelFactory(factory, this)
-    }
+    private val viewModel: AddEditCardViewModel by viewModels ()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

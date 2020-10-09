@@ -9,34 +9,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentFactory
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import dagger.hilt.android.AndroidEntryPoint
 import ir.siriusapps.moneysave.R
 
 import ir.siriusapps.moneysave.service.AppService
-import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    @Inject
-    lateinit var fragmentFactory: FragmentFactory
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val RECEIVE_SMS_PERMISSION_REQUEST_CODE = 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-        supportFragmentManager.fragmentFactory = fragmentFactory
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         requestPermissionForSms()

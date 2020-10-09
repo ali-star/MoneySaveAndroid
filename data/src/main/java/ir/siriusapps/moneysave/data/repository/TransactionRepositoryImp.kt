@@ -1,15 +1,15 @@
 package ir.siriusapps.moneysave.data.repository
 
 import ir.siriusapps.moneysave.domain.repository.TransactionRepository
-import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
-import ir.siriusapps.moneysave.domain.entity.Transaction
-import ir.siriusapps.moneysave.domain.entity.TransactionEntityMapper
+import ir.siriusapps.moneysave.domain.model.Transaction
+import ir.siriusapps.moneysave.domain.model.TransactionEntityMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ApplicationScope
+@Singleton
 class TransactionRepositoryImp @Inject constructor(
     private val moneySaveDao: MoneySaveDao,
     private val transactionEntityMapper: TransactionEntityMapper

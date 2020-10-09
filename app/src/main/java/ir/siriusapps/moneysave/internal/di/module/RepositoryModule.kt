@@ -1,38 +1,40 @@
 package ir.siriusapps.moneysave.internal.di.module
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
+import dagger.hilt.android.components.ApplicationComponent
 import ir.siriusapps.moneysave.domain.repository.BankAccountRepository
 import ir.siriusapps.moneysave.domain.repository.TransactionRepository
-import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.data.repository.BankAccountRepositoryImp
 import ir.siriusapps.moneysave.data.repository.BankRepositoryImp
 import ir.siriusapps.moneysave.data.repository.CardRepositoryImp
 import ir.siriusapps.moneysave.data.repository.TransactionRepositoryImp
 import ir.siriusapps.moneysave.domain.repository.BankRepository
 import ir.siriusapps.moneysave.domain.repository.CardRepository
+import javax.inject.Singleton
 
+
+@InstallIn(ApplicationComponent::class)
 @Module
-class RepositoryModule {
+abstract class RepositoryModule {
 
-    @Provides
-    @ApplicationScope
-    fun provideTransactionsRepository(transactionRepositoryImp: TransactionRepositoryImp): TransactionRepository =
-        transactionRepositoryImp
+    @Binds
+    @Singleton
+    abstract fun provideTransactionsRepository(transactionRepositoryImp: TransactionRepositoryImp): TransactionRepository
 
-    @Provides
-    @ApplicationScope
-    fun provideBankAccountRepository(bankAccountRepositoryImp: BankAccountRepositoryImp): BankAccountRepository =
-        bankAccountRepositoryImp
+    @Binds
+    @Singleton
+    abstract fun provideBankAccountRepository(bankAccountRepositoryImp: BankAccountRepositoryImp): BankAccountRepository
 
-    @Provides
-    @ApplicationScope
-    fun provideBankRepository(bankRepositoryImp: BankRepositoryImp): BankRepository =
-        bankRepositoryImp
+    @Binds
+    @Singleton
+    abstract fun provideBankRepository(bankRepositoryImp: BankRepositoryImp): BankRepository
 
-    @Provides
-    @ApplicationScope
-    fun provideCardRepository(cardRepositoryImp: CardRepositoryImp): CardRepository =
-        cardRepositoryImp
+    @Binds
+    @Singleton
+    abstract fun provideCardRepository(cardRepositoryImp: CardRepositoryImp): CardRepository
 
 }

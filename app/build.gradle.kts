@@ -7,6 +7,8 @@ plugins {
     id("com.google.firebase.crashlytics")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-android")
+   id( "kotlin-kapt")
+   id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -19,6 +21,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -55,16 +58,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("com.google.code.gson:gson:2.8.6")
 
-
-
-    // dagger
-    val daggerVersion = "2.28"
-    implementation("com.google.dagger:dagger-android:$daggerVersion")
-    implementation("com.google.dagger:dagger-android-support:$daggerVersion")
-    kapt("com.google.dagger:dagger-compiler:$daggerVersion")
-    kapt("com.google.dagger:dagger-android-processor:$daggerVersion")
-
-
     // Navigation component dependencies
     val navigation_component_version = "2.3.0-rc01"
     implementation("androidx.navigation:navigation-fragment-ktx:$navigation_component_version")
@@ -92,4 +85,13 @@ dependencies {
     androidTestImplementation("android.arch.core:core-testing:1.1.1")
     debugImplementation("androidx.fragment:fragment-testing:1.2.5")
 
+
+    //Hilt ViewModel
+    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01")
+    // When using Kotlin.
+    kapt ("androidx.hilt:hilt-compiler:1.0.0-alpha01")
+
+    //Hilt Library
+    implementation ("com.google.dagger:hilt-android:2.28-alpha")
+    kapt ("com.google.dagger:hilt-android-compiler:2.28-alpha")
 }

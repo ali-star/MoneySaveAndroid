@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import ir.siriusapps.moneysave.domain.entity.Bank
-import ir.siriusapps.moneysave.domain.entity.BankEntity
+import ir.siriusapps.moneysave.domain.model.BankEntity
 
 @Dao
 interface RoomBankDao {

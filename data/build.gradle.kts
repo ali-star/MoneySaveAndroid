@@ -3,6 +3,8 @@ plugins {
     kotlin("android")
     id("kotlin-android-extensions")
     kotlin("kapt")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -55,6 +57,12 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
+    // Retrofit dependency
+    val retrofit_version = "2.6.1"
+    api ("com.squareup.retrofit2:converter-gson:$retrofit_version")
+    api ("com.squareup.retrofit2:converter-scalars:$retrofit_version")
+    api ("com.squareup.okhttp3:logging-interceptor:4.1.1")
+
     // room
     val room_version = "2.2.5"
     kapt("androidx.room:room-compiler:$room_version")
@@ -70,4 +78,7 @@ dependencies {
 
     implementation(project(":domain"))
 
+    //Hilt Library
+    implementation ("com.google.dagger:hilt-android:2.28-alpha")
+    kapt ("com.google.dagger:hilt-android-compiler:2.28-alpha")
 }

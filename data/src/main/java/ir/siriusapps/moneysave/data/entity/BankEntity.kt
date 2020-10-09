@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.domain.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

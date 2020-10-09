@@ -3,7 +3,7 @@ package ir.siriusapps.moneysave.data.repository.source.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ir.siriusapps.moneysave.domain.entity.*
+import ir.siriusapps.moneysave.domain.model.*
 import ir.siriusapps.moneysave.data.entity.converter.CurrencyRoomTypeConverter
 
 @Database(

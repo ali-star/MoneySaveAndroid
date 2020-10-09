@@ -1,7 +1,7 @@
 package ir.siriusapps.moneysave.data.entity.converter
 
 import androidx.room.TypeConverter
-import ir.siriusapps.moneysave.domain.entity.CurrencyType
+import ir.siriusapps.moneysave.domain.model.CurrencyType
 
 class CurrencyRoomTypeConverter {
 
