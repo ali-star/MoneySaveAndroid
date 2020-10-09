@@ -1,10 +1,10 @@
-package ir.siriusapps.moneysave.data.repository.source.local
+package ir.siriusapps.moneysave.data.local.db
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import ir.siriusapps.moneysave.domain.entity.BankAccountEntity
+import ir.siriusapps.moneysave.data.local.entity.BankAccountEntity
 
 @Dao
 interface RoomBankAccountDao {

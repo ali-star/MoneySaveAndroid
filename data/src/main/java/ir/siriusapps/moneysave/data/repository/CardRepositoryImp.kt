@@ -1,6 +1,6 @@
 package ir.siriusapps.moneysave.data.repository
 
-import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
+import ir.siriusapps.moneysave.data.local.MoneySaveDao
 import ir.siriusapps.moneysave.domain.repository.CardRepository
 import ir.siriusapps.moneysave.domain.entity.Card
 import ir.siriusapps.moneysave.domain.entity.CardEntityMapper
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @ApplicationScope
 class CardRepositoryImp @Inject constructor(
-    private val moneySaveDao: MoneySaveDao,
+    private val moneySaveDao: ir.siriusapps.moneysave.data.local.MoneySaveDao,
     private val cardEntityMapper: CardEntityMapper
 ) : CardRepository {
 

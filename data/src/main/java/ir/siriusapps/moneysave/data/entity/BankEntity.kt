@@ -1,10 +1,10 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ir.siriusapps.moneysave.data.entity.EntityModel
 import ir.siriusapps.moneysave.data.entity.mapper.Mapper
+import ir.siriusapps.moneysave.domain.entity.Bank
 import javax.inject.Inject
 
 @Entity(tableName = "Banks")

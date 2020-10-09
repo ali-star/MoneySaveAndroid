@@ -4,23 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import ir.siriusapps.moneysave.data.repository.BankRepositoryImp
-import ir.siriusapps.moneysave.domain.entity.BankEntityMapper
-import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import ir.siriusapps.moneysave.domain.useCase.bank.GetBank
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
-import ir.siriusapps.moneysave.entity.BankAccountItem
 import ir.siriusapps.moneysave.entity.BankAccountItemMapper
 import ir.siriusapps.moneysave.entity.BankItem
 import ir.siriusapps.moneysave.entity.BankItemMapper
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import ir.siriusapps.moneysave.presenter.ui.Event
-import ir.siriusapps.moneysave.presenter.ui.appEnum.BankName
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AddEditBankAccountFragmentViewModel constructor(

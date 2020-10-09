@@ -1,7 +1,7 @@
-package ir.siriusapps.moneysave.data.repository.source.local
+package ir.siriusapps.moneysave.data.local.db
 
 import androidx.room.*
-import ir.siriusapps.moneysave.domain.entity.TransactionEntity
+import ir.siriusapps.moneysave.data.local.entity.TransactionEntity
 
 @Dao
 interface RoomTransactionDao {

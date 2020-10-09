@@ -2,8 +2,8 @@ package ir.siriusapps.moneysave.internal.db.roomDataSource
 
 import androidx.room.Room
 import androidx.test.InstrumentationRegistry
-import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
-import ir.siriusapps.moneysave.data.repository.source.local.RoomBankAccountDao
+import ir.siriusapps.moneysave.data.local.local.AppDatabase
+import ir.siriusapps.moneysave.data.local.local.RoomBankAccountDao
 import ir.siriusapps.moneysave.domain.entity.BankAccountEntity
 import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import kotlinx.coroutines.runBlocking

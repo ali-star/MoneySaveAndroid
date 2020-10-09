@@ -1,3 +1,5 @@
 include (":domain")
 include (":data")
 include (":app")
+include ':data:remote'
+include ':data:local'

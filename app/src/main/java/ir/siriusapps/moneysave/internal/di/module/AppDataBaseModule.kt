@@ -6,8 +6,8 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
-import ir.siriusapps.moneysave.data.repository.source.local.AppDatabase
-import ir.siriusapps.moneysave.data.repository.source.local.MoneySaveDao
+import ir.siriusapps.moneysave.data.local.local.AppDatabase
+import ir.siriusapps.moneysave.data.local.local.MoneySaveDao
 
 @Module
 class AppDataBaseModule {
