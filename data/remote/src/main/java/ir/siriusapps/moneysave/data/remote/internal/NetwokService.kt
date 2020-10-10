@@ -1,8 +1,9 @@
 package ir.siriusapps.moneysave.data.remote.internal
 
 import com.google.gson.Gson
+import ir.siriusapps.moneysave.data.BuildConfig
 import ir.siriusapps.moneysave.data.remote.Apis
-import ir.siriusapps.moneysave.data.remote.entity.UserEntity
+import ir.siriusapps.moneysave.domain.entity.User
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,8 +15,8 @@ import java.util.concurrent.TimeUnit
 
 class NetworkService(
     gson: Gson,
-    responseFormatterInterceptor: Interceptor,
-    authenticator: Authenticator
+    authenticator: Authenticator,
+    getUser: (() -> User?)
 ) {
 
     companion object {
@@ -32,19 +33,18 @@ class NetworkService(
         val clientBuilder = OkHttpClient.Builder()
 
         val tokenInterceptor = Interceptor {
-            val account: UserEntity? = accountManager.getAccount()
-            if (account != null) {
-                if (account.accessToken == null)
+            val user = getUser.invoke()
+            if (user != null) {
+                if (user.tokenString == null)
                     throw Exception("Token is null")
                 val request = it.request().newBuilder()
-                    .addHeader("Authorization", "Bearer " + account.accessToken)
+                    .addHeader("Authorization", "Bearer ${ user.tokenString }")
                     .build()
                 return@Interceptor it.proceed(request)
             }
             return@Interceptor it.proceed(it.request().newBuilder().build())
         }
 
-        clientBuilder.addInterceptor(responseFormatterInterceptor)
         if (BuildConfig.DEBUG) {
             clientBuilder.addInterceptor(loggingInterceptor)
         }

@@ -2,10 +2,12 @@ package ir.siriusapps.moneysave.data.remote.internal
 
 import android.util.Log
 import com.google.gson.Gson
+import ir.siriusapps.moneysave.data.BuildConfig
 import ir.siriusapps.moneysave.data.remote.entity.UserEntity
 import ir.siriusapps.moneysave.data.remote.Apis
 import ir.siriusapps.moneysave.data.remote.entity.UserEntityMapper
 import ir.siriusapps.moneysave.domain.entity.LoginChange
+import ir.siriusapps.moneysave.domain.entity.User
 import ir.siriusapps.moneysave.domain.useCase.user.DeleteUser
 import ir.siriusapps.moneysave.domain.useCase.user.GetUser
 import ir.siriusapps.moneysave.domain.useCase.user.SaveUser
@@ -23,11 +25,9 @@ import java.net.HttpURLConnection
 import java.util.concurrent.TimeUnit
 
 class Authenticator(
-    private val getUser: GetUser,
-    private val saveUser: SaveUser,
-    private val deleteUser: DeleteUser,
-    private val userEntityMapper: UserEntityMapper,
-    private val onLoginChanged: ((LoginChange) -> Unit),
+    private val getUser: (() -> User?),
+    private val onUserUpdated: ((User) -> Unit),
+    private val onLogout: ((User) -> Unit),
     gson: Gson
 ) : Authenticator {
 
@@ -35,8 +35,11 @@ class Authenticator(
     private var retrofit: Retrofit? = null
     private var client: OkHttpClient
     private var dispatcher = Dispatchers.IO
+    private val userEntityMapper = UserEntityMapper()
 
     init {
+
+
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -59,13 +62,12 @@ class Authenticator(
 
     @Synchronized
     override fun authenticate(route: Route?, response: Response): Request? {
-        val user = runBlocking {
-            val user = getUser.execute()
-            if (user != null)
-                userEntityMapper.mapToData(user)
-            else
-                null
-        } ?: return null
+        val mUser = getUser.invoke()
+
+        val user = if (mUser != null)
+            userEntityMapper.mapToData(mUser)
+        else
+            return null
 
         val token = user.token ?: return null
 
@@ -91,7 +93,7 @@ class Authenticator(
                 user.tokenString = tokenEntity.tokenString
                 user.refreshToken = tokenEntity.refreshToken
 
-                runBlocking { saveUser.execute(userEntityMapper.mapToDomain(user)) }
+                runBlocking { onUserUpdated.invoke(userEntityMapper.mapToDomain(user)) }
 
                 Log.d("new token", user.tokenString!!)
 
@@ -111,9 +113,8 @@ class Authenticator(
 
     private fun logout(user: UserEntity) {
         CoroutineScope(dispatcher).launch {
-            deleteUser.execute(userEntityMapper.mapToDomain(user))
+            onLogout.invoke(userEntityMapper.mapToDomain(user))
         }
-        onLoginChanged.invoke(LoginChange(isLoggedIn = false, fromUser = false))
     }
 
 }
