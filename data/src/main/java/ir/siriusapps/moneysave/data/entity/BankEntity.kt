@@ -31,14 +31,14 @@ open class BankEntity(
 ) : EntityModel()
 
 class BankEntityMapper @Inject constructor() : Mapper<Bank, BankEntity> {
-    override fun mapToDomain(modelEntity: BankEntity): Bank =
+    override fun mapToDomain(entityModel: BankEntity): Bank =
         Bank(
-            modelEntity.localId,
-            modelEntity.id,
-            modelEntity.name,
-            modelEntity.bankCardNumberPrefix,
-            modelEntity.persianName,
-            modelEntity.smsRegex
+            entityModel.localId,
+            entityModel.id,
+            entityModel.name,
+            entityModel.bankCardNumberPrefix,
+            entityModel.persianName,
+            entityModel.smsRegex
         )
 
 

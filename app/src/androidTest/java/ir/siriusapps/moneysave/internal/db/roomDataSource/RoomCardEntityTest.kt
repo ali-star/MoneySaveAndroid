@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.runner.AndroidJUnit4
 import ir.siriusapps.moneysave.data.local.local.AppDatabase
 import ir.siriusapps.moneysave.data.local.local.RoomCardDao
-import ir.siriusapps.moneysave.domain.entity.CardEntity
+import ir.siriusapps.moneysave.data.entity.CardEntity
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

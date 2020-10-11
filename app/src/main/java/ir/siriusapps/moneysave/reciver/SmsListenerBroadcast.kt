@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.code.regexp.Pattern
 import dagger.android.DaggerBroadcastReceiver
-import ir.siriusapps.moneysave.domain.entity.*
+import ir.siriusapps.moneysave.data.entity.BankAccountEntity
 import ir.siriusapps.moneysave.domain.entity.TransactionType
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.SearchBankAccountByNumber
 import ir.siriusapps.moneysave.domain.useCase.transaction.AddTransaction

@@ -1,10 +1,11 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ir.siriusapps.moneysave.data.entity.EntityModel
 import ir.siriusapps.moneysave.data.entity.mapper.Mapper
+import ir.siriusapps.moneysave.domain.entity.BankAccount
+import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import javax.inject.Inject
 
 @Entity(tableName = "BankAccount")
@@ -38,16 +39,16 @@ data class BankAccountEntity(
 
 class BankAccountEntityMapper @Inject constructor() : Mapper<BankAccount, BankAccountEntity> {
 
-    override fun mapToDomain(modelEntity: BankAccountEntity): BankAccount =
+    override fun mapToDomain(entityModel: BankAccountEntity): BankAccount =
         BankAccount(
-            modelEntity.localId,
-            modelEntity.id,
-            modelEntity.userId,
-            modelEntity.bankId,
-            modelEntity.name,
-            modelEntity.accountNumber,
-            modelEntity.balance,
-            modelEntity.currencyType
+            entityModel.localId,
+            entityModel.id,
+            entityModel.userId,
+            entityModel.bankId,
+            entityModel.name,
+            entityModel.accountNumber,
+            entityModel.balance,
+            entityModel.currencyType
         )
 
 

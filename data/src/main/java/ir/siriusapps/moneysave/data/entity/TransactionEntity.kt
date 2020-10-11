@@ -1,11 +1,12 @@
-package ir.siriusapps.moneysave.domain.entity
+package ir.siriusapps.moneysave.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
-import ir.siriusapps.moneysave.data.entity.EntityModel
 import ir.siriusapps.moneysave.data.entity.mapper.Mapper
+import ir.siriusapps.moneysave.domain.entity.Transaction
+import ir.siriusapps.moneysave.domain.entity.TransactionType
 import java.util.*
 import javax.inject.Inject
 
@@ -49,14 +50,14 @@ class TransactionTypeRoomTypeConverter {
     }
 
 class TransactionEntityMapper @Inject constructor(): Mapper<Transaction, TransactionEntity>{
-    override fun mapToDomain(modelEntity: TransactionEntity): Transaction = Transaction(
-        modelEntity.bankAccountLocalId,
-        modelEntity.id,
-        modelEntity.createDate,
-        modelEntity.type,
-        modelEntity.bankAccountLocalId,
-        modelEntity.amount,
-        modelEntity.balance
+    override fun mapToDomain(entityModel: TransactionEntity): Transaction = Transaction(
+        entityModel.bankAccountLocalId,
+        entityModel.id,
+        entityModel.createDate,
+        entityModel.type,
+        entityModel.bankAccountLocalId,
+        entityModel.amount,
+        entityModel.balance
     )
 
 

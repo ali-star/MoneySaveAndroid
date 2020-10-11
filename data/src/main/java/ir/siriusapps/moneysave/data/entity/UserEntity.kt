@@ -12,19 +12,28 @@ import javax.inject.Inject
 @Entity(tableName = "User")
 open class UserEntity(
 
-    @ColumnInfo(name = "localId") @PrimaryKey(autoGenerate = true)
-    val localId: Long,
-
+    @PrimaryKey
     @ColumnInfo(name = "id")
     val id: String,
 
-    @ColumnInfo(name = "name")
-    val name: String,
+    @SerializedName("userName")
+    @ColumnInfo(name = "userName")
+    val userName: String,
+
+    @SerializedName("firstName")
+    @ColumnInfo(name = "firstName")
+    val firstName: String,
+
+    @SerializedName("lastName")
+    @ColumnInfo(name = "lastName")
+    val lastName: String,
 
     @SerializedName("token")
+    @ColumnInfo(name = "token")
     var tokenString: String? = null,
 
     @SerializedName("refreshToken")
+    @ColumnInfo(name = "refreshToken")
     var refreshToken: String? = null
 
 ) : EntityModel() {
@@ -34,16 +43,22 @@ open class UserEntity(
 }
 
 class UserEntityMapper @Inject constructor() : Mapper<User, UserEntity> {
-    override fun mapToDomain(modelEntity: UserEntity): User = User(
-        modelEntity.localId,
-        modelEntity.id,
-        modelEntity.name
+    override fun mapToDomain(entityModel: UserEntity): User = User(
+        entityModel.id,
+        entityModel.userName,
+        entityModel.firstName,
+        entityModel.lastName,
+        entityModel.tokenString,
+        entityModel.refreshToken
     )
 
 
     override fun mapToData(model: User): UserEntity = UserEntity(
-        model.localId,
         model.id,
-        model.name
+        model.userName,
+        model.firstname,
+        model.lastName,
+        model.token,
+        model.refreshToken
     )
 }

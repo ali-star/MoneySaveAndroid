@@ -7,22 +7,31 @@ import javax.inject.Inject
 
 open class UserItem(
 
-    val localId: Long,
     val id: String,
-    val name: String
+    val userName: String,
+    val firstName: String,
+    val lastName: String,
+    var token: String?,
+    var refreshToken: String?
 
 ) : Item()
 
 class UserItemMapper @Inject constructor() : ItemMapper<User, UserItem> {
     override fun mapToDomain(itemModel: UserItem): User = User(
-        itemModel.localId,
         itemModel.id,
-        itemModel.name
+        itemModel.userName,
+        itemModel.firstName,
+        itemModel.lastName,
+        itemModel.token,
+        itemModel.refreshToken
     )
 
     override fun mapToApp(model: User): UserItem = UserItem(
-        model.localId,
         model.id,
-        model.name
+        model.userName,
+        model.firstname,
+        model.lastName,
+        model.token,
+        model.refreshToken
     )
 }

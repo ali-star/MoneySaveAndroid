@@ -1,8 +1,9 @@
-package ir.siriusapps.moneysave.data.entity
+package ir.siriusapps.moneysave.data.remote.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ir.siriusapps.moneysave.data.entity.EntityModel
 import ir.siriusapps.moneysave.data.local.entity.mapper.Mapper
 import ir.siriusapps.moneysave.domain.entity.Bank
 import javax.inject.Inject

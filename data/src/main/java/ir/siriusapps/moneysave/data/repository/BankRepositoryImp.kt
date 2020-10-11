@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import ir.siriusapps.moneysave.data.local.MoneySaveDao
 import ir.siriusapps.moneysave.data.utils.Utils
 import ir.siriusapps.moneysave.domain.entity.Bank
 import ir.siriusapps.moneysave.data.entity.BankEntity
 import ir.siriusapps.moneysave.data.entity.BankEntityMapper
+import ir.siriusapps.moneysave.data.repository.source.local.Dao
 import ir.siriusapps.moneysave.domain.repository.BankRepository
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @ApplicationScope
 class BankRepositoryImp @Inject constructor(
-    private val moneySaveDao: ir.siriusapps.moneysave.data.local.MoneySaveDao,
+    private val dao: Dao,
     private val bankEntityMapper: BankEntityMapper,
     private val sharedPreferences: SharedPreferences,
     private val context: Context,
@@ -41,12 +41,12 @@ class BankRepositoryImp @Inject constructor(
     }
 
     override suspend fun getBank(preCardNumber: String): Bank? = withContext(ioDispatcher) {
-        val bank = moneySaveDao.getBank(preCardNumber) ?: return@withContext null
+        val bank = dao.getBank(preCardNumber) ?: return@withContext null
         bankEntityMapper.mapToDomain(bank)
     }
 
     override suspend fun getAllBanks(): List<Bank> = withContext(ioDispatcher) {
-        return@withContext moneySaveDao.getBanks().map {
+        return@withContext dao.getBanks().map {
             bankEntityMapper.mapToDomain(it)
         }
     }
@@ -59,7 +59,7 @@ class BankRepositoryImp @Inject constructor(
         )
         GlobalScope.launch {
             withContext(Dispatchers.IO) {
-                moneySaveDao.insertBanks((banksEntity))
+                dao.insertBanks((banksEntity))
             }
         }
     }

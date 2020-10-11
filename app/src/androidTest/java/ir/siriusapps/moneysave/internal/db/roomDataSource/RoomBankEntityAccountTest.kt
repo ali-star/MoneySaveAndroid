@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.test.InstrumentationRegistry
 import ir.siriusapps.moneysave.data.local.local.AppDatabase
 import ir.siriusapps.moneysave.data.local.local.RoomBankAccountDao
-import ir.siriusapps.moneysave.domain.entity.BankAccountEntity
+import ir.siriusapps.moneysave.data.entity.BankAccountEntity
 import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import kotlinx.coroutines.runBlocking
 import org.junit.After
