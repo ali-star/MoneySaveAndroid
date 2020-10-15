@@ -8,17 +8,20 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
-import dagger.hilt.android.AndroidEntryPoint
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
+import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
 import ir.siriusapps.moneysave.presenter.ui.EventObserver
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@ExperimentalCoroutinesApi
-@AndroidEntryPoint
-class AddEditBankAccountFragment : Fragment() {
+import javax.inject.Inject
 
-    private val viewModel: AddEditBankAccountFragmentViewModel by viewModels()
+class AddEditBankAccountFragment @Inject constructor(
+    val factory: AddEditBankAccountFragmentViewModelFactory
+) : Fragment() {
+
+    private val viewModel: AddEditBankAccountFragmentViewModel by viewModels {
+        GenericSavedStateViewModelFactory(factory, this)
+    }
 
     private lateinit var binding: AddEditBankAccountFragmentBinding
 
@@ -28,8 +31,9 @@ class AddEditBankAccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = AddEditBankAccountFragmentBinding.inflate(inflater, container, false).apply {
-            lifecycleOwner = this@AddEditBankAccountFragment.viewLifecycleOwner
+
             viewmodel = this@AddEditBankAccountFragment.viewModel
+            lifecycleOwner = this@AddEditBankAccountFragment.viewLifecycleOwner
             nextButton.setOnClickListener {
 
                 if (accountNameEditText.text.isNullOrEmpty()) {
