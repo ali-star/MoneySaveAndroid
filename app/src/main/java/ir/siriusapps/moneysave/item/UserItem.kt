@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.entity
+package ir.siriusapps.moneysave.item
 
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
 import ir.siriusapps.moneysave.domain.entity.User
@@ -26,10 +26,10 @@ class UserItemMapper @Inject constructor() : ItemMapper<User, UserItem> {
         itemModel.refreshToken
     )
 
-    override fun mapToApp(model: User): UserItem = UserItem(
+    override fun mapToPresentation(model: User): UserItem = UserItem(
         model.id,
         model.userName,
-        model.firstname,
+        model.firstName,
         model.lastName,
         model.token,
         model.refreshToken

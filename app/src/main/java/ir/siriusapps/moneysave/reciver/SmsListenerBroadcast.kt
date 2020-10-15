@@ -12,8 +12,8 @@ import ir.siriusapps.moneysave.data.entity.BankAccountEntity
 import ir.siriusapps.moneysave.domain.entity.TransactionType
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.SearchBankAccountByNumber
 import ir.siriusapps.moneysave.domain.useCase.transaction.AddTransaction
-import ir.siriusapps.moneysave.entity.TransactionItem
-import ir.siriusapps.moneysave.entity.TransactionItemMapper
+import ir.siriusapps.moneysave.item.TransactionItem
+import ir.siriusapps.moneysave.item.TransactionItemMapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

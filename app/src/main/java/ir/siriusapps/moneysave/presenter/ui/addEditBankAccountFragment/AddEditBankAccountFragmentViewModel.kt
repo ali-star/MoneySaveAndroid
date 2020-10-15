@@ -6,9 +6,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import ir.siriusapps.moneysave.domain.useCase.bank.GetBank
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
-import ir.siriusapps.moneysave.entity.BankAccountItemMapper
-import ir.siriusapps.moneysave.entity.BankItem
-import ir.siriusapps.moneysave.entity.BankItemMapper
+import ir.siriusapps.moneysave.item.BankAccountItemMapper
+import ir.siriusapps.moneysave.item.BankItem
+import ir.siriusapps.moneysave.item.BankItemMapper
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import ir.siriusapps.moneysave.presenter.ui.Event
@@ -37,7 +37,7 @@ class AddEditBankAccountFragmentViewModel constructor(
         viewModelScope.launch {
             if (getBank.getBank(preCardNumber) != null)
                 _navigationLiveData.value =
-                    Event(bankItemMapper.mapToApp(getBank.getBank(preCardNumber)!!))
+                    Event(bankItemMapper.mapToPresentation(getBank.getBank(preCardNumber)!!))
             else
                 _navigationLiveData.value = Event(BankItem(null, null, "", "", "", ""))
         }

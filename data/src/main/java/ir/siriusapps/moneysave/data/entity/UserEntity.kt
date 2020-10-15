@@ -56,7 +56,7 @@ class UserEntityMapper @Inject constructor() : Mapper<User, UserEntity> {
     override fun mapToData(model: User): UserEntity = UserEntity(
         model.id,
         model.userName,
-        model.firstname,
+        model.firstName,
         model.lastName,
         model.token,
         model.refreshToken

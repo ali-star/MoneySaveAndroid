@@ -6,9 +6,8 @@ import androidx.lifecycle.viewModelScope
 import ir.siriusapps.moneysave.domain.entity.CurrencyType
 import ir.siriusapps.moneysave.domain.repository.CardRepository
 import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
-import ir.siriusapps.moneysave.entity.BankAccountItem
-import ir.siriusapps.moneysave.entity.BankAccountItemMapper
-import ir.siriusapps.moneysave.entity.BankItem
+import ir.siriusapps.moneysave.item.BankAccountItem
+import ir.siriusapps.moneysave.item.BankAccountItemMapper
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import ir.siriusapps.moneysave.presenter.ui.Event

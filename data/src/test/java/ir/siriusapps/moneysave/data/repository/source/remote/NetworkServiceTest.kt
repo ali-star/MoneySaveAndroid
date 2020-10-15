@@ -55,26 +55,25 @@ class NetworkServiceTest {
                 "created_at": "2020-09-18T12:46:05.123044Z",
                 "update_at": "2020-10-11T22:02:54.489465702Z",
                 "deleted_at": null,
-                "userName": "leila",
-                "firstName": "",
-                "lastName": "",
+                "userName": "ali-star",
+                "firstName": "ali",
+                "lastName": "mohseni",
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDI0NTQ2NzQsImlhdCI6MTYwMjQ1Mzc3NCwidXNlcklkIjoiZTk4NjkyNjQtMjQ3YS00NmIxLWE5NWYtMWU1Mjk4MjkwZmE0In0.W8WdZxR7RRTOXzsj6c_s7LldfIAiJQTC0k5HcR2Gew8",
                 "refreshToken": "3SgX9pv80ClL-FVDQ-8uZw0S7nFlNSj4AWMM9cj9BXZR_3uvtxT0jrqV2yFHkYGLLrzRl48ARDJTCMRXR-_s7sn6A4mcyck-"
             }
         """.trimIndent()))
 
         val user = runBlocking {
-            networkService.getApis().login(LoginModel("leila", "0000"))
+            networkService.getApis().login(LoginModel("ali-star", "0000"))
         }
 
-        assertTrue(user.userName == "leila")
+        assertTrue(user.userName == "ali-star")
     }
 
     @Test
     fun `test refreshToken api`() {
         server.enqueue(MockResponse().setBody("""
             {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDI0NTMwMzEsImlhdCI6MTYwMjQ1MjEzMSwidXNlcklkIjoiZTk4NjkyNjQtMjQ3YS00NmIxLWE5NWYtMWU1Mjk4MjkwZmE0In0.o9He-tAjL2---G4FjmO6QtPhAN7SBxnM_j1F7G3CRRk",
                 "refreshToken": "jzVb0IlTBUPXK5-J8L-NOPus5ScQJcXYGf5rMMBFzNcscfEUG5Wy3jnqn1VGaDs1RcOcqcQKYiiv5otSQwGeQ-IgrkEEoxzi"
             }
         """.trimIndent()))
@@ -83,7 +82,7 @@ class NetworkServiceTest {
             networkService.getApis().refreshToken(TokenEntity("token", "refresh_token"))
         }
 
-        assertTrue(tokenEntity.tokenString == "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDI0NTMwMzEsImlhdCI6MTYwMjQ1MjEzMSwidXNlcklkIjoiZTk4NjkyNjQtMjQ3YS00NmIxLWE5NWYtMWU1Mjk4MjkwZmE0In0.o9He-tAjL2---G4FjmO6QtPhAN7SBxnM_j1F7G3CRRk")
+        assertTrue(tokenEntity.refreshToken == "jzVb0IlTBUPXK5-J8L-NOPus5ScQJcXYGf5rMMBFzNcscfEUG5Wy3jnqn1VGaDs1RcOcqcQKYiiv5otSQwGeQ-IgrkEEoxzi")
     }
 
 }

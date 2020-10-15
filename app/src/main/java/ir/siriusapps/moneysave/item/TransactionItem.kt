@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.entity
+package ir.siriusapps.moneysave.item
 
 import androidx.room.Entity
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
@@ -32,7 +32,7 @@ class TransactionItemMapper @Inject constructor() : ItemMapper<Transaction, Tran
             itemModel.balance
         )
 
-    override fun mapToApp(model: Transaction): TransactionItem = TransactionItem(
+    override fun mapToPresentation(model: Transaction): TransactionItem = TransactionItem(
         model.bankAccountLocalId,
         model.id,
         model.createDate,

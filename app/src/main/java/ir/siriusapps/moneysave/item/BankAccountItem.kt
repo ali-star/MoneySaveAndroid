@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.entity
+package ir.siriusapps.moneysave.item
 
 import ir.siriusapps.moneysave.data.entity.mapper.ItemMapper
 import ir.siriusapps.moneysave.domain.entity.BankAccount
@@ -34,7 +34,7 @@ class BankAccountItemMapper @Inject constructor(): ItemMapper<BankAccount, BankA
         )
 
 
-    override fun mapToApp(model: BankAccount): BankAccountItem = BankAccountItem(
+    override fun mapToPresentation(model: BankAccount): BankAccountItem = BankAccountItem(
         model.localId,
         model.id,
         model.userId,
