@@ -2,6 +2,7 @@ package ir.siriusapps.moneysave.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.auth0.android.jwt.JWT
 import com.google.gson.annotations.SerializedName
@@ -13,32 +14,33 @@ import javax.inject.Inject
 open class UserEntity(
 
     @PrimaryKey
+    @SerializedName("id")
     @ColumnInfo(name = "id")
-    val id: String,
+    var id: String,
 
     @SerializedName("userName")
     @ColumnInfo(name = "userName")
-    val userName: String,
+    var userName: String,
 
     @SerializedName("firstName")
     @ColumnInfo(name = "firstName")
-    val firstName: String,
+    var firstName: String,
 
     @SerializedName("lastName")
     @ColumnInfo(name = "lastName")
-    val lastName: String,
+    var lastName: String,
 
+    @Ignore
     @SerializedName("token")
-    @ColumnInfo(name = "token")
     var tokenString: String? = null,
 
+    @Ignore
     @SerializedName("refreshToken")
-    @ColumnInfo(name = "refreshToken")
     var refreshToken: String? = null
 
 ) : EntityModel() {
 
-    val token: JWT? get() = if (tokenString == null) null else JWT(tokenString!!)
+    constructor(): this("", "", "", "", null, null)
 
 }
 
@@ -48,17 +50,12 @@ class UserEntityMapper @Inject constructor() : Mapper<User, UserEntity> {
         entityModel.userName,
         entityModel.firstName,
         entityModel.lastName,
-        entityModel.tokenString,
-        entityModel.refreshToken
     )
-
 
     override fun mapToData(model: User): UserEntity = UserEntity(
         model.id,
         model.userName,
         model.firstName,
         model.lastName,
-        model.token,
-        model.refreshToken
     )
 }

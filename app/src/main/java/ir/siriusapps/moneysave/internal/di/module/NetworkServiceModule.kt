@@ -1,5 +1,7 @@
 package ir.siriusapps.moneysave.internal.di.module
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -17,51 +19,13 @@ import javax.inject.Singleton
 @Module
 abstract class NetworkServiceModule {
 
-    var userEntity: UserEntity? = null
-    var tokenEntity: TokenEntity? = null
-
     @Provides
     @Singleton
     fun provideNetworkService(
-        gson: Gson,
-        getUser: GetUser,
-        updateUser: UpdateUser,
-        userEntityMapper: UserEntityMapper
+        sharedPreferences: SharedPreferences,
+        gson: Gson
     ): NetworkService {
-        val authenticator = Authenticator(
-            NetworkService.MAIN_DOMAIN,
-            getToken = {
-                if (tokenEntity != null) {
-                    tokenEntity
-                } else {
-                    runBlocking {
-                        getUser.execute()?.let {
-                            userEntityMapper.mapToData(it).let { userEntity ->
-                                tokenEntity = TokenEntity(
-                                    userEntity.tokenString,
-                                    userEntity.refreshToken
-                                )
-                                return@runBlocking tokenEntity
-                            }
-                        }
-                    }
-                }
-
-            },
-            onTokenUpdated = {
-                userEntity?.let {
-                    it.tokenString = tokenEntity?.tokenString
-                    it.refreshToken = tokenEntity?.refreshToken
-                    runBlocking { updateUser.execute(userEntityMapper.mapToDomain(it)) }
-                }
-            },
-            onUnauthorized = {
-
-            },
-            gson
-        )
-
-        return NetworkService(NetworkService.MAIN_DOMAIN, gson, authenticator, getUser = { userEntity })
+        return NetworkService(sharedPreferences, NetworkService.MAIN_DOMAIN, gson)
     }
 
 }

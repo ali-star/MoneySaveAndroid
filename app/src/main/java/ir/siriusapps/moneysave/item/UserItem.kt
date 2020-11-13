@@ -11,8 +11,6 @@ open class UserItem(
     val userName: String,
     val firstName: String,
     val lastName: String,
-    var token: String?,
-    var refreshToken: String?
 
 ) : Item()
 
@@ -21,9 +19,7 @@ class UserItemMapper @Inject constructor() : ItemMapper<User, UserItem> {
         itemModel.id,
         itemModel.userName,
         itemModel.firstName,
-        itemModel.lastName,
-        itemModel.token,
-        itemModel.refreshToken
+        itemModel.lastName
     )
 
     override fun mapToPresentation(model: User): UserItem = UserItem(
@@ -31,7 +27,5 @@ class UserItemMapper @Inject constructor() : ItemMapper<User, UserItem> {
         model.userName,
         model.firstName,
         model.lastName,
-        model.token,
-        model.refreshToken
     )
 }

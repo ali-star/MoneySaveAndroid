@@ -86,7 +86,7 @@ class Authenticator(
             apis!!.refreshToken(tokenEntity)
         }
 
-        onTokenUpdated.invoke(newTokenEntity!!)
+        onTokenUpdated.invoke(newTokenEntity)
 
         return response.request.newBuilder()
             .header("Authorization", "Bearer " + newTokenEntity.tokenString)

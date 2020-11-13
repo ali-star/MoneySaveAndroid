@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
-      <module name="core" target="1.7" />
-      <module name="DataLayout" target="1.7" />
-      <module name="domain" target="1.7" />
-      <module name="Domain" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
       <module name="MoneySaveAndroid.app" target="11" />
       <module name="MoneySaveAndroid.data" target="11" />
-      <module name="MoneySaveAndroid.data.local" target="11" />
-      <module name="MoneySaveAndroid.data.remote" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

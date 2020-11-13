@@ -1,8 +1,9 @@
 package ir.siriusapps.moneysave.data.repository.source.remote.internal
 
+import android.content.SharedPreferences
 import com.google.gson.Gson
 import ir.siriusapps.moneysave.data.BuildConfig
-import ir.siriusapps.moneysave.data.entity.UserEntity
+import ir.siriusapps.moneysave.data.remote.internal.TokenEntity
 import ir.siriusapps.moneysave.data.repository.source.remote.Apis
 import okhttp3.ConnectionSpec
 import okhttp3.HttpUrl
@@ -15,18 +16,23 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 class NetworkService(
+    sharedPreferences: SharedPreferences,
     baseUrl: String,
-    private val gson: Gson,
-    authenticator: Authenticator,
-    getUser: (() -> UserEntity?)
+    private val gson: Gson
 ) {
 
     companion object {
         const val MAIN_DOMAIN = "https://api.siriuscloud.ir"
+        const val TOKEN_PREFS_KEY = "token"
+        const val REFRESH_TOKEN_PREFS_KEY = "refresh_token"
+        const val IS_USER_LOGGED_IN_PREFS_KEY = "is_user_logged_in"
     }
 
     private lateinit var apis: Apis
     private val client: OkHttpClient
+    private var isUserLoggedIn = sharedPreferences.getBoolean(IS_USER_LOGGED_IN_PREFS_KEY, false)
+    private var token = sharedPreferences.getString(TOKEN_PREFS_KEY, null)
+    private var refreshToken = sharedPreferences.getString(REFRESH_TOKEN_PREFS_KEY, null)
 
     init {
         val loggingInterceptor = HttpLoggingInterceptor()
@@ -35,17 +41,34 @@ class NetworkService(
         val clientBuilder = OkHttpClient.Builder()
 
         val tokenInterceptor = Interceptor {
-            val account = getUser.invoke()
-            if (account != null) {
-                if (account.tokenString == null)
-                    throw Exception("Token is null")
+            if (isUserLoggedIn) {
                 val request = it.request().newBuilder()
-                    .addHeader("Authorization", "Bearer ${ account.tokenString }")
+                    .addHeader("Authorization", "Bearer $token")
                     .build()
                 return@Interceptor it.proceed(request)
             }
             return@Interceptor it.proceed(it.request().newBuilder().build())
         }
+
+        val authenticator = Authenticator(
+            MAIN_DOMAIN,
+            getToken = {
+                return@Authenticator TokenEntity(token, refreshToken)
+            },
+            onTokenUpdated = {
+                token = it.tokenString
+                refreshToken = it.refreshToken
+
+                sharedPreferences.edit()
+                    .putString(TOKEN_PREFS_KEY, it.tokenString)
+                    .putString(REFRESH_TOKEN_PREFS_KEY, refreshToken)
+                    .apply()
+            },
+            onUnauthorized = {
+
+            },
+            gson
+        )
 
         if (BuildConfig.DEBUG) {
             clientBuilder.addInterceptor(loggingInterceptor)
@@ -63,9 +86,7 @@ class NetworkService(
 
         client = clientBuilder.build()
 
-
         initRetrofit(baseUrl)
-
     }
 
     fun initRetrofit(baseUrl: HttpUrl) {

@@ -7,12 +7,12 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion(29)
-    buildToolsVersion("29.0.3")
+    compileSdkVersion 30
+
     defaultConfig {
         applicationId = "ir.siriusapps.moneysave"
-        minSdkVersion(21)
-        targetSdkVersion(29)
+        minSdkVersion 21
+        targetSdkVersion 30
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -22,6 +22,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            manifestPlaceholders.cleartextTrafficPermitted ="true"
         }
     }
 
