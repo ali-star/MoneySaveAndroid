@@ -29,4 +29,11 @@
 	<string name="expire">Expire</string>
 	<string name="expire_date">Expire date of your card.</string>
 	<string name="ccv2">CVV2</string>
+	<string name="or">OR</string>
+	<string name="login_to_your_account">Login to your account</string>
+	<string name="email">Email</string>
+	<string name="password">Password</string>
+	<string name="register">Register</string>
+	<string name="register_upper">REGISTER</string>
+	<string name="login">LOGIN</string>
 </resources>

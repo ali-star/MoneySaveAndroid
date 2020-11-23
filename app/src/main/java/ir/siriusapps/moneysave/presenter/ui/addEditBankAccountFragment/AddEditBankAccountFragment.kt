@@ -12,7 +12,6 @@ import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
 import ir.siriusapps.moneysave.presenter.ui.EventObserver
-import ir.siriusapps.moneysave.presenter.ui.appEnum.BankName
 import javax.inject.Inject
 
 class AddEditBankAccountFragment @Inject constructor(

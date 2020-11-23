@@ -9,7 +9,9 @@ import dagger.multibindings.IntoMap
 import ir.siriusapps.moneysave.internal.di.factory.CustomFragmentFactory
 import ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment
 import ir.siriusapps.moneysave.presenter.ui.addEditCardFragment.AddEditCardFragment
+import ir.siriusapps.moneysave.presenter.ui.login.LoginFragment
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
+import ir.siriusapps.moneysave.presenter.ui.register.RegisterFragment
 import kotlin.reflect.KClass
 
 @Module
@@ -32,6 +34,16 @@ interface FragmentModule {
     @IntoMap
     @FragmentKey(MainFragment::class)
     fun mainFragmentProvider(mainFragment: MainFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(LoginFragment::class)
+    fun loginFragmentProvider(loginFragment: LoginFragment):Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(RegisterFragment::class)
+    fun registerFragmentProvider(registerFragment: RegisterFragment): Fragment
 
 }
 
