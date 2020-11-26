@@ -17,22 +17,18 @@ class RepositoryModule {
 
     @Provides
     @ApplicationScope
-    fun provideTransactionsRepository(transactionRepositoryImp: TransactionRepositoryImp): TransactionRepository =
-        transactionRepositoryImp
+    fun provideTransactionsRepository(transactionRepositoryImp: TransactionRepositoryImp): TransactionRepository = transactionRepositoryImp
 
     @Provides
     @ApplicationScope
-    fun provideBankAccountRepository(bankAccountRepositoryImp: BankAccountRepositoryImp): BankAccountRepository =
-        bankAccountRepositoryImp
+    fun provideBankAccountRepository(bankAccountRepositoryImp: BankAccountRepositoryImp): BankAccountRepository = bankAccountRepositoryImp
 
     @Provides
     @ApplicationScope
-    fun provideBankRepository(bankRepositoryImp: BankRepositoryImp): BankRepository =
-        bankRepositoryImp
+    fun provideBankRepository(bankRepositoryImp: BankRepositoryImp): BankRepository = bankRepositoryImp
 
     @Provides
     @ApplicationScope
-    fun provideCardRepository(cardRepositoryImp: CardRepositoryImp): CardRepository =
-        cardRepositoryImp
+    fun provideCardRepository(cardRepositoryImp: CardRepositoryImp): CardRepository = cardRepositoryImp
 
 }
