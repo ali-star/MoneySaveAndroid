@@ -42,6 +42,10 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         requestPermissionForSms()
     }
 
+    fun changeStatusBarColor(color: Int) {
+
+    }
+
     private fun requestPermissionForSms() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(

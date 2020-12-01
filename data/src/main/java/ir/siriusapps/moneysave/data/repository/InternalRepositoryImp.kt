@@ -8,23 +8,22 @@ import ir.siriusapps.moneysave.data.repository.source.remote.Apis
 import ir.siriusapps.moneysave.data.repository.source.remote.internal.NetworkService
 import ir.siriusapps.moneysave.domain.entity.User
 import ir.siriusapps.moneysave.domain.repository.InternalRepository
-import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 class InternalRepositoryImp @Inject constructor(
-    private val sharedPreferences: SharedPreferences,
-    private val networkService: NetworkService,
-    private val dao: Dao,
-    private val userEntityMapper: UserEntityMapper
+        private val sharedPreferences: SharedPreferences,
+        private val apis: Apis,
+        private val dao: Dao,
+        private val userEntityMapper: UserEntityMapper
 ) : InternalRepository {
 
     private val ioDispatcher = Dispatchers.IO
 
     override suspend fun login(username: String, password: String): User = withContext(ioDispatcher) {
-        val userEntity = networkService.getApis().login(LoginModel(username, password))
+        val userEntity = apis.login(LoginModel(username, password))
         userEntity.let {
             dao.insertUser(userEntity)
             sharedPreferences.edit()

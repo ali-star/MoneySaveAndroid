@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools">
-	
-<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
-	
-	<ImageView
+
+		<ImageView
 			android:id="@+id/logoImageView"
 			android:layout_width="80dp"
 			android:layout_height="90dp"
@@ -17,115 +16,112 @@
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent" />
-	
-	
-	<TextView
+
+
+		<TextView
 			android:id="@+id/textView2"
-			android:layout_width="match_parent"
-			android:layout_height="54dp"
-			android:layout_marginTop="12dp"
-			android:text="@string/login_to_your_account"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="26dp"
 			android:gravity="center"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/logoImageView"/>
-	
-	<EditText
+			android:text="@string/login_to_your_account"
+			android:textColor="@color/dark"
+			app:layout_constraintEnd_toEndOf="@+id/logoImageView"
+			app:layout_constraintStart_toStartOf="@+id/logoImageView"
+			app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+		<EditText
 			android:id="@+id/emailEditText"
-			android:layout_width="match_parent"
-			android:hint="@string/email"
-			android:layout_height="54dp"
-			android:layout_marginTop="38dp"
-			android:layout_marginEnd="24dp"
-			android:layout_marginStart="24dp"
-			android:drawablePadding="15dp"
-			android:paddingStart="15dp"
-			android:drawableStart="@drawable/ic_email"
+			android:layout_width="340dp"
+			android:layout_height="64dp"
+			android:layout_marginTop="32dp"
 			android:background="@drawable/oval_background"
+			android:drawableStart="@drawable/ic_email"
+			android:drawablePadding="15dp"
+			android:hint="@string/email"
+			android:paddingStart="15dp"
+			android:textSize="14sp"
+			android:textStyle="bold"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/textView2"
 			tools:ignore="RtlSymmetry" />
-	
-	<EditText
+
+		<EditText
 			android:id="@+id/passwordEditText"
-			android:layout_width="match_parent"
-			android:layout_height="54dp"
-			android:hint="@string/password"
+			android:layout_width="340dp"
+			android:layout_height="64dp"
 			android:layout_marginTop="38dp"
-			android:layout_marginEnd="24dp"
-			android:layout_marginStart="24dp"
-			android:drawablePadding="15dp"
-			android:paddingStart="15dp"
-			android:drawableStart="@drawable/ic_password_icon"
 			android:background="@drawable/oval_background"
+			android:drawableStart="@drawable/ic_password_icon"
+			android:drawablePadding="15dp"
+			android:hint="@string/password"
+			android:inputType="textPassword"
+			android:paddingStart="15dp"
+			android:textSize="14sp"
+			android:textStyle="bold"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/emailEditText"
 			tools:ignore="RtlSymmetry" />
-	
-	<ir.siriusapps.moneysave.customView.GradientBlurLayout
+
+		<TextView
+			android:id="@+id/textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="12dp"
+			android:text="@string/or"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+		<ir.siriusapps.moneysave.customView.GradientBlurLayout
 			android:id="@+id/gradientBlurLayout2"
-			android:layout_width="match_parent"
-			android:layout_height="70dp"
-			android:layout_marginStart="8dp"
-			android:layout_marginEnd="8dp"
-			app:gbl_endColor="#00DCF5"
+			android:layout_width="420dp"
+			android:layout_height="140dp"
+			android:layout_marginTop="16dp"
 			app:gbl_angle="45"
-			app:gbl_blurRadius="20dp"
-			app:gbl_radius="-1dp"
-			app:gbl_startColor="#00A3E0"
-			app:layout_constraintEnd_toEndOf="@+id/loginButton"
+			app:gbl_blurRadius="42dp"
+			app:gbl_endColor="#4d00A3E0"
+			app:gbl_radius="15dp"
+			app:gbl_startColor="#4d00DCF5"
+			app:layout_constraintEnd_toEndOf="@id/loginButton"
 			app:layout_constraintStart_toStartOf="@+id/loginButton"
-			app:layout_constraintTop_toTopOf="@+id/loginButton" />
-	
-	<ir.siriusapps.moneysave.customView.GradientButton
+			app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+		<ir.siriusapps.moneysave.customView.GradientButton
 			android:id="@+id/loginButton"
-			android:layout_width="0dp"
-			android:layout_height="54dp"
-			android:layout_marginStart="24dp"
-			android:layout_marginTop="100dp"
-			android:layout_marginEnd="24dp"
+			android:layout_width="340dp"
+			android:layout_height="64dp"
+			android:layout_marginTop="38dp"
 			android:gravity="center"
 			android:text="@string/login"
 			android:textColor="@color/white"
 			android:textSize="17sp"
 			android:textStyle="bold"
 			app:gb_angle="45"
-			app:gb_endColor="#00DCF5"
+			app:gb_endColor="#00A3E0"
 			app:gb_radius="15dp"
-			app:gb_startColor="#00A3E0"
+			app:gb_startColor="#00DCF5"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/passwordEditText"/>
-	
-	<TextView
-			android:id="@+id/textView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="1dp"
-			android:layout_marginBottom="17dp"
-			android:text="@string/or"
-			app:layout_constraintBottom_toTopOf="@+id/register"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/gradientBlurLayout2" />
-	
-	<Button
+			app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+		<Button
 			android:id="@+id/register"
-			android:layout_width="match_parent"
-			android:layout_height="54dp"
-			android:layout_marginStart="24dp"
-			android:layout_marginEnd="24dp"
+			android:layout_width="340dp"
+			android:layout_height="64dp"
+			android:layout_marginTop="12dp"
 			android:background="@drawable/border_background"
 			android:text="@string/register_upper"
-			app:layout_constraintBottom_toBottomOf="parent"
+			android:textSize="17sp"
+			android:textStyle="bold"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/gradientBlurLayout2"
+			app:layout_constraintTop_toBottomOf="@+id/textView"
 			tools:ignore="MissingConstraints" />
-	
-	
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
+import ir.siriusapps.moneysave.data.repository.source.remote.Apis
 import ir.siriusapps.moneysave.data.repository.source.remote.internal.NetworkService
 import javax.inject.Singleton
 
@@ -12,11 +13,11 @@ class NetworkServiceModule {
 
     @Provides
     @Singleton
-    fun provideNetworkService(
+    fun provideApis(
         sharedPreferences: SharedPreferences,
         gson: Gson
-    ): NetworkService {
-        return NetworkService(sharedPreferences, NetworkService.MAIN_DOMAIN, gson)
+    ): Apis {
+        return NetworkService(sharedPreferences, NetworkService.MAIN_DOMAIN, gson).getApis()
     }
 
 }

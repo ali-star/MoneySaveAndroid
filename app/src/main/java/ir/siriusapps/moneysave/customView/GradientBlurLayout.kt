@@ -82,7 +82,7 @@ class GradientBlurLayout : View {
         mHeight = h.toFloat()
         backgroundRectBlur.set(blurRadius, blurRadius, mWidth - blurRadius, mHeight - blurRadius)
         checkColor(startColor, endColor, color)
-        paint.maskFilter = BlurMaskFilter(blurRadius, BlurMaskFilter.Blur.NORMAL)
+        paint.maskFilter = BlurMaskFilter(blurRadius - (blurRadius / 3), BlurMaskFilter.Blur.NORMAL)
         paint.flags = Paint.ANTI_ALIAS_FLAG
     }
 
