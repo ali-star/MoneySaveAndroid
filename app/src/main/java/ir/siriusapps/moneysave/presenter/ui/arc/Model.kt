@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.StateFlow
 
 
 interface Model<I : Intent, s : State> {
-    val intentChanel: Channel<I>
+    val intentChannel: Channel<I>
     val stateView: StateFlow<s>
 }

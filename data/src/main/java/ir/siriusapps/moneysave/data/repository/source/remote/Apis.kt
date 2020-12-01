@@ -8,7 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-interface Apis {
+interface Apis{
 
     @Headers("Content-Type: application/json")
     @POST("/auth/refreshToken")

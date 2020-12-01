@@ -6,11 +6,13 @@ import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import ir.siriusapps.moneysave.R
+import javax.inject.Singleton
 
 @Module
 class SharedPreferencesModule {
 
     @Provides
+    @Singleton
     fun provideSharedPreferences(context: Context): SharedPreferences =
         context.getSharedPreferences(context.getString(R.string.app_name), MODE_PRIVATE)
 }

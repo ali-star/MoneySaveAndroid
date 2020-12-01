@@ -13,10 +13,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-@ApplicationScope
+
 class InternalRepositoryImp @Inject constructor(
     private val sharedPreferences: SharedPreferences,
-    private val apis: Apis,
+    private val networkService: NetworkService,
     private val dao: Dao,
     private val userEntityMapper: UserEntityMapper
 ) : InternalRepository {
@@ -24,7 +24,7 @@ class InternalRepositoryImp @Inject constructor(
     private val ioDispatcher = Dispatchers.IO
 
     override suspend fun login(username: String, password: String): User = withContext(ioDispatcher) {
-        val userEntity = apis.login(LoginModel(username, password))
+        val userEntity = networkService.getApis().login(LoginModel(username, password))
         userEntity.let {
             dao.insertUser(userEntity)
             sharedPreferences.edit()

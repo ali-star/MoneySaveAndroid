@@ -7,14 +7,15 @@ import dagger.android.AndroidInjector
 import ir.siriusapps.moneysave.App
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
 import ir.siriusapps.moneysave.internal.di.module.*
+import javax.inject.Singleton
 
-@ApplicationScope
+@Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class, ApplicationModule::class,
         AppDataBaseModule::class, MainActivityModule::class,
         RepositoryModule::class, SharedPreferencesModule::class, GsonModule::class,
-        BindingModule::class, FragmentModule::class
+        BindingModule::class, FragmentModule::class,NetworkServiceModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {

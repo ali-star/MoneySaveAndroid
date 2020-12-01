@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-@ApplicationScope
+
 class BankRepositoryImp @Inject constructor(
     private val dao: Dao,
     private val bankEntityMapper: BankEntityMapper,

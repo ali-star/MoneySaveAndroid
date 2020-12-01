@@ -8,7 +8,7 @@ import ir.siriusapps.moneysave.data.repository.source.remote.internal.NetworkSer
 import javax.inject.Singleton
 
 @Module
-abstract class NetworkServiceModule {
+class NetworkServiceModule {
 
     @Provides
     @Singleton

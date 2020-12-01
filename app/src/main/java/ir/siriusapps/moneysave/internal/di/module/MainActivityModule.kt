@@ -8,7 +8,6 @@ import ir.siriusapps.moneysave.presenter.ui.MainActivity
 @Module
 abstract class MainActivityModule {
 
-    @ActivityScope
     @ContributesAndroidInjector()
     abstract fun contributesMainActivity(): MainActivity
 

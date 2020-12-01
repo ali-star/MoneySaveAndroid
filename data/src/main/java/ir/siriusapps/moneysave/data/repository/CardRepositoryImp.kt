@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-@ApplicationScope
+
 class CardRepositoryImp @Inject constructor(
     private val moneySaveDao: Dao,
     private val cardEntityMapper: CardEntityMapper

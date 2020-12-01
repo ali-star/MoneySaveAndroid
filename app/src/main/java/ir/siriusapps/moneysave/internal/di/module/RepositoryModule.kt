@@ -2,33 +2,32 @@ package ir.siriusapps.moneysave.internal.di.module
 
 import dagger.Module
 import dagger.Provides
-import ir.siriusapps.moneysave.domain.repository.BankAccountRepository
-import ir.siriusapps.moneysave.domain.repository.TransactionRepository
+import ir.siriusapps.moneysave.data.repository.*
+import ir.siriusapps.moneysave.domain.repository.*
 import ir.siriusapps.moneysave.domain.scope.ApplicationScope
-import ir.siriusapps.moneysave.data.repository.BankAccountRepositoryImp
-import ir.siriusapps.moneysave.data.repository.BankRepositoryImp
-import ir.siriusapps.moneysave.data.repository.CardRepositoryImp
-import ir.siriusapps.moneysave.data.repository.TransactionRepositoryImp
-import ir.siriusapps.moneysave.domain.repository.BankRepository
-import ir.siriusapps.moneysave.domain.repository.CardRepository
+import javax.inject.Singleton
 
 @Module
 class RepositoryModule {
 
     @Provides
-    @ApplicationScope
+    @Singleton
     fun provideTransactionsRepository(transactionRepositoryImp: TransactionRepositoryImp): TransactionRepository = transactionRepositoryImp
 
     @Provides
-    @ApplicationScope
+    @Singleton
     fun provideBankAccountRepository(bankAccountRepositoryImp: BankAccountRepositoryImp): BankAccountRepository = bankAccountRepositoryImp
 
     @Provides
-    @ApplicationScope
+    @Singleton
     fun provideBankRepository(bankRepositoryImp: BankRepositoryImp): BankRepository = bankRepositoryImp
 
     @Provides
-    @ApplicationScope
+    @Singleton
     fun provideCardRepository(cardRepositoryImp: CardRepositoryImp): CardRepository = cardRepositoryImp
+
+    @Provides
+    @Singleton
+    fun provideInternalRepository(internalRepositoryImp: InternalRepositoryImp): InternalRepository = internalRepositoryImp
 
 }
