@@ -7,6 +7,8 @@
 		<attr name="gb_TypeFace" format="string" />
 		<attr name="gb_radius" format="dimension" />
 		<attr name="gb_Color" format="color" />
+		<attr name="gb_is_ripple" format="boolean"/>
+		<attr name="gb_color_ripple" format="color"/>
 	</declare-styleable>
 	
 	<declare-styleable name="GradientBlurLayout">

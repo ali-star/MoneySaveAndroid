@@ -16,9 +16,9 @@ class MainActivityTest {
     fun test1() {
         /*val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         activityScenario.onActivity {
-            val button = it.findViewById<Button>(R.id.button)
-            button.performClick()
-            assertTrue(button.text == "Work")
+            val ripple = it.findViewById<Button>(R.id.ripple)
+            ripple.performClick()
+            assertTrue(ripple.text == "Work")
         }*/
     }
 

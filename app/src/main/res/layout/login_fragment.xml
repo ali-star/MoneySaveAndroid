@@ -5,7 +5,8 @@
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:background="@color/white">
 
 		<ImageView
 			android:id="@+id/logoImageView"
@@ -99,6 +100,8 @@
 			android:textColor="@color/white"
 			android:textSize="17sp"
 			android:textStyle="bold"
+			app:gb_is_ripple="true"
+			app:gb_color_ripple="@color/black_05"
 			app:gb_angle="45"
 			app:gb_endColor="#00A3E0"
 			app:gb_radius="15dp"
@@ -112,7 +115,7 @@
 			android:layout_width="340dp"
 			android:layout_height="64dp"
 			android:layout_marginTop="12dp"
-			android:background="@drawable/border_background"
+			android:background="@drawable/ripple"
 			android:text="@string/register_upper"
 			android:textSize="17sp"
 			android:textStyle="bold"

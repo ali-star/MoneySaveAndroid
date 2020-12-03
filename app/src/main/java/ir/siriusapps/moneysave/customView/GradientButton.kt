@@ -1,15 +1,19 @@
 package ir.siriusapps.moneysave.customView
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.Animation
 import androidx.appcompat.widget.AppCompatButton
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.utils.Utils
 
-class GradientButton : AppCompatButton
-{
+class GradientButton : AppCompatButton {
 
     private val paint = Paint()
     private var mWidth = 0f
@@ -23,6 +27,16 @@ class GradientButton : AppCompatButton
     private var radius: Float = 0F
     private var color: Int = 0
     private var defaultBackground: Drawable? = null
+
+    private var colorRipple: Int = 0
+    private var radiusRipple: Float = 50F
+    private var onTouch: Boolean = false
+    private var isRipple: Boolean = false
+    private var paintRipple: Paint = Paint()
+    private var pathRipple: Path = Path()
+    private var touchEventX: Float = 0F
+    private var touchEventY: Float = 0F
+    private var animator: ValueAnimator = ValueAnimator()
 
     constructor(context: Context) : super(context) {
         initView()
@@ -53,6 +67,14 @@ class GradientButton : AppCompatButton
                 Utils.dipToPix(16)
             ).toFloat()
             color = typedArray.getColor(R.styleable.GradientButton_gb_Color, 0)
+
+            colorRipple =
+                typedArray.getColor(
+                    R.styleable.GradientButton_gb_color_ripple,
+                    Color.rgb(255, 255, 255)
+                )
+            isRipple = typedArray.getBoolean(R.styleable.GradientButton_gb_is_ripple, false)
+
         } finally {
             typedArray.recycle()
         }
@@ -65,6 +87,42 @@ class GradientButton : AppCompatButton
         mMatrix.reset()
         mMatrix.setRotate(angel.toFloat())
         backgroundRect = RectF()
+
+
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val result = super.onTouchEvent(event)
+        if (isEnabled && isRipple && event!!.actionMasked == MotionEvent.ACTION_DOWN) {
+
+            onTouch = true
+
+            touchEventX = event.x
+            touchEventY = event.y
+
+            animator = ValueAnimator.ofFloat(0F, width.toFloat())
+            animator.duration = 500
+            animator.interpolator = AccelerateDecelerateInterpolator()
+            animator.addUpdateListener { animation ->
+                radiusRipple = animation.animatedValue as Float
+                invalidate()
+            }
+            animator.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationRepeat(animation: Animator?) {}
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    radiusRipple = 0F
+                    invalidate()
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {}
+
+                override fun onAnimationStart(animation: Animator?) {}
+
+            })
+            animator.start()
+        }
+        return result
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -98,8 +156,12 @@ class GradientButton : AppCompatButton
         }
     }
 
+
     override fun onDraw(canvas: Canvas?) {
         path.reset()
+        paintRipple.color = colorRipple
+        paintRipple.alpha = 20
+
         backgroundRect.set(0F, 0F, mWidth, mHeight)
         path.addRoundRect(
             backgroundRect,
@@ -108,6 +170,15 @@ class GradientButton : AppCompatButton
             Path.Direction.CW
         )
         canvas!!.drawPath(path, paint)
+
+
+        if (onTouch) {
+            pathRipple.reset()
+            pathRipple.addCircle(touchEventX, touchEventY, radiusRipple, Path.Direction.CW)
+            canvas!!.drawPath(pathRipple, paintRipple)
+        }
+
+
         super.onDraw(canvas)
     }
 
