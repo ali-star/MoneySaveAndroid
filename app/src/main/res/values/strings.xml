@@ -36,4 +36,6 @@
 	<string name="register">Register</string>
 	<string name="register_upper">REGISTER</string>
 	<string name="login">LOGIN</string>
+    <string name="transaction">Transaction</string>
+    <string name="cards">Cards</string>
 </resources>

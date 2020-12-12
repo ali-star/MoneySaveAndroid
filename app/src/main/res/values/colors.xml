@@ -45,6 +45,7 @@
 	<color name="black_90">#E6000000</color>
 	<color name="black_95">#F2000000</color>
 	<color name="color_black">#000000</color>
+	<color name="color_black2">#222222</color>
 	
 	<color name="grayText">#999</color>
 	<color name="dark">#222</color>

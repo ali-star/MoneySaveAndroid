@@ -88,11 +88,16 @@ class GradientButton : AppCompatButton {
         mMatrix.setRotate(angel.toFloat())
         backgroundRect = RectF()
 
-
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val result = super.onTouchEvent(event)
+
+        if(animator.isRunning){
+            invalidate()
+            return result
+        }
+
         if (isEnabled && isRipple && event!!.actionMasked == MotionEvent.ACTION_DOWN) {
 
             onTouch = true
@@ -103,10 +108,12 @@ class GradientButton : AppCompatButton {
             animator = ValueAnimator.ofFloat(0F, width.toFloat())
             animator.duration = 500
             animator.interpolator = AccelerateDecelerateInterpolator()
+
             animator.addUpdateListener { animation ->
                 radiusRipple = animation.animatedValue as Float
                 invalidate()
             }
+
             animator.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationRepeat(animation: Animator?) {}
 
@@ -175,7 +182,7 @@ class GradientButton : AppCompatButton {
         if (onTouch) {
             pathRipple.reset()
             pathRipple.addCircle(touchEventX, touchEventY, radiusRipple, Path.Direction.CW)
-            canvas!!.drawPath(pathRipple, paintRipple)
+            canvas.drawPath(pathRipple, paintRipple)
         }
 
 
