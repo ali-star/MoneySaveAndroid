@@ -28,6 +28,10 @@ class RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideUserRepository(userRepositoryImp: UserRepositoryImp): UserRepository = userRepositoryImp
+
+    @Provides
+    @Singleton
     fun provideInternalRepository(internalRepositoryImp: InternalRepositoryImp): InternalRepository = internalRepositoryImp
 
 }

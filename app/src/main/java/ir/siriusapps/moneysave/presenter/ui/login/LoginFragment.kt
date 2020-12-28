@@ -19,6 +19,7 @@ import javax.inject.Inject
 
 class LoginFragment @Inject constructor(private val viewModelFactory: LoginViewModelFactory) :
     Fragment() {
+
     private var binding: LoginFragmentBinding? = null
 
     private val viewModel: LoginViewModel by viewModels {
@@ -29,7 +30,7 @@ class LoginFragment @Inject constructor(private val viewModelFactory: LoginViewM
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = LoginFragmentBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@LoginFragment.viewLifecycleOwner
 

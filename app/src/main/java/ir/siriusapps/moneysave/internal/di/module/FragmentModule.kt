@@ -9,6 +9,7 @@ import dagger.multibindings.IntoMap
 import ir.siriusapps.moneysave.internal.di.factory.CustomFragmentFactory
 import ir.siriusapps.moneysave.presenter.ui.addEditBankAccountFragment.AddEditBankAccountFragment
 import ir.siriusapps.moneysave.presenter.ui.addEditCardFragment.AddEditCardFragment
+import ir.siriusapps.moneysave.presenter.ui.init.InitFragment
 import ir.siriusapps.moneysave.presenter.ui.login.LoginFragment
 import ir.siriusapps.moneysave.presenter.ui.mainfragment.MainFragment
 import ir.siriusapps.moneysave.presenter.ui.register.RegisterFragment
@@ -22,18 +23,8 @@ interface FragmentModule {
 
     @Binds
     @IntoMap
-    @FragmentKey(AddEditCardFragment::class)
-    fun addEditCardFragmentProvider(addEditCardFragment: AddEditCardFragment): Fragment
-
-    @Binds
-    @IntoMap
-    @FragmentKey(AddEditBankAccountFragment::class)
-    fun addEditBankAccountFragmentProvider(addEditBankAccountFragment: AddEditBankAccountFragment): Fragment
-
-    @Binds
-    @IntoMap
-    @FragmentKey(MainFragment::class)
-    fun mainFragmentProvider(mainFragment: MainFragment): Fragment
+    @FragmentKey(InitFragment::class)
+    fun initFragmentProvider(initFragment: InitFragment):Fragment
 
     @Binds
     @IntoMap
@@ -44,6 +35,21 @@ interface FragmentModule {
     @IntoMap
     @FragmentKey(RegisterFragment::class)
     fun registerFragmentProvider(registerFragment: RegisterFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(MainFragment::class)
+    fun mainFragmentProvider(mainFragment: MainFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(AddEditBankAccountFragment::class)
+    fun addEditBankAccountFragmentProvider(addEditBankAccountFragment: AddEditBankAccountFragment): Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(AddEditCardFragment::class)
+    fun addEditCardFragmentProvider(addEditCardFragment: AddEditCardFragment): Fragment
 
 }
 

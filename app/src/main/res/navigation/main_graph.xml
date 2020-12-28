@@ -3,7 +3,7 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:id="@+id/main_graph"
-		app:startDestination="@id/mainFragment">
+		app:startDestination="@id/initFragment">
 	
 	<fragment
 			android:id="@+id/mainFragment"
@@ -73,4 +73,15 @@
 			android:id="@+id/registerFragment"
 			android:name="ir.siriusapps.moneysave.presenter.ui.register.RegisterFragment"
 			android:label="RegisterFragment" />
+	<fragment
+		android:id="@+id/initFragment"
+		android:name="ir.siriusapps.moneysave.presenter.ui.init.InitFragment"
+		android:label="InitFragment" >
+		<action
+			android:id="@+id/action_initFragment_to_loginFragment"
+			app:destination="@id/loginFragment" />
+		<action
+			android:id="@+id/action_initFragment_to_mainFragment"
+			app:destination="@id/mainFragment" />
+	</fragment>
 </navigation>

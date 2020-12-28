@@ -44,8 +44,9 @@ class CardFragment : Fragment() {
                         page.translationX = -myOffset
                     }
                     position <= 1 -> {
-                        val scaleFactor = 0.7f.coerceAtLeast(1 - abs(position - 0.14285715f))
+                        val scaleFactor = 0.95f.coerceAtLeast(1 - abs(position))
                         page.translationX = myOffset
+                        page.scaleX = scaleFactor
                         page.scaleY = scaleFactor
                     }
                     else -> {
