@@ -90,7 +90,7 @@ class CircleProgress : View {
 
     override fun draw(canvas: Canvas?) {
         super.draw(canvas)
-        canvas!!.drawOval(rect, backgroundStrokePaint);
+        canvas!!.drawOval(rect, backgroundStrokePaint)
         
         val angle = 360f * progress.toFloat() / 100f
         canvas.drawArc(rect, -90f, angle, false, progressPaint)

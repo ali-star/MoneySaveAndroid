@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.auth0.android.jwt.JWT
 import com.google.gson.annotations.SerializedName
 import ir.siriusapps.moneysave.data.entity.mapper.Mapper
 import ir.siriusapps.moneysave.domain.entity.User
