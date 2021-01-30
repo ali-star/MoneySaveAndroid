@@ -26,7 +26,6 @@ class CardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = CardLayoutBinding.inflate(inflater, container, false).apply {
-            this.lifecycleOwner = this@CardFragment.viewLifecycleOwner
 
             viewpager.adapter = CardViewPagerAdapter(
                 5,

@@ -28,11 +28,8 @@ class AddEditBankAccountFragment @Inject constructor(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AddEditBankAccountFragmentBinding.inflate(inflater, container, false).apply {
-
-            viewmodel = this@AddEditBankAccountFragment.viewModel
-            lifecycleOwner = this@AddEditBankAccountFragment.viewLifecycleOwner
             nextButton.setOnClickListener {
 
                 if (accountNameEditText.text.isNullOrEmpty()) {

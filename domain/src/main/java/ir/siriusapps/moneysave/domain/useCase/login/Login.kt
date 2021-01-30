@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.domain.useCase.register
+package ir.siriusapps.moneysave.domain.useCase.login
 
 import ir.siriusapps.moneysave.domain.repository.InternalRepository
 import kotlinx.coroutines.Dispatchers

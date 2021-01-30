@@ -16,7 +16,7 @@ class CardViewPagerFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        binding = CardsViewPagerBinding.inflate(inflater, container, false).apply {
-           this.lifecycleOwner = this@CardViewPagerFragment.viewLifecycleOwner
+
        }
         return  binding!!.root
     }

@@ -32,10 +32,12 @@ class InitViewModel @Inject constructor(
     }
 
     private fun initIntent() {
+        startInit()
+
         viewModelScope.launch {
             intentChannel.consumeAsFlow().collect { intent ->
                 when (intent) {
-                    is InitIntent.StartInit -> startInit()
+
                 }
             }
         }

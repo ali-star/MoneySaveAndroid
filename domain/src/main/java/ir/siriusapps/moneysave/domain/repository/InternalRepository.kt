@@ -8,4 +8,5 @@ interface InternalRepository {
 
     suspend fun logout(user: User)
 
+    suspend fun register(emilAddress: String,username: String, password: String)
 }

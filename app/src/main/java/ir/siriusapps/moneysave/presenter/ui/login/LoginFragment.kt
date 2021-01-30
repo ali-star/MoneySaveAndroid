@@ -32,16 +32,17 @@ class LoginFragment @Inject constructor(private val viewModelFactory: LoginViewM
         savedInstanceState: Bundle?
     ): View {
         binding = LoginFragmentBinding.inflate(inflater, container, false).apply {
-            lifecycleOwner = this@LoginFragment.viewLifecycleOwner
 
-            register.setOnClickListener {
+            this.registerButton.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_loginFragment_to_registerFragment)
             }
 
             loginButton.setOnClickListener{
                 lifecycleScope.launch {
-                    viewModel.intentChannel.send(LoginIntent.Login(emailEditText.text.toString(), passwordEditText.text.toString()))
+                    viewModel.intentChannel.send(LoginIntent.Login(
+                        this@apply.emailEditText.text.toString(),
+                        this@apply.passWordEditText.text.toString()))
                 }
             }
         }

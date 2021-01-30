@@ -3,7 +3,7 @@ package ir.siriusapps.moneysave.presenter.ui.login
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ir.siriusapps.moneysave.domain.useCase.register.Login
+import ir.siriusapps.moneysave.domain.useCase.login.Login
 import ir.siriusapps.moneysave.presenter.ViewModelAssistedFactory
 import ir.siriusapps.moneysave.presenter.ui.arc.Model
 import ir.siriusapps.moneysave.presenter.ui.login.intent.LoginIntent

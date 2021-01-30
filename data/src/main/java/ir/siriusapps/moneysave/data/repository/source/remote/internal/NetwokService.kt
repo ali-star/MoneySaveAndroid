@@ -78,10 +78,7 @@ class NetworkService(
         clientBuilder.connectTimeout(20, TimeUnit.SECONDS)
         clientBuilder.readTimeout(20, TimeUnit.SECONDS)
         clientBuilder.connectionSpecs(
-            arrayOf(
-                ConnectionSpec.MODERN_TLS,
-                ConnectionSpec.CLEARTEXT
-            ).asList()
+            arrayOf(ConnectionSpec.MODERN_TLS, ConnectionSpec.CLEARTEXT).asList()
         )
 
         client = clientBuilder.build()

@@ -28,7 +28,6 @@ class MainFragment @Inject constructor(
         savedInstanceState: Bundle?
     ): View? {
         return MainFragmentBinding.inflate(layoutInflater, container, false).apply {
-            lifecycleOwner = this@MainFragment.viewLifecycleOwner
 
         }.root
     }

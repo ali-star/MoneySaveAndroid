@@ -36,7 +36,6 @@ class AddEditCardFragment @Inject constructor(factory: AddEditCardViewModelFacto
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddEditCardBinding.inflate(inflater, container, false).apply {
-            lifecycleOwner = this@AddEditCardFragment.viewLifecycleOwner
 
             cardView.cardColor = ContextCompat.getColor(requireContext(), R.color.color_cardBlack)
             cardView.balanceTitle = resources.getString(R.string.title_balance)

@@ -3,6 +3,7 @@ package ir.siriusapps.moneysave.data.repository.source.remote
 import ir.siriusapps.moneysave.data.entity.UserEntity
 import ir.siriusapps.moneysave.data.remote.internal.TokenEntity
 import ir.siriusapps.moneysave.data.remote.models.LoginModel
+import ir.siriusapps.moneysave.data.repository.source.remote.models.RegisterModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -17,5 +18,9 @@ interface Apis{
     @Headers("Content-Type: application/json")
     @POST("/auth/login")
     suspend fun login(@Body loginModel: LoginModel): UserEntity
+
+    @Headers("Content-Type: application/json")
+    @POST("/auth/register")
+    suspend fun register(@Body registerModel: RegisterModel): UserEntity
 
 }

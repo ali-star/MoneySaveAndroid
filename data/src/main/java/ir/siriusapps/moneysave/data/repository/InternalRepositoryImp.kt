@@ -6,6 +6,7 @@ import ir.siriusapps.moneysave.data.remote.models.LoginModel
 import ir.siriusapps.moneysave.data.repository.source.local.Dao
 import ir.siriusapps.moneysave.data.repository.source.remote.Apis
 import ir.siriusapps.moneysave.data.repository.source.remote.internal.NetworkService
+import ir.siriusapps.moneysave.data.repository.source.remote.models.RegisterModel
 import ir.siriusapps.moneysave.domain.entity.User
 import ir.siriusapps.moneysave.domain.repository.InternalRepository
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,7 @@ class InternalRepositoryImp @Inject constructor(
     override suspend fun login(username: String, password: String): User = withContext(ioDispatcher) {
         val userEntity = apis.login(LoginModel(username, password))
         userEntity.let {
-            dao.insertUser(userEntity)
+            dao.insertUser(it)
             sharedPreferences.edit()
                 .putBoolean(NetworkService.IS_USER_LOGGED_IN_PREFS_KEY, true)
                 .putString(NetworkService.TOKEN_PREFS_KEY, it.tokenString)
@@ -42,6 +43,16 @@ class InternalRepositoryImp @Inject constructor(
             .putBoolean(NetworkService.IS_USER_LOGGED_IN_PREFS_KEY, false)
             .putString(NetworkService.TOKEN_PREFS_KEY, null)
             .putString(NetworkService.REFRESH_TOKEN_PREFS_KEY, null)
+            .apply()
+    }
+
+    override suspend fun register(emilAddress: String, username: String, password: String) = withContext(ioDispatcher) {
+        val userEntity = apis.register(RegisterModel(emilAddress, username, password))
+
+        sharedPreferences.edit()
+            .putBoolean(NetworkService.IS_USER_LOGGED_IN_PREFS_KEY, true)
+            .putString(NetworkService.TOKEN_PREFS_KEY, userEntity.tokenString)
+            .putString(NetworkService.REFRESH_TOKEN_PREFS_KEY, userEntity.refreshToken)
             .apply()
     }
 
