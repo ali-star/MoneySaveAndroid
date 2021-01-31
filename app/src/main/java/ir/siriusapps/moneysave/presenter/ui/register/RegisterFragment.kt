@@ -33,7 +33,7 @@ class RegisterFragment @Inject constructor(private val registerViewModelFactory:
                lifecycleScope.launchWhenResumed {
                    viewModel.intentChannel.send(RegisterIntent.Register(
                        emailAddress = this@apply.emailEditText.text.toString(),
-                       username =this@apply.usernameEditText.text.toString() ,
+                       username =this@apply.passWordEditText.text.toString() ,
                        password =this@apply.repeatPasswordEditText.text.toString()))
                }
             }
