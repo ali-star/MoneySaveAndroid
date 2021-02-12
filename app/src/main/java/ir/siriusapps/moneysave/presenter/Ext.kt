@@ -1,7 +1,7 @@
 package ir.siriusapps.moneysave.presenter
 
 import android.content.res.Resources
-import android.util.DisplayMetrics
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
@@ -21,4 +21,12 @@ inline fun <reified T : ViewModel> Fragment.viewModel(crossinline provider: (Sav
 
 fun dpToPx(dp: Int) : Float {
     return dp * Resources.getSystem().displayMetrics.density
+}
+
+fun Fragment.showLongToast( message: String){
+    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+}
+
+fun Fragment.showShortToast(message: String){
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

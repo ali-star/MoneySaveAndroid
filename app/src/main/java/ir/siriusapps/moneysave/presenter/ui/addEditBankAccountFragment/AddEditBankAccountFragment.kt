@@ -11,6 +11,8 @@ import androidx.navigation.Navigation.findNavController
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.databinding.AddEditBankAccountFragmentBinding
 import ir.siriusapps.moneysave.presenter.GenericSavedStateViewModelFactory
+import ir.siriusapps.moneysave.presenter.showLongToast
+import ir.siriusapps.moneysave.presenter.showShortToast
 import ir.siriusapps.moneysave.presenter.ui.EventObserver
 import javax.inject.Inject
 
@@ -25,50 +27,42 @@ class AddEditBankAccountFragment @Inject constructor(
     private lateinit var binding: AddEditBankAccountFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = AddEditBankAccountFragmentBinding.inflate(inflater, container, false).apply {
             nextButton.setOnClickListener {
 
                 if (accountNameEditText.text.isNullOrEmpty()) {
                     accountNameEditText.requestFocus()
-                    Toast.makeText(context, "Please fill accountName field", Toast.LENGTH_LONG)
-                        .show()
+                    showLongToast("Please fill accountName field")
                     return@setOnClickListener
                 }
                 if (accountNumberEditText.text.isNullOrEmpty()) {
                     accountNumberEditText.requestFocus()
-                    Toast.makeText(context, "Please fill accountNumber field", Toast.LENGTH_LONG)
-                        .show()
+                    showLongToast("Please fill accountNumber field")
                     return@setOnClickListener
                 }
                 if (cardNumberEditText.text.isNullOrEmpty()) {
                     cardNumberEditText.requestFocus()
-                    Toast.makeText(context, "Please fill cardNumber field", Toast.LENGTH_LONG)
-                        .show()
+                    showLongToast("Please fill cardNumber field")
                     return@setOnClickListener
                 }
 
                 if (expireYearEditText.text.isNullOrEmpty()) {
                     expireYearEditText.requestFocus()
-                    Toast.makeText(context, "Please fill expireYear field", Toast.LENGTH_LONG)
-                        .show()
+                    showLongToast("Please fill expireYear field")
                     return@setOnClickListener
                 }
 
                 if (expireMonthEditText.text.isNullOrEmpty()) {
                     expireMonthEditText.requestFocus()
-                    Toast.makeText(context, "Please fill expireMonth field", Toast.LENGTH_LONG)
-                        .show()
+                    showLongToast("Please fill expireMonth field")
                     return@setOnClickListener
                 }
 
                 if (cvv2EditText.text.isNullOrEmpty()) {
                     cvv2EditText.requestFocus()
-                    Toast.makeText(context, "Please fill CVV2 field", Toast.LENGTH_LONG)
-                        .show()
+                    showLongToast("Please fill CVV2 field")
                     return@setOnClickListener
                 }
 
@@ -93,16 +87,12 @@ class AddEditBankAccountFragment @Inject constructor(
                 bundle.putString("cvv2", viewModel.cvv2.value)
                 bundle.putString("bankId", it.localId.toString())
 
-                findNavController(requireView()).navigate(
-                    R.id.action_addEditBankAccountFragment_to_addEditCardFragment, bundle)
-
+                findNavController(requireView()).
+                navigate(R.id.action_addEditBankAccountFragment_to_addEditCardFragment, bundle)
             } else
-                Toast.makeText(requireContext(), "This bank is not supported", Toast.LENGTH_LONG)
-                    .show()
-        }
-        )
+                Toast.makeText(requireContext(), "This bank is not supported", Toast.LENGTH_LONG).show()
+        })
 
     }
-
 
 }

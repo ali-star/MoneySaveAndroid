@@ -28,4 +28,10 @@
 		<attr name="cr_progress" format="integer"/>
 	</declare-styleable>
 
+	<declare-styleable name="TransferLoading">
+		<attr name="tl_BackgroundColor" format="color"/>
+		<attr name="tl_BorderColor" format="color"/>
+
+	</declare-styleable>
+
 </resources>
