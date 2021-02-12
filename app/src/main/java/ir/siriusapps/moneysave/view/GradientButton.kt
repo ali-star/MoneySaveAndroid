@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.customView
+package ir.siriusapps.moneysave.view
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.Animation
 import androidx.appcompat.widget.AppCompatButton
 import ir.siriusapps.moneysave.R
 import ir.siriusapps.moneysave.utils.Utils

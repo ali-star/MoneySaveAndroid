@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/passWordEditText" />
 
 
-    <ir.siriusapps.moneysave.customView.GradientBlurLayout
+    <ir.siriusapps.moneysave.view.GradientBlurLayout
         android:id="@+id/gradientBlurLayout2"
         android:layout_width="420dp"
         android:layout_height="140dp"
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="@+id/registerButton"
         app:layout_constraintTop_toTopOf="@+id/registerButton"/>
 
-    <ir.siriusapps.moneysave.customView.GradientButton
+    <ir.siriusapps.moneysave.view.GradientButton
         android:id="@+id/registerButton"
         android:layout_width="340dp"
         android:layout_height="64dp"

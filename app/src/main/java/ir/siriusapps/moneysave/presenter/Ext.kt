@@ -1,5 +1,7 @@
 package ir.siriusapps.moneysave.presenter
 
+import android.content.res.Resources
+import android.util.DisplayMetrics
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
@@ -15,4 +17,8 @@ inline fun <reified T : ViewModel> Fragment.viewModel(crossinline provider: (Sav
             handle: SavedStateHandle
         ): T = provider(handle) as T
     }
+}
+
+fun dpToPx(dp: Int) : Float {
+    return dp * Resources.getSystem().displayMetrics.density
 }

@@ -17,4 +17,10 @@
 	
 	</androidx.fragment.app.FragmentContainerView>
 
+	<ir.siriusapps.moneysave.view.JellyLoadingView
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:layout_gravity="bottom|center"
+		android:layout_marginBottom="16dp"/>
+
 </FrameLayout>

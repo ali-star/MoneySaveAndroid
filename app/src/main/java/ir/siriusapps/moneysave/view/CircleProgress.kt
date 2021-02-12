@@ -1,4 +1,4 @@
-package ir.siriusapps.moneysave.customView
+package ir.siriusapps.moneysave.view
 
 import android.content.Context
 import android.graphics.Canvas

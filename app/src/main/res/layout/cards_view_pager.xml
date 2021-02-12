@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ir.siriusapps.moneysave.customView.CreditCardView
+    <ir.siriusapps.moneysave.view.CreditCardView
         android:id="@+id/cardView"
         android:layout_width="320dp"
         android:layout_height="166dp"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ir.siriusapps.moneysave.customView.GradientBlurLayout
+    <ir.siriusapps.moneysave.view.GradientBlurLayout
         android:id="@+id/gradientBlurLayout"
         android:layout_width="370dp"
         android:layout_height="191dp"

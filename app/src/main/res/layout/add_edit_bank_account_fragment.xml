@@ -239,7 +239,7 @@
 
         </LinearLayout>
 
-        <ir.siriusapps.moneysave.customView.GradientBlurLayout
+        <ir.siriusapps.moneysave.view.GradientBlurLayout
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:layout_marginStart="14dp"
@@ -253,7 +253,7 @@
             app:layout_constraintStart_toStartOf="@+id/nextButton"
             app:layout_constraintTop_toTopOf="@+id/nextButton" />
 
-        <ir.siriusapps.moneysave.customView.GradientButton
+        <ir.siriusapps.moneysave.view.GradientButton
             android:id="@+id/nextButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
