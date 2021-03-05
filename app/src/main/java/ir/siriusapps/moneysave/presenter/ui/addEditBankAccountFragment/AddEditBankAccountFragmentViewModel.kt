@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AddEditBankAccountFragmentViewModel constructor(
-    private val savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle?,
     private val addBankAccount: AddBankAccount,
     private val getBank: GetBank,
     private val bankItemMapper: BankItemMapper,
@@ -47,14 +47,14 @@ class AddEditBankAccountFragmentViewModel constructor(
 }
 
 
-class AddEditBankAccountFragmentViewModelFactory @Inject constructor(
+open class AddEditBankAccountFragmentViewModelFactory @Inject constructor(
     private val addBankAccount: AddBankAccount,
     private val getBank: GetBank,
     private val bankItemMapper: BankItemMapper,
     private val bankAccountItemMapper: BankAccountItemMapper
 ) :
     ViewModelAssistedFactory<AddEditBankAccountFragmentViewModel> {
-    override fun create(savedStateHandle: SavedStateHandle): AddEditBankAccountFragmentViewModel =
+    override fun create(savedStateHandle: SavedStateHandle?): AddEditBankAccountFragmentViewModel =
         AddEditBankAccountFragmentViewModel(
             savedStateHandle,
             addBankAccount,

@@ -8,7 +8,7 @@ import ir.siriusapps.moneysave.presenter.common.BaseViewModel
 import javax.inject.Inject
 
 class MainFragmentViewModel constructor(
-    private val savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle?,
     private val addBankAccount: AddBankAccount
 ) : BaseViewModel() {
 
@@ -17,6 +17,6 @@ class MainFragmentViewModel constructor(
 
 class MainFragmentViewModelFactory @Inject constructor(private val addBankAccount: AddBankAccount) :
     ViewModelAssistedFactory<MainFragmentViewModel> {
-    override fun create(savedStateHandle: SavedStateHandle): MainFragmentViewModel =
+    override fun create(savedStateHandle: SavedStateHandle?): MainFragmentViewModel =
         MainFragmentViewModel(savedStateHandle, addBankAccount)
 }

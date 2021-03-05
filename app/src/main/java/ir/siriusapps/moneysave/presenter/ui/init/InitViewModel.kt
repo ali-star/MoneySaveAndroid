@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class InitViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle?,
     private val getUser: GetUser
 ) : ViewModel(), Model<InitIntent, InitState> {
 
@@ -72,7 +72,7 @@ class InitViewModel @Inject constructor(
 class InitViewModelFactory @Inject constructor(
     private val getUser: GetUser
 ) : ViewModelAssistedFactory<InitViewModel> {
-    override fun create(savedStateHandle: SavedStateHandle): InitViewModel =
+    override fun create(savedStateHandle: SavedStateHandle?): InitViewModel =
         InitViewModel(savedStateHandle, getUser)
 
 }

@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class RegisterViewModel constructor(
-    private val  savedStateHandle: SavedStateHandle,
+    private val  savedStateHandle: SavedStateHandle?,
     private val register: Register
     ) : ViewModel(),Model<RegisterIntent, RegisterState> {
     override val intentChannel: Channel<RegisterIntent> = Channel(Channel.UNLIMITED)
@@ -55,6 +55,6 @@ class RegisterViewModel constructor(
 class RegisterViewModelFactory @Inject constructor(
     private val register: Register
 ): ViewModelAssistedFactory<RegisterViewModel> {
-    override fun create(savedStateHandle: SavedStateHandle): RegisterViewModel =
+    override fun create(savedStateHandle: SavedStateHandle?): RegisterViewModel =
         RegisterViewModel(savedStateHandle, register)
 }

@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LoginViewModel constructor(
-    private val savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle?,
     private val login: Login,
 ) : ViewModel(), Model<LoginIntent, LoginState> {
     override val intentChannel: Channel<LoginIntent> = Channel(Channel.UNLIMITED)
@@ -60,7 +60,7 @@ class LoginViewModel constructor(
 class LoginViewModelFactory @Inject constructor(
     private val login: Login
 ) : ViewModelAssistedFactory<LoginViewModel> {
-    override fun create(savedStateHandle: SavedStateHandle): LoginViewModel =
+    override fun create(savedStateHandle: SavedStateHandle?): LoginViewModel =
         LoginViewModel(savedStateHandle, login)
 
 }

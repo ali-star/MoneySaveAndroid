@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AddEditCardViewModel constructor(
-   private val savedStateHandle: SavedStateHandle,
+   private var savedStateHandle: SavedStateHandle?,
    private val cardRepository: CardRepository,
    private val addBankAccount:AddBankAccount,
    private val bankAccountItemMapper: BankAccountItemMapper
@@ -40,10 +40,10 @@ class AddEditCardViewModel constructor(
 
 }
 
-class AddEditCardViewModelFactory @Inject constructor(private val cardRepository: CardRepository,
+open class AddEditCardViewModelFactory @Inject constructor(private val cardRepository: CardRepository,
                                                       private val addBankAccount:AddBankAccount,
                                                       private val bankAccountItemMapper: BankAccountItemMapper) :
     ViewModelAssistedFactory<AddEditCardViewModel> {
-    override fun create(savedStateHandle: SavedStateHandle): AddEditCardViewModel =
+    override fun create(savedStateHandle: SavedStateHandle?): AddEditCardViewModel =
         AddEditCardViewModel(savedStateHandle, cardRepository,addBankAccount,bankAccountItemMapper)
 }
