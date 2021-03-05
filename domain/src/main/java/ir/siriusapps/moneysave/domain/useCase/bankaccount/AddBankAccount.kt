@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AddBankAccount @Inject constructor(private val accountRepository: BankAccountRepository) {
+open class AddBankAccount @Inject constructor(private val accountRepository: BankAccountRepository) {
 
     suspend fun execute(bankAccount: BankAccount) :Long= withContext(Dispatchers.IO) {
         return@withContext accountRepository.add(bankAccount)

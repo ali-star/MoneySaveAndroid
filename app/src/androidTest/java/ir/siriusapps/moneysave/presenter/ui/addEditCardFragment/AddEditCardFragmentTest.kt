@@ -1,75 +1,55 @@
 package ir.siriusapps.moneysave.presenter.ui.addEditCardFragment
 
-import android.app.Application
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.lifecycle.SavedStateHandle
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.runner.AndroidJUnit4
-import ir.siriusapps.moneysave.domain.repository.CardRepository
-import ir.siriusapps.moneysave.domain.useCase.bankaccount.AddBankAccount
-import ir.siriusapps.moneysave.internal.di.component.DaggerTestAppComponent
-import ir.siriusapps.moneysave.item.BankAccountItemMapper
-
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito
-import javax.inject.Inject
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
 
 @RunWith(AndroidJUnit4::class)
-
 class AddEditCardFragmentTest {
-    private lateinit var fragmentFactory: FragmentFactory
+    private lateinit var fragmentFactory: TestFragmentFactory
 
+    val mockAddEditCardViewModelFactory = mock(AddEditCardViewModelFactory::class.java)
+    val viewModel = mock(AddEditCardViewModel::class.java)
 
-    @Inject
-     lateinit var cardRepository: CardRepository
-
-    @Inject
-     lateinit var addBankAccount: AddBankAccount
-
-    @Inject
-     lateinit var bankAccountItemMapper: BankAccountItemMapper
-
-    @Inject
-    lateinit var context: Context
-
-    private var factory: AddEditCardViewModelFactory? = null
-
-    private lateinit var viewModel: AddEditCardViewModel
+    class TestFragmentFactory(private val mockAddEditCardViewModelFactory: AddEditCardViewModelFactory) :
+        FragmentFactory() {
+        override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
+            if (className == AddEditCardFragment::class.java.name) {
+                return AddEditCardFragment(mockAddEditCardViewModelFactory)
+            }
+            return super.instantiate(classLoader, className)
+        }
+    }
 
     @Before
     fun setup() {
-        val appComponent =
-            DaggerTestAppComponent.factory().create(ApplicationProvider.getApplicationContext())
-        this.fragmentFactory = appComponent.fragmentFactory()
+        this.fragmentFactory = TestFragmentFactory(mockAddEditCardViewModelFactory)
     }
 
     private fun getFragmentScenario(): FragmentScenario<AddEditCardFragment> {
-        return launchFragmentInContainer<AddEditCardFragment>(factory = fragmentFactory)
+        `when`(mockAddEditCardViewModelFactory.create(null)).thenReturn(viewModel)
+        return launchFragmentInContainer<AddEditCardFragment>(
+            factory = fragmentFactory,
+            fragmentArgs = AddEditCardFragmentArgs("", "", "", "", "", "", "").toBundle()
+        )
     }
 
-    private fun create(savedStateHandle: SavedStateHandle?): AddEditCardViewModel =
-        Mockito.mock(
-            AddEditCardViewModel(
-                savedStateHandle,
-                cardRepository,
-                addBankAccount,
-                bankAccountItemMapper
-            )::class.java
-        )
-
     @Test
-     fun testVivewModel(){
-        factory = Mockito.mock(AddEditCardViewModelFactory::class.java)
-        Mockito.`when`(factory?.create(null)).thenReturn(create(null))
-
-        Mockito.`when`(viewModel.saveBankAccount(0,"leila","leial")).thenReturn(Toast.makeText(context, "test",Toast.LENGTH_SHORT).show())
+    fun testViewModel() {
+        with(getFragmentScenario()) {
+            `when`(viewModel.saveBankAccount(0, "leila", "leila")).then {
+                Log.i("test", "test")
+            }
+            viewModel.saveBankAccount(0, "leila", "leila")
+        }
     }
 
 }
